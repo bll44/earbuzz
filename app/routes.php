@@ -6,6 +6,11 @@ Route::get('testing', function()
     return 'routes change';
 });
 
+Route::post('test-merge', function()
+{
+    return 'brady version';
+})
+
 Route::group(['before' => 'auth'], function()
 {
     Route::get('recent_streams', ['as' => 'recent_streams.show', 'uses' => 'MediaController@showRecentStreams']);
