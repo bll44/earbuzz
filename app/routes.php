@@ -9,7 +9,7 @@ Route::get('testing', function()
 Route::post('test-merge', function()
 {
     return 'brady version';
-})
+});
 
 Route::group(['before' => 'auth'], function()
 {
