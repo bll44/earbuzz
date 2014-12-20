@@ -3,42 +3,7 @@ App::bind('Earbuzz\Billing\BillingInterface', 'Earbuzz\Billing\StripeBilling');
 
 Route::get('testing', function()
 {
-    if(File::exists($artist_music_bucket = Config::get('constants.MUSIC_STORAGE_BUCKET') . '/' . 4))
-    {
-        $album_dirs = File::directories($artist_music_bucket);
-        $delimiters = array('/', '\\');
-        $music = new StdClass;
-        foreach($album_dirs as $ad)
-        {
-            $prepared = str_replace($delimiters, $delimiters[0], $ad);
-            $chopped = explode($delimiters[0], $prepared);
-            $music->albums = array($chopped[count($chopped) - 1] => ['tracks' => []]);
-        }
-        foreach($music->albums as $key => &$val)
-        {
-            $tracks = File::files($artist_music_bucket . '/' . $key);
-            foreach($tracks as $t)
-            {
-
-                $parts = explode('/', $t);
-                $trackname = $parts[count($parts) - 1];
-                $p = strrpos($trackname, '.');
-                $trackname = substr($trackname, 0, $p);
-                $track = new Track;
-                $track->name = $trackname;
-                $val['tracks'][] = $track;
-            }
-        }
-        foreach($music->albums as $a => $b)
-        {
-            echo $a;
-            echo '<hr>';
-            foreach($b['tracks'] as $t)
-            {
-                echo $t->name . '<br />';
-            }
-        }
-    }
+    return 'routes change';
 });
 
 Route::group(['before' => 'auth'], function()
