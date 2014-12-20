@@ -1,0 +1,122 @@
+@extends('layouts/master')
+
+@section('content')
+<h1>
+	profile.show 
+	<small>
+		@if ($user->isCurrent())
+		{{ link_to_route('profile.edit', 'Edit Your Profile', $user->username) }}
+		@endif
+	</small>
+</h1>
+
+<?php
+$lastfm_api_key = 'ae94454236db108880591ee2b51a524b';
+$lastfm_api_secret = '8e195882ce2cc3864c2549217dc86e4d';
+$lastfm = new \Dandelionmood\LastFm\LastFm( $lastfm_api_key, $lastfm_api_secret );
+$artist = $lastfm->artist_getinfo(array('artist' => 'Grizzly Bear'));
+$tracks = $lastfm->artist_gettoptracks(array('artist' => 'Grizzly Bear', 'limit' => '10'));
+// $albums = $lastfm->artist_gettoptracks(array('artist' => 'Grizzly Bear'));
+?>
+
+<div class="content">
+	<div class="container">
+		<div class="row">
+		<!-- Column 1
+		<div class="col-sm-2 col-md-2">
+			<img src="http://placehold.it/100x130" alt="" class="img-rounded img-responsive" />
+		</div>
+		<div class="col-sm-4 col-md-4">
+			<blockquote>
+				<p>
+					{{ $user->username }}
+				</p>
+				<small>
+					<cite title="Source Title">
+						{{ $user->profile->location }} <i class="glyphicon glyphicon-map-marker"></i>
+					</cite>
+				</small>
+			</blockquote>
+			<p>{{ $user->profile->bio }}</p>
+			<p>
+				<i class="glyphicon glyphicon-envelope"></i> {{ $user->email }}
+				<br/>
+				<i class="fa fa-twitter"></i> Twitter: {{ link_to('http://twitter.com/'. $user->profile->twitter_username, $user->profile->twitter_username) }}
+				<br />
+				<i class="fa fa-facebook"></i> Facebook: {{ link_to('http://facebook.com/'. $user->profile->facebook_username, $user->profile->facebook_username) }}
+				<br />
+				<i class="fa fa-music"></i> Last.fm: {{ link_to('http://last.fm/'. $user->profile->lastfm_username, $user->profile->lastfm_username) }}
+			</p>
+		</div> -->
+		<!-- Column 2 -->
+		<div class="col-sm-4 col-md-4">
+			<?php
+			foreach($artist->artist->image as $image) {
+				$image = (array) $image;
+				if ($image['size'] == 'extralarge')
+				{
+					?>
+					<img src="{{ $image['#text'] }}" alt="{{ $artist->artist->name }}" class="img-rounded img-responsive" />
+					<?php
+				}
+			}
+			?>
+		</div>
+		<div class="col-sm-8 col-md-8">
+			<blockquote>
+				<p>
+					{{ $artist->artist->name }}
+				</p>
+				@foreach ($artist as $v)
+				@if (isset($v->bio->placeformed))
+				<small>
+					<cite title="Source Title">
+						{{ $v->bio->placeformed }} <i class="glyphicon glyphicon-map-marker"></i>
+					</cite>
+				</small>
+				@endif
+				@endforeach
+				<?php
+				foreach($artist->artist->tags->tag as $tag) {
+					$tag = (array) $tag;
+					?>
+					<span class="label label-info">{{ $tag['name'] }}</span>
+					<!-- <a href="{{ $tag['url'] }}"></a> -->
+					<?php
+				}
+				?>
+			</blockquote>
+			<!-- <p>
+				<i class="glyphicon glyphicon-envelope"></i> {{ $user->email }}
+				<br/>
+				<i class="fa fa-twitter"></i> Twitter: {{ link_to('http://twitter.com/'. $user->profile->twitter_username, $user->profile->twitter_username) }}
+				<br />
+				<i class="fa fa-facebook"></i> Facebook: {{ link_to('http://facebook.com/'. $user->profile->facebook_username, $user->profile->facebook_username) }}
+				<br />
+				<i class="fa fa-music"></i> Last.fm: {{ link_to('http://last.fm/'. $user->profile->lastfm_username, $user->profile->lastfm_username) }}
+			</p> -->
+			@foreach ($artist as $value)
+			<p>{{ $value->bio->summary }}</p>
+			@endforeach
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-md-6">
+			<?php
+			$i=0;
+			foreach($tracks->toptracks->track as $track) {
+				if($i==10) break;
+				$track = (array) $track;
+				?>
+				<li>{{ $track['name'] }}</li>
+				<?php
+				$i++;
+			}
+			?>
+		</div>
+		<div class="col-sm-6 col-md-6">
+		</div>
+	</div>
+</div>
+</div>
+@stop

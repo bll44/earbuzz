@@ -1,0 +1,673 @@
+html {
+  overflow-y: scroll;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 15px;
+}
+
+.container {
+  max-width: 800px;
+  padding: 0;
+}
+
+.navbar {
+  margin-bottom: 15px;
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+.navbar-brand .fa {
+  margin-right: 5px;
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  background-color: #e7e7e7;
+  color: #555555
+}
+
+#domain {
+  margin-bottom: 15px;
+}
+
+#domain h2 {
+  font-size: 22px;
+  margin: 0;
+  font-weight: 700;
+}
+
+#domain h2 .fa {
+  margin-right: 5px;
+}
+
+form {
+  margin-bottom: 15px;
+}
+
+.form-control[disabled] {
+  cursor: default;
+}
+
+.checkbox {
+  margin: 0;
+  margin-bottom: 15px;
+  margin-top: 20px;
+}
+
+.input-tag {
+  font-size: 12px;
+  margin-left: 10px;
+  padding: 5px 0;
+  margin: 0;
+}
+
+.alert {
+  margin-bottom: 15px;
+  padding: 5px 10px;
+}
+
+.post-content p.alert {
+  margin-left: 30px;
+}
+
+.post-content p.audio br {
+  display: none;
+}
+
+p.audio .title {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #666;
+  display: block;
+  text-align: center;
+}
+
+p.audio .title .fa {
+  margin-right: 5px;
+}
+
+/* audio player --------------------------------------------------------------*/
+p.audio .mejs-controls,
+p.audio .mejs-container {
+  border-radius: 4px;
+}
+
+.mejs-container .mejs-controls {
+  background: none !important;
+}
+
+.mejs-container .mejs-controls .mejs-time span {
+  color: #f5f5f5 !important;
+}
+
+.mejs-container, .mejs-embed, .mejs-embed body {
+  background-color: #428BCA !important;
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-total,
+.mejs-controls .mejs-time-rail .mejs-time-loaded,
+.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+  background: #316897 !important;
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-float {
+  border: 0 !important;
+  background-color: #214564 !important;
+  color: #fff !important;
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-float-corner {
+  border-color: #214564 transparent transparent !important;
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-current {
+  background: #214564 !important;
+}
+
+.mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+  background: #f5f5f5 !important;
+}
+/* ---------------------------------------------------------------------------*/
+
+.alert span,
+.input-monospace {
+  font-family: "Droid Sans Mono", monospace;
+  font-size: 12px;
+}
+
+.input-tag .fa {
+  margin-right: 5px;
+}
+
+.alert .fa {
+  cursor: default;
+  margin-right: 10px;
+}
+
+#recaptcha_response_field {
+  margin-top: 5px;
+}
+
+.alert-dismissable .close {
+  right: 0;
+}
+
+.pre-label {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-bottom: 0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  font-weight: 700;
+}
+
+.pre-label + pre {
+  border-radius: 0;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+pre {
+  padding: 6px 12px;
+  font-family: "Droid Sans Mono", monospace;
+  font-size: 12px;
+  margin-bottom: 15px;
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
+}
+
+code.example {
+  cursor: pointer;
+  color: #C7254E;
+}
+
+code.example:hover,
+code.example:active,
+code.example:focus {
+  background-color: #F2DEDE;
+}
+
+code {
+  font-family: "Droid Sans Mono", monospace;
+  font-size: 12px;
+  display: inline-block;
+  background-color: #f5f2f0;
+  color: #333;
+  margin: 1px;
+}
+
+pre > code {
+  border: 0;
+}
+
+code[class*="language-"], pre[class*="language-"],
+pre > code {
+  color: #333;
+  font-family: "Droid Sans Mono", monospace;
+  font-size: 12px;
+}
+pre[class*="language-"] {
+}
+
+a .fa,
+.btn .fa {
+  margin-right: 5px;
+}
+
+#footer {
+  font-size: 12px;
+  color: #666;
+}
+
+#footer p {
+  margin: 0;
+  padding: 0;
+}
+
+#footer #privacy-policy {
+  margin-top: 5px;
+}
+
+#footer #sponsors {
+  font-weight: bold;
+}
+
+#timestamp {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.content,
+.post-content,
+article {
+  margin-bottom: 15px;
+}
+
+.content h1,
+.post-title {
+  font-size: 22px;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.text-danger a {
+  color: #A94442;
+}
+
+.text-success a {
+  color: #3C763D;
+}
+
+.post-title .fa {
+  margin-right: 10px;
+}
+
+.content p,
+.post-content p {
+  margin: 0;
+}
+
+.content p + p,
+.post-content p + p,
+.content p + pre,
+.post-content p + pre {
+  margin-top: 15px;
+}
+
+.content p + h1,
+article + article {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px solid #ccc;
+}
+
+.content ol,
+.content ul,
+.post-content ol,
+.post-content ul {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.content a,
+.alert,
+.post-content a {
+  word-break: break-word;
+}
+
+.post-content blockquote {
+  margin: 0;
+  margin-bottom: 15px;
+  font-size: 16px;
+  padding: 0;
+  padding-left: 15px;
+  border: 0;
+  border-left: 3px solid #ccc;
+}
+
+.post-content p + blockquote {
+  margin-top: 15px;
+}
+
+.content ol pre,
+.content ul pre,
+.post-content ol pre,
+.post-content ul pre {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.content li + li,
+.post-content li + li {
+  margin-top: 10px;
+}
+
+.content li .btn,
+.post-content li .btn {
+  margin-top: 5px;
+}
+
+.post-meta {
+  font-size: 12px;
+}
+
+.post-meta p {
+  margin: 0;
+}
+
+#page-nav {
+  margin-bottom: 15px;
+}
+
+#page-nav .fa-angle-left {
+  margin-right: 5px;
+}
+
+#page-nav .fa-angle-right {
+  margin-left: 5px;
+}
+
+#page-nav a + a {
+  margin-left: 5px;
+}
+
+#bitcoin {
+  font-weight: 700;
+  word-break: break-word;
+}
+
+img.img-thumbnail {
+  -moz-transition: none;
+  -webkit-transition: none;
+  -o-transition: color 0 ease-in;
+  transition: none;
+}
+
+table.table {
+  margin: 0;
+}
+
+.table-wrapper {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 15px;
+}
+
+table td.success {
+  font-weight: 700;
+}
+
+.table-title {
+  padding: 8px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.table-title.whois-server {
+  background-color: #D9EDF7;
+}
+
+table.whois .text-muted {
+  font-size: 12px;
+}
+
+.table-title:hover {
+  text-decoration: underline;
+}
+
+.table-title .fa {
+  margin-right: 5px;
+}
+
+#email-address {
+  display: none;
+}
+
+#social {
+  text-align: right;
+}
+
+#social a {
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+#disqus_thread {
+  padding: 0;
+  margin: 0;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  border-top: 2px solid #ccc;
+}
+
+.more-link {
+  font-size: 12px;
+}
+
+#tools {
+  margin-bottom: 15px;
+}
+
+#tools p {
+  margin: 0;
+}
+
+#tools p + p {
+  margin-top: 5px;
+}
+
+#tools .row + p,
+#tools #retry + p {
+  margin-top: 15px;
+}
+
+#tools p#whois-link {
+  text-align: right;
+}
+
+#tags-list {
+  margin-bottom: -5px;
+  margin-right: -5px;
+}
+
+#tags-list a.btn {
+  font-size: 12px;
+  display: inline-block;
+  margin: 0;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+#tags-list a.btn span {
+  margin-left: 5px;
+  color: #999;
+}
+
+.loading {
+  margin-bottom: 15px;
+}
+
+.loading .fa {
+  margin-right: 5px;
+}
+
+table.dns th,
+table.smtp th {
+}
+
+table.dns tbody td,
+table.smtp tbody td,
+table.traceroute tbody td,
+table.http tbody td {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+table.whois table th,
+table.whois .iana th,
+table.whois .autofit th {
+  white-space: nowrap;
+}
+
+table.whois table td,
+table.whois .iana td,
+table.whois .autofit td {
+  width: 100%;
+}
+
+table.whois span.country,
+table.whois span.hint {
+  padding: 2px 4px;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
+table.dns .section.answer {
+  font-weight: bold;
+}
+
+p + .table-responsive {
+  margin-top: 15px;
+}
+
+@media (max-width: 991px) {
+  #tools p#whois-link {
+    text-align: left;
+    margin-top: 15px;
+  }
+
+  #social {
+    text-align: left;
+  }
+
+  #social a {
+    margin-left: 0;
+    margin-right: 5px;
+  }
+
+  #footer + #social {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  input[type="text"].form-control,
+  input[type="textarea"].form-control,
+  input[type="password"].form-control,
+  select.form-control,
+  option.form-control {
+    font-size: 16px;
+  }
+}
+
+/*heart*/
+
+.btn-clear {
+  background: none;
+  border: none;
+}
+
+.not-favorited, .favorited:hover {
+  color: black;
+}
+.not-favorited:hover, .favorited {
+  color: #FF4136;
+}
+
+/*star*/
+
+.mytextwithicon {
+  position:relative;
+}
+.mytextwithicon:before {
+  position:absolute;
+  font-family: FontAwesome;
+  top:0;
+  left:-5px;
+  content: "\25AE";
+}
+
+.total_votes {
+  background: #eaeaea;
+  top: 58px;
+  left: 0;
+  padding: 5px;
+  position:   absolute;
+}
+.movie_choice {
+  font: 10px verdana, sans-serif;
+  margin: 0 auto 40px auto;
+  width: 180px;
+}
+
+/*back to top*/
+.back-to-top {
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display:none;
+}
+
+/*login/signup*/
+
+/*
+    Note: It is best to use a less version of this file ( see http://css2less.cc
+    For the media queries use @screen-sm-min instead of 768px.
+    For .omb_spanOr use @body-bg instead of white.
+    */
+
+    @media (min-width: 768px) {
+      .omb_row-sm-offset-3 div:first-child[class*="col-"] {
+        margin-left: 25%;
+      }
+    }
+
+    .omb_login .omb_authTitle {
+      text-align: center;
+      line-height: 300%;
+    }
+
+    .omb_login .omb_socialButtons a {
+      color: white; // In yourUse @body-bg
+      opacity:0.9;
+    }
+    .omb_login .omb_socialButtons a:hover {
+      color: white;
+      opacity:1;
+    }
+    .omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}
+    .omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
+    .omb_login .omb_socialButtons .omb_btn-google {background: #c32f10;}
+
+
+    .omb_login .omb_loginOr {
+      position: relative;
+      font-size: 1.5em;
+      color: #aaa;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+    }
+    .omb_login .omb_loginOr .omb_hrOr {
+      background-color: #cdcdcd;
+      height: 1px;
+      margin-top: 0px !important;
+      margin-bottom: 0px !important;
+    }
+    .omb_login .omb_loginOr .omb_spanOr {
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: -0.6em;
+      margin-left: -1.5em;
+      background-color: white;
+      width: 3em;
+      text-align: center;
+    }
+
+    .omb_login .omb_loginForm .input-group.i {
+      width: 2em;
+    }
+    .omb_login .omb_loginForm  .help-block {
+      color: red;
+    }
+
+
+    @media (min-width: 768px) {
+      .omb_login .omb_forgotPwd {
+        text-align: right;
+        margin-top:10px;
+      }
+    }
+

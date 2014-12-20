@@ -1,0 +1,81 @@
+@extends('layout')
+
+@section('content')
+<div class="pt-page pt-page-current">
+	<section class="header-18-section s1 bg-turquoise clearfix">
+		<div class="t-row">
+			<div>
+				<div class="background">
+					&nbsp;
+				</div>
+				<!-- <header>
+					<div class="container clearfix">
+						<a class="brand" href="#"><img src="{{{ asset('img/logo-1@2x.png') }}}" width="100" height="100" alt=""></a>
+					</div>
+				</header> -->
+				<div class="container">
+					<div class="row">
+						<div class="span5 offset1">
+							<h3>Login</h3>
+							<div class="visible-phone text-center" style="margin-bottom: 30px"><img src="{{{ asset('img/browser-iphone@2x.png') }}}" width="300" height="300" alt="">
+							</div>
+							<p>
+								This is boilerplate text that can be replaced with anything.
+							</p>
+							@if (Auth::guest())
+							<div class="signup-form">
+								{{ Form::open(['route' => 'sessions.store']) }}
+								<div class="controls controls-row">
+									<div class="fool">
+										{{ Form::text('email', null, array('class' => 'span5', 'placeholder' => 'Email address', 'autocomplete' => 'off', 'required' => 'required')) }}
+										{{ errors_for('email', $errors) }}
+									</div>
+								</div>
+								<div class="controls controls-row">
+									<div>
+										{{ Form::password('password', array('class' => 'span5', 'placeholder' => 'Password', 'required' => 'required')) }}
+										{{ errors_for('password', $errors) }}
+									</div>
+								</div>
+								<div class="controls controls-row">
+									{{ Form::submit('Login', ['class' => 'btn btn-block btn-warning btn-embossed']) }}
+								</div>
+								@if (Session::has('flash_message'))
+								<div class="controls controls-row">
+									<p>{{ Session::get('flash_message')}}</p>
+								</div>
+								@endif
+								{{ Form::close() }}
+							</div>
+							@else
+							<a href="#">Link to User Profile</a>
+							@endif
+						</div>
+						<div class="span4 offset1 hidden-phone">
+							<div class="img">
+								<img src="{{{ asset('img/browser-iphone@2x.png') }}}" width="300" height="300" alt="">
+								<img src="{{{ asset('img/browser1@2x.png') }}}" width="240" height="255" alt="">
+								<img src="{{{ asset('img/iphone@2x.png') }}}" width="144" height="264" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="t-row footer">
+			<footer class="bg-green-sea">
+				<div class="container">
+					<span>You can Sign In with popular Social Networks</span>
+					<div class="btns">
+						<!-- <a href="#" class="btn btn-primary">Sign In with Twitter</a> -->
+						<!-- <a href="#" class="btn btn-primary">Sign In with Facebook</a> -->
+						<a href="/" class="btn btn-primary">Home</a>
+						<a href="/login" class="btn btn-primary">Sign In</a>
+						<a href="/register" class="btn btn-primary">Sign Up</a>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</section>
+</div>
+@stop

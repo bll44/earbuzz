@@ -1,0 +1,48 @@
+@extends('layouts/master')
+
+@section('content')
+<h1>
+	profile.show 
+	<small>
+		@if (Auth::check())
+		@if ($user->isCurrent())
+		{{ link_to_route('profile.edit', 'Edit Your Profile', $user->username) }}
+		@endif
+		@endif
+	</small>
+</h1>
+
+<?php
+$service = new \Discogs\Service();
+
+$artist = $service->getArtist(2568722);
+
+?>
+
+<div class="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-md-4">
+				<!-- <img src="#" alt="" class="img-rounded img-responsive" /> -->
+			</div>
+			<div class="col-sm-8 col-md-8">
+				<blockquote>
+					<p>
+						{{ $artist->getName() }}
+					</p>
+					<span class="label label-info">tag</span>
+				</blockquote>
+				<p>summary</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 col-md-6">
+				listeners
+			</div>
+			<div class="col-sm-6 col-md-6">
+				playcount
+			</div>
+		</div>
+	</div>
+</div>
+@stop

@@ -1,0 +1,140 @@
+@extends('layouts/master')
+
+@section('content')
+<h1>
+	profile.show 
+	<small>
+		@if (Auth::check())
+		@if ($user->isCurrent())
+		{{ link_to_route('profile.edit', 'Edit Your Profile', $user->username) }}
+		@endif
+		@endif
+	</small>
+</h1>
+
+<?php
+// $lastfm_api_key = 'ae94454236db108880591ee2b51a524b';
+// $lastfm_api_secret = '8e195882ce2cc3864c2549217dc86e4d';
+
+// Include the API for LastFM
+define('__ROOT__', dirname(dirname(dirname(dirname(__FILE__))))); 
+require(__ROOT__.'/public/lastfmapi/lastfmapi.php'); 
+
+// Get the session auth data
+
+// Put the auth data into an array
+$authVars = array(
+	'apiKey' => 'ae94454236db108880591ee2b51a524b',
+	'secret' => '8e195882ce2cc3864c2549217dc86e4d'
+	);
+$config = array(
+	'enabled' => true,
+	'cache_type' => 'mysql',
+	'cache_length' => 1800
+	);
+$config['database']['host'] = 'localhost';
+$config['database']['username']= 'evan';
+$config['database']['password']= 'retard';
+$config['database']['name']= 'cache';
+// Pass the array to the auth class to eturn a valid auth
+$auth = new lastfmApiAuth('setsession', $authVars);
+
+// Call for the album package class with auth data
+$apiClass = new lastfmApi();
+$albumClass = $apiClass->getPackage($auth, 'album', $config);
+$artistClass = $apiClass->getPackage($auth, 'artist', $config);
+
+// Setup the variables
+$albumInfo = array(
+	'artist' => 'Kanye West',
+	'album' => 'Graduation'
+	);
+$artistInfo = array(
+	// 'artist' => $user->username
+	'artist' => 'Michael Jackson'
+	);
+if ( $album = $albumClass->getInfo($albumInfo) ) {
+	// Success
+	// echo '<b>Data Returned</b>';
+	// echo '<pre>';
+	// print_r($album);
+	// echo '</pre>';
+}
+else {
+	// Error
+	die('<b>Error '.$albumClass->error['code'].' - </b><i>'.$albumClass->error['desc'].'</i>');
+}
+if ( $artist = $artistClass->getInfo($artistInfo) ) {
+	// Success
+	// echo '<b>Data Returned</b>';
+	// echo '<pre>';
+	// print_r($artist);
+	// echo '</pre>';
+}
+else {
+	// Error
+	die('<b>Error '.$artistClass->error['code'].' - </b><i>'.$artistClass->error['desc'].'</i>');
+}
+
+?>
+Album Name: {{ $album['name'] }} <br>
+Album Top Tag 1: {{ $album['toptags'][1]['name'] }} <br><br>
+
+<div class="content">
+	<div class="container">
+		<div class="row">
+			<!-- Column 1
+			<div class="col-sm-2 col-md-2">
+				<img src="http://placehold.it/100x130" alt="" class="img-rounded img-responsive" />
+			</div>
+			<div class="col-sm-4 col-md-4">
+				<blockquote>
+					<p>
+						{{ $user->username }}
+					</p>
+					<small>
+						<cite title="Source Title">
+							{{ $user->profile->location }} <i class="glyphicon glyphicon-map-marker"></i>
+						</cite>
+					</small>
+				</blockquote>
+				<p>{{ $user->profile->bio }}</p>
+				<p>
+					<i class="glyphicon glyphicon-envelope"></i> {{ $user->email }}
+					<br/>
+					<i class="fa fa-twitter"></i> Twitter: {{ link_to('http://twitter.com/'. $user->profile->twitter_username, $user->profile->twitter_username) }}
+					<br />
+					<i class="fa fa-facebook"></i> Facebook: {{ link_to('http://facebook.com/'. $user->profile->facebook_username, $user->profile->facebook_username) }}
+					<br />
+					<i class="fa fa-music"></i> Last.fm: {{ link_to('http://last.fm/'. $user->profile->lastfm_username, $user->profile->lastfm_username) }}
+				</p>
+			</div>
+			Column 2 -->
+			<div class="col-sm-4 col-md-4">
+				<img src="{{ $artist['image']['large'] }}" alt="{{ $artist['name'] }} " class="img-rounded img-responsive" />
+			</div>
+			<div class="col-sm-8 col-md-8">
+				<blockquote>
+					<p>
+						{{ $artist['name'] }} 
+					</p>
+					<span class="label label-info">{{ $artist['tags'][0]['name'] }}</span>
+					<span class="label label-info">{{ $artist['tags'][1]['name'] }}</span>
+					<span class="label label-info">{{ $artist['tags'][2]['name'] }}</span>
+					<span class="label label-info">{{ $artist['tags'][3]['name'] }}</span>
+					<span class="label label-info">{{ $artist['tags'][4]['name'] }}</span>
+				</blockquote>
+				<p>{{ $artist['bio']['summary'] }}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 col-md-6">
+				Listeners: {{ $artist['stats']['listeners'] }}
+			</div>
+			<div class="col-sm-6 col-md-6">
+				Play Count: {{ $artist['stats']['playcount'] }}
+			</div>
+		</div>
+	</div>
+</div>
+@stop
