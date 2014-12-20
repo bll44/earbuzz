@@ -70,7 +70,7 @@ Route::filter('subscribed', function()
 # Unused Stripe
 // $billing = App::make('Earbuzz\Billing\BillingInterface');
 
-Route::post('2w2w2', function()
+Route::post('stripetest', function()
 {
 	try
     {
