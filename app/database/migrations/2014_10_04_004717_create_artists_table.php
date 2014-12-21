@@ -16,6 +16,7 @@ class CreateArtistsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id');
+			$table->integer('genre_id');
 			$table->string('name');
 			$table->timestamps();
 		});

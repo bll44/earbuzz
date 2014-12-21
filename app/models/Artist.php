@@ -14,4 +14,9 @@ class Artist extends Eloquent {
 		return $this->belongsTo('User');
 	}
 
+	public function genre()
+	{
+		return $this->belongsTo('Genre');
+	}
+
 }

@@ -72,10 +72,6 @@ class RegistrationController extends BaseController {
 
 		$input = (object) $input;
 
-		$object = new StdClass;
-		$object->anyproperty = 'this';
-		$object->evan = 'dumprhies';
-
 		Auth::login($user);
 
 		$user_id = $user->id;
@@ -83,6 +79,7 @@ class RegistrationController extends BaseController {
 	   // Create the standard user profile for the artist
 		$profile = new Profile;
 		$profile->user_id = $user_id;
+		$profile->display_name = $input->displayname;
 		$profile->save();
 
 	   // Assign a streaming key to the new artist
@@ -95,6 +92,8 @@ class RegistrationController extends BaseController {
 		$artist->user_id = $user_id;
 		$artist->name = $input->displayname;
 		$artist->save();
+
+		Session::put('complete_artist_info', true);
 
 		return Redirect::home();
 	}
