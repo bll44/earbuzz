@@ -11,7 +11,7 @@ class PostComposer {
 	{
 		if (Auth::check())
 		{
-			$favorites = DB::table('favorites')->whereUserId(Auth::user()->id)->lists('post_id');
+			$favorites = DB::table('favorites')->whereUserId(Auth::user()->id)->lists('artist_id');
 
 			$view->with('favorites', $favorites);
 		}

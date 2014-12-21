@@ -19,8 +19,12 @@ class ArtistsTableSeeder extends Seeder {
 
 		foreach(range(1, 30) as $index)
 		{
+
+			$artistId = User::orderBy(DB::raw('RAND()'))->first();
+
 			Artist::create([
-				'name' => $faker->company
+				'user_id' => $artistId->id,
+				'name' => $artistId->displayname
 			]);
 		}
 

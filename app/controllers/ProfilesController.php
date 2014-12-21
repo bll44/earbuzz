@@ -65,7 +65,11 @@ class ProfilesController extends BaseController {
 			}
 		}
 
-		return View::make('profiles.show', ['user' => $user, 'music' => $music]);
+		$artist = $user->artist;
+		$favorites = DB::table('favorites')->whereUserId(Auth::user()->id)->lists('artist_id');
+
+		// return View::make('profiles.show', ['user' => $user, 'music' => $music]);
+		return View::make('profiles.show', compact('user', 'music', 'artist', 'favorites'));
 	}
 
 	// Display specific users favorites
@@ -73,14 +77,14 @@ class ProfilesController extends BaseController {
 	{
 		try
 		{
-			$posts = User::with('profile')->whereUsername($username)->firstOrFail()->favorites;
+			$artists = User::with('profile')->whereUsername($username)->firstOrFail()->favorites;
 		}
 		catch(ModelNotFoundException $e)
 		{
 			return Redirect::home();
 		}
 
-		return View::make('posts.index', compact('posts'));
+		return View::make('posts.index', compact('artists'));
 	}
 
 	// Broadcaster dashboard

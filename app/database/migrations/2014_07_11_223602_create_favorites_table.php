@@ -16,7 +16,7 @@ class CreateFavoritesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id');
-			$table->integer('post_id');
+			$table->integer('artist_id');
 			$table->timestamps();
 		});
 	}

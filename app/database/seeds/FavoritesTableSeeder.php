@@ -20,8 +20,8 @@ class FavoritesTableSeeder extends Seeder {
 		foreach(range(1, 30) as $index)
 		{
 			// MYSQL
-			$post = Post::orderBy(DB::raw('RAND()'))->first();
-			$userId = User::orderBy(DB::raw('RAND()'))->first()->favorites()->attach($post->id);
+			$artist = Artist::orderBy(DB::raw('RAND()'))->first();
+			User::orderBy(DB::raw('RAND()'))->first()->favorites()->attach($artist->id);
 
 			// SQLITE
 			// $post = Post::orderBy(DB::raw('random()'))->first();

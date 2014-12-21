@@ -2,6 +2,15 @@
 
 class Artist extends Eloquent {
 
+	/**
+	 * Fillable fields.
+	 *
+	 * @var array
+	 */
+	protected $fillable = [
+	'name', 'user_id'
+	];
+
 	protected $table = 'artists';
 
 	public function albums()

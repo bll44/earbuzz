@@ -3,13 +3,15 @@ App::bind('Earbuzz\Billing\BillingInterface', 'Earbuzz\Billing\StripeBilling');
 
 Route::get('testing', function()
 {
-    return 'routes change';
+    $artists = Artist::all();
+    $favorites = DB::table('favorites')->whereUserId(Auth::user()->id)->lists('artist_id');
+    return $favorites;
 });
 
 Route::post('test-merge', function()
 {
     return 'brady version';
-})
+});
 
 Route::group(['before' => 'auth'], function()
 {
@@ -90,9 +92,10 @@ Route::resource('artists', 'ArtistsController');
 ## List available favorites
 Route::get('browse', function()
 {
-	$posts = Post::all();
+    $artists = Artist::all();
+    $favorites = DB::table('favorites')->whereUserId(Auth::user()->id)->lists('artist_id');
 
-	return View::make('posts.index', compact('posts', 'favorites'));
+	return View::make('posts.index', compact('artists', 'favorites'));
 });
 
 ## Add to Favorites
@@ -178,8 +181,8 @@ Route::resource('account', 'AccountsController');
 # Profile
 Route::resource('profile', 'ProfilesController', ['only' => ['show', 'edit', 'update']]);
 Route::get('/{profile}', ['as' => 'profile', 'uses' => 'ProfilesController@show']);
-Route::get('/{profile}/favorites', ['as' => 'profile.favorites', 'uses' => 'ProfilesController@favorites']);
-Route::get('/{profile}/dashboard', ['as' => 'profile.dashboard', 'uses' => 'ProfilesController@dashboard']);
+Route::get('profile/{profile}/favorites', ['as' => 'profile.favorites', 'uses' => 'ProfilesController@favorites']);
+// Route::get('/{profile}/dashboard', ['as' => 'profile.dashboard', 'uses' => 'ProfilesController@dashboard']);
 
 # Dashboard
 // Route::get('/home', ['as' => 'home', 'uses' => 'PagesController@home']);

@@ -4,13 +4,31 @@
 
 <h1>posts.index</h1>
 
-@if($posts->count())
+@if($artists->count())
 
-@foreach(array_chunk($posts->all(), 4) as $row)
+@foreach(array_chunk($artists->all(), 4) as $row)
 
 <div class="row">
-	@foreach($row as $post)
-		@include('posts/partials/post')
+	@foreach($row as $artist)
+	<div class="col-md-3">
+		<h2>{{ $artist->name }}</h2>
+		@if(Auth::check())
+
+		@if($favorited = in_array($artist->id, $favorites))
+		{{ Form::open(['method' => 'DELETE', 'route' => ['favorites.destroy', $artist->id]]) }}
+		@else
+		{{ Form::open(['route' => 'favorites.store']) }}
+		{{ Form::hidden('post-id', $artist->id) }}
+		@endif
+
+		<button class="btn-clear" type="submit">
+			<i class="fa fa-heart {{ $favorited ? 'favorited' : 'not-favorited' }}"></i>
+		</button>
+
+		{{ Form::close() }}
+
+		@endif
+	</div>
 	@endforeach
 </div>
 
@@ -18,7 +36,7 @@
 
 @else
 
-<p>You have no favorites!</p>
+<p>No favorites!</p>
 
 @endif
 

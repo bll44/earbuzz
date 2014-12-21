@@ -123,11 +123,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface, Billa
 		return $this->id;
 	}
 
-	public function favorites()
-	{
-		return $this->belongsToMany('Post', 'favorites')->withTimestamps(); //defaults to post_user, second argument is override table
-	}
-
 	public function streamingKey()
 	{
 		return $this->hasOne('StreamingKey');
@@ -136,6 +131,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface, Billa
 	public function artist()
 	{
 		return $this->hasOne('Artist');
+	}
+
+	public function favorites()
+	{
+		return $this->belongsToMany('Artist', 'favorites')->withTimestamps(); //defaults to post_user, second argument is override table
 	}
 
 }
