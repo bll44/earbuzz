@@ -55,6 +55,19 @@ img.live_now_placeholder {
 // $mac = $lastfm->artist_getInfo(array('artist' => 'Mac DeMarco'));
 ?>
 
+@if(Auth::check())
+	@if(Auth::user()->artist !== null && Session::pull('complete_artist_info'))
+	<div class="alert alert-warning">
+		<h4>Complete your Artist profile</h4>
+		<p><strong>Wait!</strong> Complete profile information text. Complete profile information text.</p>
+		<p>
+			{{ link_to_route('profile.edit_artist', 'Complete profile', [Auth::user()->id], ['class' => 'btn btn-info']) }}
+			<button type="button" class="btn btn-default" data-dismiss="alert">I'll do this later</button>
+		</p>
+	</div><!-- /.alert -->
+	@endif
+@endif
+
 <div class="content">
 
 	@if (Auth::guest())
@@ -69,17 +82,17 @@ img.live_now_placeholder {
 
 <script>
 
-$(document).ready(function() {
-	$('.live_now').slick({
-		infinite: true,
-		slidesToShow: 3,
-		slidesToScroll: 3,
-		autoplay: true,
-		autoplaySpeed: 6000,
-		speed: 700,
-		arrows: false
-	});
-});
+// $(document).ready(function() {
+// 	$('.live_now').slick({
+// 		infinite: true,
+// 		slidesToShow: 3,
+// 		slidesToScroll: 3,
+// 		autoplay: true,
+// 		autoplaySpeed: 6000,
+// 		speed: 700,
+// 		arrows: false
+// 	});
+// });
 
 </script>
 

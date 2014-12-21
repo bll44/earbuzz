@@ -35,6 +35,7 @@
 					<ul class="dropdown-menu">
 						<li>{{ link_to('/', 'Home', ['class' => 'page']) }}</li>
 						@if(Auth::user()->type === 'artist')
+						<li>{{ link_to_route('concert.create', 'My Concerts', ['class' => 'page']) }}</li>
 						<li>{{ link_to('recent_streams', 'Recent Streams', ['class' => 'page']) }}
 						@endif
 						<!-- <li><a class="page" href="/">Home</a></li> -->

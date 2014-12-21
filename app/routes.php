@@ -1,18 +1,6 @@
 <?php
 App::bind('Earbuzz\Billing\BillingInterface', 'Earbuzz\Billing\StripeBilling');
 
-Route::get('testing', function()
-{
-    $artists = Artist::all();
-    $favorites = DB::table('favorites')->whereUserId(Auth::user()->id)->lists('artist_id');
-    return $favorites;
-});
-
-Route::post('test-merge', function()
-{
-    return 'brady version';
-});
-
 Route::group(['before' => 'auth'], function()
 {
     Route::get('recent_streams', ['as' => 'recent_streams.show', 'uses' => 'MediaController@showRecentStreams']);
@@ -183,6 +171,15 @@ Route::resource('profile', 'ProfilesController', ['only' => ['show', 'edit', 'up
 Route::get('/{profile}', ['as' => 'profile', 'uses' => 'ProfilesController@show']);
 Route::get('profile/{profile}/favorites', ['as' => 'profile.favorites', 'uses' => 'ProfilesController@favorites']);
 // Route::get('/{profile}/dashboard', ['as' => 'profile.dashboard', 'uses' => 'ProfilesController@dashboard']);
+
+# Artist profile edit
+Route::get('artist/{profile}/edit', ['as' => 'profile.edit_artist', 'uses' => 'ProfilesController@editArtistProfile']);
+
+# Artist profile update
+Route::post('artist/{profile}/update', ['as' => 'profile.update_artist', 'uses' => 'ProfilesController@updateArtist']);
+
+# Concert routes
+Route::resource('concert', 'ConcertController');
 
 # Dashboard
 // Route::get('/home', ['as' => 'home', 'uses' => 'PagesController@home']);

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArtistsTable extends Migration {
+class CreateConcertsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,14 @@ class CreateArtistsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('artists', function(Blueprint $table)
+		Schema::create('concerts', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id');
-			$table->integer('genre_id');
 			$table->string('name');
+			$table->dateTime('start_time');
+			$table->dateTime('end_time');
+			$table->mediumText('description')->nullable();
+			$table->integer('artist_id');
 			$table->timestamps();
 		});
 	}
@@ -29,7 +31,7 @@ class CreateArtistsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('artists');
+		Schema::drop('concerts');
 	}
 
 }

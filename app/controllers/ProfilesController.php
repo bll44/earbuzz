@@ -119,4 +119,54 @@ class ProfilesController extends BaseController {
 		return Redirect::route('profile.edit', $user->username);
 	}
 
+	public function editArtistProfile($id)
+	{
+		$user = User::find($id);
+		$profile = $user->profile;
+		$artist = $user->artist;
+		$genres = Genre::all();
+		$genre_select = array();
+		foreach($genres as $g)
+		{
+			$genre_select[$g->id] = ucwords($g->name);
+		}
+
+		return View::make('profiles.edit_artist',
+			[
+				'profile' => $profile,
+				'artist' => $artist,
+				'user' => $user,
+				'genres' => $genres,
+				'genre_select' => $genre_select,
+			]
+		);
+	}
+
+	public function updateArtist($id)
+	{
+		$user = User::find($id);
+		$profile = $user->profile;
+		$artist = $user->artist;
+
+		$input = (object) Input::all();
+
+		# user info
+		$user->displayname = $input->band_name;
+
+		# profile info
+		$profile->display_name = $input->band_name;
+		$profile->location = $input->location;
+		$profile->bio = $input->bio;
+
+		#artist info
+		$artist->name = $input->band_name;
+		$artist->genre_id = $input->genre;
+
+		$user->save();
+		$profile->save();
+		$artist->save();
+
+		return Redirect::route('profile.show', [$user->username]);
+	}
+
 }
