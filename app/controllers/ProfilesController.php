@@ -108,6 +108,7 @@ class ProfilesController extends BaseController {
 	public function update($username)
 	{
 		return Input::all();
+
 		$user = User::whereUsername($username)->firstOrFail();
 
 		$input = Input::only('location', 'bio', 'twitter_username', 'lastfm_username', 'facebook_username');

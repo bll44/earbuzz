@@ -77,14 +77,8 @@ Route::resource('uploads/music', 'MusicUploadController');
 Route::resource('artists', 'ArtistsController');
 
 # Favorites
-## List available favorites
-Route::get('browse', function()
-{
-    $artists = Artist::all();
-    $favorites = DB::table('favorites')->whereUserId(Auth::user()->id)->lists('artist_id');
-
-	return View::make('posts.index', compact('artists', 'favorites'));
-});
+## Browse all aritsts - add as favorites
+Route::get('browse', ['as' => 'browse', 'uses' => 'SearchController@browse']);
 
 ## Add to Favorites
 Route::post('favorites', ['as' => 'favorites.store', function()
@@ -168,7 +162,7 @@ Route::resource('account', 'AccountsController');
 
 # Profile
 Route::resource('profile', 'ProfilesController', ['only' => ['show', 'edit', 'update']]);
-Route::get('/{profile}', ['as' => 'profile', 'uses' => 'ProfilesController@show']);
+Route::get('profile/{profile}', ['as' => 'profile', 'uses' => 'ProfilesController@show']);
 Route::get('profile/{profile}/favorites', ['as' => 'profile.favorites', 'uses' => 'ProfilesController@favorites']);
 // Route::get('/{profile}/dashboard', ['as' => 'profile.dashboard', 'uses' => 'ProfilesController@dashboard']);
 

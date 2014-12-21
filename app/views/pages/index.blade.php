@@ -28,13 +28,13 @@ img.live_now_placeholder {
 	<h1>pages.index</h1>
 </div>
 
-<!-- <div class="carousel-header-container text-center">
+<div class="carousel-header-container text-center">
 	<h1 class="carousel-header text-primary">Live Now</h1>
 	<h1 class="carousel-header">Upcoming</h1>
-</div> -->
+</div>
 
 
-<!-- <div class="well" id="live-now-container">
+<div class="well" id="live-now-container">
 	<div class="live_now text-center clearfix">
 		<div class="live_now_slide"><img src="{{ asset('img/placeholder_imgs/earbuzz1.png') }}" class="live_now_placeholder"></div>
 		<div class="live_now_slide"><img src="{{ asset('img/placeholder_imgs/earbuzz2.png') }}" class="live_now_placeholder"></div>
@@ -45,7 +45,7 @@ img.live_now_placeholder {
 		<div class="live_now_slide"><img src="{{ asset('img/placeholder_imgs/earbuzz1.png') }}" class="live_now_placeholder"></div>
 		<div class="live_now_slide"><img src="{{ asset('img/placeholder_imgs/earbuzz2.png') }}" class="live_now_placeholder"></div>
 	</div>
-</div> -->
+</div>
 
 
 <?php
@@ -82,17 +82,17 @@ img.live_now_placeholder {
 
 <script>
 
-// $(document).ready(function() {
-// 	$('.live_now').slick({
-// 		infinite: true,
-// 		slidesToShow: 3,
-// 		slidesToScroll: 3,
-// 		autoplay: true,
-// 		autoplaySpeed: 6000,
-// 		speed: 700,
-// 		arrows: false
-// 	});
-// });
+$(document).ready(function() {
+	$('.live_now').slick({
+		infinite: true,
+		slidesToShow: 3,
+		slidesToScroll: 3,
+		autoplay: true,
+		autoplaySpeed: 6000,
+		speed: 700,
+		arrows: false
+	});
+});
 
 </script>
 

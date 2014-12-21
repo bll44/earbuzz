@@ -1,3 +1,9 @@
+
+<?php
+$to = $_GET['to'];
+$results = User::findByUsernameOrFail($to)
+?>
+
 @extends('layouts.master')
 
 @section('content')
@@ -37,7 +43,9 @@ $(function() {
 
     $('#ms').magicSuggest({
     	allowFreeEntries: false,
+    	required: true,
         data: "http://localhost:8080/api/search/",
+        value: [{{ $results->id }}],
         valueField: 'id',
         displayField: 'username'
     });

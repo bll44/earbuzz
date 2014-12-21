@@ -172,7 +172,7 @@ $(function() {
 				<p>
 					@if ($user->isCurrent())
 					@else
-					<i class="glyphicon glyphicon-envelope"></i> {{ link_to_route('messages.create', 'Send Private Message', $user->username) }}
+					<i class="glyphicon glyphicon-envelope"></i> {{ link_to_route('messages.create', 'Send Private Message', 'to='.$user->username) }}
 					@endif
 					<br/>
 					<i class="fa fa-twitter"></i> Twitter: {{ link_to('http://twitter.com/'. $user->profile->twitter_username, $user->profile->twitter_username) }}

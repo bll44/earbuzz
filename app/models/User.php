@@ -5,6 +5,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 use Laravel\Cashier\BillableInterface;
 use Laravel\Cashier\BillableTrait;
 use Cmgmyr\Messenger\Traits\Messagable;
+use \Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class User extends Eloquent implements UserInterface, RemindableInterface, BillableInterface {
 
@@ -136,6 +137,17 @@ class User extends Eloquent implements UserInterface, RemindableInterface, Billa
 	public function favorites()
 	{
 		return $this->belongsToMany('Artist', 'favorites')->withTimestamps(); //defaults to post_user, second argument is override table
+	}
+
+	public static function findByUsernameOrFail(
+		$username,
+		$columns = array('*')
+		) {
+		if ( ! is_null($user = static::whereUsername($username)->first($columns))) {
+			return $user;
+		}
+
+		throw new ModelNotFoundException;
 	}
 
 }

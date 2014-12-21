@@ -24,7 +24,7 @@ class ArtistsTableSeeder extends Seeder {
 
 			Artist::create([
 				'user_id' => $artistId->id,
-				'name' => $artistId->displayname
+				'name' => $artistId->username
 			]);
 		}
 

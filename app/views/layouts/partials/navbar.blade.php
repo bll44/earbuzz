@@ -31,7 +31,7 @@
 				<li>{{ link_to('browse', 'Browse', ['class' => 'page']) }}</li>
 				<!-- <li><a class="page" href="/browse">Browse</a></li> -->
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->displayname }} <b class="caret"></b></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li>{{ link_to('/', 'Home', ['class' => 'page']) }}</li>
 						@if(Auth::user()->type === 'artist')

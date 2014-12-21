@@ -90,7 +90,7 @@ class RegistrationController extends BaseController {
 	   // Create the artist profile in the database
 		$artist = new Artist;
 		$artist->user_id = $user_id;
-		$artist->name = $input->displayname;
+		$artist->name = $input->username;
 		$artist->save();
 
 		Session::put('complete_artist_info', true);

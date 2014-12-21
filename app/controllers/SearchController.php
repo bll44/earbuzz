@@ -41,4 +41,18 @@ class SearchController extends BaseController {
 		return $results;
 	}
 
+	public function browse()
+	{
+		$artists = Artist::all();
+		$genres = Genre::all();
+
+		if (Auth::check())
+		{
+			$favorites = DB::table('favorites')->whereUserId(Auth::user()->id)->lists('artist_id');
+			return View::make('posts.index', compact('artists', 'genres', 'favorites'));
+		}
+
+		return View::make('posts.index', compact('artists', 'genres'));
+	}
+
 }
