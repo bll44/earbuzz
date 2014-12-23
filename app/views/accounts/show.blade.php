@@ -177,6 +177,7 @@ $('#regenerate_stream_key').click(function() {
 });
 
 $('#generate-stream-key').click(function() {
+	$(this).html('Generating <i class="fa fa-circle-o-notch fa-spin"></i>');
 	var url = "{{ URL::to('stream/generateStreamKey') }}";
 	window.location = url;
 });

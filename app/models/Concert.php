@@ -12,4 +12,36 @@ class Concert extends Eloquent {
 	    return $end->format('Y-m-d H:i:s');
 	}
 
+	public function getStartTimeAttribute($value)
+	{
+		$date = new DateTime();
+		$date->setTimestamp(strtotime($value));
+		return $date->format('M jS, Y h:ia');
+	}
+
+	public function getEndTimeAttribute($value)
+	{
+		$date = new DateTime();
+		$date->setTimestamp(strtotime($value));
+		return $date->format('M jS, Y h:ia');
+	}
+
+	public function artist()
+	{
+		return $this->belongsTo('Artist');
+	}
+
+	public function getStreamTime()
+	{
+		$date = new DateTime($this->start_time);
+		return $date->format('g:ia');
+
+	}
+
+	public function getShowDate()
+	{
+		$date = new DateTime($this->start_time);
+		return $date->format('l n/j/Y');
+	}
+
 }

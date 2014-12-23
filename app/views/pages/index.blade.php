@@ -26,6 +26,11 @@ img.live_now_placeholder {
 
 <div class="content">
 	<h1>pages.index</h1>
+
+	<!-- concerts/_partials/upcoming.blade.php -->
+	@include('concerts/_partials/upcoming')
+	<!-- /upcoming concerts partial -->
+
 </div>
 
 <div class="carousel-header-container text-center">

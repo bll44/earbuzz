@@ -13,10 +13,10 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li>{{ link_to('/', 'Home', ['class' => 'page']) }}</li>
 				@if(Auth::check() && Auth::user()->type === 'artist')
-				<li>{{ link_to('recent_streams', 'Recent Streams', ['class' => 'page']) }}</li>
+				<li>{{ link_to_route('concert.create', 'My Concerts', ['class' => 'page']) }}</li>
 				@endif
 				<!-- <li><a class="page" href="/">Home</a></li> -->
-				<li>{{ link_to_route('live.index', 'Live', null, ['class' => 'page']) }}</li>
+				<li>{{ link_to_route('live.index', 'Live Now', null, ['class' => 'page']) }}</li>
 				@if (Auth::guest())
 				<li>{{ link_to('/register/profile', 'Sign Up', ['class' => 'page']) }}</li>
 				<!-- <li><a class="page" href="/register">Sign Up</a></li> -->
@@ -30,11 +30,12 @@
 				<li>{{ link_to('artists', 'Artists', ['class' => 'page']) }}</li>
 				<li>{{ link_to('browse', 'Browse', ['class' => 'page']) }}</li>
 				<!-- <li><a class="page" href="/browse">Browse</a></li> -->
+				@endif
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li>{{ link_to('/', 'Home', ['class' => 'page']) }}</li>
-						@if(Auth::user()->type === 'artist')
+						@if(Auth::check() && Auth::user()->type === 'artist')
 						<li>{{ link_to_route('concert.create', 'My Concerts', ['class' => 'page']) }}</li>
 						<li>{{ link_to('recent_streams', 'Recent Streams', ['class' => 'page']) }}
 						@endif
@@ -57,7 +58,6 @@
 						<!-- <li><a class="page" href="/logout">Sign Out</a></li> -->
 					</ul>
 				</li>
-				@endif
 			</ul>
 		</div>
 	</div>

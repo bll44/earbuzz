@@ -9,7 +9,8 @@ class PagesController extends BaseController {
 	 */
 	public function index()
 	{
-		return View::make('pages.index');
+		$concerts = Concert::with('Artist')->orderBy('start_time', 'ASC')->take(5)->get();
+		return View::make('pages.index', compact('concerts'));
 	}
 
 	/**

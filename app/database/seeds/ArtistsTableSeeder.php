@@ -17,16 +17,25 @@ class ArtistsTableSeeder extends Seeder {
 		Artist::truncate();
 		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-		foreach(range(1, 30) as $index)
+		for($i = 1; $i <= 30; $i++)
 		{
-
-			$artistId = User::orderBy(DB::raw('RAND()'))->first();
-
 			Artist::create([
-				'user_id' => $artistId->id,
-				'name' => $artistId->username
+				'user_id' => $i,
+				'genre_id' => rand(1, 16),
+				'name' => User::find($i)->displayname
 			]);
 		}
+
+		// foreach(range(1, 30) as $index)
+		// {
+
+		// 	$artistId = User::orderBy(DB::raw('RAND()'))->first();
+
+		// 	Artist::create([
+		// 		'user_id' => $artistId->id,
+		// 		'name' => $artistId->displayname
+		// 	]);
+		// }
 
 		// $this->call('UserTableSeeder');
 	}

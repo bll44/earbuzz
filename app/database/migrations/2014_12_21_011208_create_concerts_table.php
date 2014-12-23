@@ -15,7 +15,7 @@ class CreateConcertsTable extends Migration {
 		Schema::create('concerts', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name');
+			$table->string('name')->nullable();
 			$table->dateTime('start_time');
 			$table->dateTime('end_time');
 			$table->mediumText('description')->nullable();
