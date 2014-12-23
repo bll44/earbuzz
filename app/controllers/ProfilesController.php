@@ -75,6 +75,8 @@ class ProfilesController extends BaseController {
 	// Display specific users favorites
 	public function favorites($username)
 	{
+		$genres = Genre::all();
+
 		try
 		{
 			$artists = User::with('profile')->whereUsername($username)->firstOrFail()->favorites;
@@ -84,7 +86,7 @@ class ProfilesController extends BaseController {
 			return Redirect::home();
 		}
 
-		return View::make('posts.index', compact('artists'));
+		return View::make('posts.index', compact('artists', 'genres'));
 	}
 
 	// Broadcaster dashboard

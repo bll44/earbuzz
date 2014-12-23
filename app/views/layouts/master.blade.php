@@ -10,7 +10,7 @@
 	<div class="container">
 		@include('layouts/partials/navbar')
 		@if (Session::has('flash_message'))
-		<div class="form-group">
+		<div class="alert alert-danger" role="alert">
 			<p>{{ Session::get('flash_message')}}</p>
 		</div>
 		@endif

@@ -1,4 +1,3 @@
-
 @extends('layouts/master')
 
 @section('content')
@@ -8,14 +7,14 @@
 @if($artists->count())
 
 @foreach(array_chunk($genres->all(), 2) as $row)
-<div class="row">
+
 	@foreach($row as $genre)
-	<div class="col-md-6">
-		<h3>{{ $genre['name'] }}</h3>
+
 		<p>
 			<!-- if artist has genre they will show up here -->
 			@foreach ($artists as $artist)
 			@if($artist->genre_id === $genre->id)
+			<h3>{{ $genre['name'] }}</h3>
 			<a href="http://localhost:8080/profile/{{ $artist->name }}">{{ $artist->name }}</a>
 			@if(Auth::check())
 			@if($favorited = in_array($artist->id, $favorites))
@@ -32,9 +31,9 @@
 			@endif
 			@endforeach
 		</p>
-	</div>
+
 	@endforeach
-</div>
+
 @endforeach
 
 <!-- @foreach(array_chunk($artists->all(), 4) as $row)
