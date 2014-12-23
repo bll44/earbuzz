@@ -1,8 +1,14 @@
-
+@if(isset($_GET['to']))
 <?php
-$to = $_GET['to'];
-$results = User::findByUsernameOrFail($to)
+$user_exists = DB::table('users')
+    ->where('username', '=', $_GET['to'])
+    ->first();
 ?>
+@else
+<?php
+$user_exists = null;
+?>
+@endif
 
 @extends('layouts.master')
 
@@ -45,7 +51,10 @@ $(function() {
     	allowFreeEntries: false,
     	required: true,
         data: "http://localhost:8080/api/search/",
-        value: [{{ $results->id }}],
+        @if(is_null($user_exists))
+        @else
+        value: [{{ $user_exists->id }}],
+        @endif
         valueField: 'id',
         displayField: 'username'
     });

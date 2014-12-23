@@ -1,3 +1,22 @@
+<?php
+
+$email_check = Auth::user()->email;
+
+$id = Auth::user()->getId();
+
+$results = DB::table('streaming_keys')
+->where('user_id', "=", $id)
+->get();
+?>
+
+@foreach ($results as $result)
+    <?php
+    $new_result = $result->key;
+    ?>
+@endforeach
+
+
+
 @extends('layouts.master')
 
 @section('content')
@@ -15,18 +34,20 @@
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">{{ Auth::user()->displayname }}</h3>
+				<h3 class="panel-title">{{ Auth::user()->username }}</h3>
 			</div>
 			<div class="panel-body">
 				<h4>Account information&nbsp;&nbsp;<small><a href="#"><i class="fa fa-edit"></i>Edit</a></small></h4>
 				<ul class="list-group">
 					<li class="list-group-item"><b>Username:</b> {{ Auth::user()->username }}</li>
+					@if(is_null($email_check))
+					@else
 					<li class="list-group-item"><b>Email:</b> {{ Auth::user()->email }}</li>
+					@endif
 					<li class="list-group-item"><b>Password:</b> &#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;</li>
 				</ul>
 			</div>
 		</div>
-
 	</div>
 	<!-- /.column -->
 	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -38,17 +59,17 @@
 			<div class="panel-body">
 				<!-- if the user has a streaming key -->
 				@if(null !== Auth::user()->streamingKey)
-
 				<p class="text-danger">Do not share this key with anyone! If you believe your key has been compromised please reset it below.</p>
 				<button type="button" class="btn btn-primary show_stream_key">Show Streaming Key</button>
 				<div class="input-group">
-					{{ Form::text('streaming_key', Auth::user()->streamingKey->key,
+					{{ Form::text('streaming_key', $new_result,
 								 ['class' => 'form-control input-sm streaming_key hidden',
 								  'placeholder' => 'Streaming Key']) }}
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-primary btn-default btn-sm streaming_key hidden" id="regenerate_stream_key">
 							Reset Key
 						</button>
+
 					</span>
 				</div>
 				<!-- /.input-group -->
