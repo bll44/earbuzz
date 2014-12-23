@@ -65,7 +65,7 @@ class RegistrationController extends BaseController {
 
 		$this->registrationForm->validate($input);
 
-	   // Create the new user record in the database
+		// Create the new user record in the database
 		$user = User::create($input);
 		$user->type = 'artist';
 		$user->save();
@@ -76,18 +76,18 @@ class RegistrationController extends BaseController {
 
 		$user_id = $user->id;
 
-	   // Create the standard user profile for the artist
+		// Create the standard user profile for the artist
 		$profile = new Profile;
 		$profile->user_id = $user_id;
 		$profile->display_name = $input->displayname;
 		$profile->save();
 
-	   // Assign a streaming key to the new artist
+		// Assign a streaming key to the new artist
 		$sk = new StreamingKey;
 		$sk->user_id = $user_id;
 		$sk->save();
 
-	   // Create the artist profile in the database
+		// Create the artist profile in the database
 		$artist = new Artist;
 		$artist->user_id = $user_id;
 		$artist->name = $input->username;
@@ -291,6 +291,11 @@ public function registerWithFacebookArtist() {
 		$sk = new StreamingKey;
 		$sk->user_id = $user_id;
 		$sk->save();
+		$artist = new Artist;
+		$artist->user_id = $user_id;
+		$artist->name = $result['name'];
+		$artist->save();
+		Session::put('complete_artist_info', true);
 		return Redirect::home();
 
 		// if the above doesn't work some bad happened.  die and dump
@@ -338,6 +343,11 @@ public function registerWithTwitterArtist() {
 		$sk = new StreamingKey;
 		$sk->user_id = $user_id;
 		$sk->save();
+		$artist = new Artist;
+		$artist->user_id = $user_id;
+		$artist->name = $result['name'];
+		$artist->save();
+		Session::put('complete_artist_info', true);
 		return Redirect::home();
 
 		// if the above doesn't work some bad happened.  die and dump
@@ -401,6 +411,11 @@ public function registerWithGoogleArtist() {
 		$sk = new StreamingKey;
 		$sk->user_id = $user_id;
 		$sk->save();
+		$artist = new Artist;
+		$artist->user_id = $user_id;
+		$artist->name = $result['name'];
+		$artist->save();
+		Session::put('complete_artist_info', true);
 		return Redirect::home();
 		dd('try again');
 	}

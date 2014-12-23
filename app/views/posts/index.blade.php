@@ -6,6 +6,10 @@
 
 @if($artists->count())
 
+<div class="alert alert-danger" role="alert">
+	Make Sure Artist Has Genre
+</div>
+
 @foreach(array_chunk($genres->all(), 2) as $row)
 
 	@foreach($row as $genre)
