@@ -31,6 +31,7 @@
 				<li>{{ link_to('browse', 'Browse', ['class' => 'page']) }}</li>
 				<!-- <li><a class="page" href="/browse">Browse</a></li> -->
 				@endif
+				@if(Auth::check())
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <b class="caret"></b></a>
 					<ul class="dropdown-menu">
@@ -58,6 +59,7 @@
 						<!-- <li><a class="page" href="/logout">Sign Out</a></li> -->
 					</ul>
 				</li>
+				@endif
 			</ul>
 		</div>
 	</div>

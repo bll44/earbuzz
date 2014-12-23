@@ -33,25 +33,6 @@ img.live_now_placeholder {
 
 </div>
 
-<div class="carousel-header-container text-center">
-	<h1 class="carousel-header text-primary">Live Now</h1>
-	<h1 class="carousel-header">Upcoming</h1>
-</div>
-
-
-<div class="well" id="live-now-container">
-	<div class="live_now text-center clearfix">
-		<div class="live_now_slide"><img src="{{ asset('img/placeholder_imgs/earbuzz1.png') }}" class="live_now_placeholder"></div>
-		<div class="live_now_slide"><img src="{{ asset('img/placeholder_imgs/earbuzz2.png') }}" class="live_now_placeholder"></div>
-		<div class="live_now_slide"><img src="{{ asset('img/placeholder_imgs/earbuzz3.png') }}" class="live_now_placeholder"></div>
-		<div class="live_now_slide"><img src="{{ asset('img/placeholder_imgs/earbuzz1.png') }}" class="live_now_placeholder"></div>
-		<div class="live_now_slide"><img src="{{ asset('img/placeholder_imgs/earbuzz2.png') }}" class="live_now_placeholder"></div>
-		<div class="live_now_slide"><img src="{{ asset('img/placeholder_imgs/earbuzz3.png') }}" class="live_now_placeholder"></div>
-		<div class="live_now_slide"><img src="{{ asset('img/placeholder_imgs/earbuzz1.png') }}" class="live_now_placeholder"></div>
-		<div class="live_now_slide"><img src="{{ asset('img/placeholder_imgs/earbuzz2.png') }}" class="live_now_placeholder"></div>
-	</div>
-</div>
-
 
 <?php
 // $lastfm_api_key = 'ae94454236db108880591ee2b51a524b';
