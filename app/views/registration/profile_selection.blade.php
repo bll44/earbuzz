@@ -1,9 +1,11 @@
-@extends('layouts.master')
+@extends( Request::ajax() ? 'layouts.modal' : 'layouts.master' )
+
 
 @section('content')
 
 <h2>registration.profile_selection</h2>
 
+<h1>REGISTRATION</h1>
 <p>Please select your profile type</p>
 
 <div class="btn-group btn-group-justified" role="group" aria-label="...">

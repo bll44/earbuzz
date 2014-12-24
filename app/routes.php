@@ -78,6 +78,9 @@ Route::resource('uploads/music', 'MusicUploadController');
 
 Route::resource('artists', 'ArtistsController');
 
+# StyleGuide
+Route::get('styleguide', ['as' => 'styleguide', 'uses' => 'PagesController@styleguide']);
+
 # Favorites
 ## Browse all aritsts - add as favorites
 Route::get('browse', ['as' => 'browse', 'uses' => 'SearchController@browse']);

@@ -1,0 +1,11 @@
+footer {
+    padding: 10px 0;
+    margin-top: 20px;
+    color: $grayLight;
+    background: $grayDarkest;
+
+    ul {
+        list-style-type: none;
+        @include box-sizing;
+    }
+}

@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<!-- edit for live stripe key -->
-	<meta name="test_publishable_key" content="{{ Config::get('stripe.test_publishable_key') }}">
-</head>
-@include('layouts/partials/header')
-<body>
-	<div class="container">
-		@include('layouts/partials/navbar')
+
+	@include('layouts/partials/header')
+
+<body class="{{$bodyClass or 'vHome'}} no-js">
+
+	<div class="container row">
+		<header class="contain-to-grid sticky">
+			@include('layouts/partials/navigation')
+		</header>
+
 		@if (Session::has('flash_message'))
 		<div class="alert alert-danger" role="alert">
 			<p>{{ Session::get('flash_message')}}</p>
 		</div>
 		@endif
-		@yield('content')
-		<div class="row">
-			@include('layouts/partials/footer')
-		</div>
+
+		<main class="row">@yield('content')</main>
 	</div>
-	<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
 
-	@yield('scripts')
-	<script type="text/javascript">
-	// back to top scroll
-	$(document).ready(function(){
-		$(window).scroll(function () {
-			if ($(this).scrollTop() > 50) {
-				$('#back-to-top').fadeIn();
-			} else {
-				$('#back-to-top').fadeOut();
-			}
-		});
-        // scroll body to 0px on click
-        $('#back-to-top').click(function () {
-        	$('#back-to-top').tooltip('hide');
-        	$('body,html').animate({
-        		scrollTop: 0
-        	}, 800);
-        	return false;
-        });
+	<footer>
+		@include('layouts/partials/footer')
+	</footer>
 
-        $('#back-to-top').tooltip('show');
+	<!-- ::INCLUDE Move to partial -->
+	@include('/partials/modal')
+	@include('/partials/backToTop')
+	<!-- ::END INCLUDE -->
 
-    });
+	<!-- Add core jQuery -->
+	{{ HTML::script('js/vendor/jquery.js') }}
+	{{ HTML::script('js/vendor/jquery.ui.js') }}
+
+	<!-- Add Foudnation -->
+	{{ HTML::script('js/foundation.min.js') }}
+
+	<!-- Add jQuery Plugins -->
+	{{ HTML::script('js/vendor/underscore.js') }}
+	{{ HTML::script('js/vendor/jquery.hammer.js') }}
+	{{ HTML::script('js/vendor/jquery.coverflow.js') }}
+	{{ HTML::script('js/vendor/jquery.magicsuggest.min.js') }}
+
+	<!-- Add Custom Scripts -->
+	{{ HTML::script('js/custom.js') }}
+
+	<script>
+		$(document).foundation(); // init foudnation
 	</script>
-	<!-- Javascript library for home page Live Now carousel -->
-	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.3.7/slick.min.js"></script>
+
 </body>
 </html>

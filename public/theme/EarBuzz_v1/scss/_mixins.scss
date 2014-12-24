@@ -1,0 +1,31 @@
+//===========================================================================
+// DEBUG
+// ===========================================================================
+@mixin debug {
+    outline: 1px red dotted;
+    box-sizing: border-box;
+}
+
+// ==========================================================================
+// box-shadow
+// ==========================================================================
+@mixin box-shadow($top: 0, $left: 0, $blur: 5px, $spread: 2px, $color: #333, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $spread $color;
+    -moz-box-shadow:inset $top $left $blur $spread $color;
+    box-shadow:inset $top $left $blur $spread $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $spread $color;
+    -moz-box-shadow: $top $left $blur $spread $color;
+    box-shadow: $top $left $blur $spread $color;
+  }
+}
+
+
+// ==========================================================================
+// box-sizing
+// ==========================================================================
+@mixin box-sizing($prop: border-box){
+    -moz-box-sizing: $prop;
+     box-sizing: $prop;
+}

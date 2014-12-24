@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends( Request::ajax() ? 'layouts.modal' : 'layouts.master' )
 
 
 @section('content')

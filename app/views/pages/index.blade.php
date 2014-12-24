@@ -68,17 +68,17 @@ img.live_now_placeholder {
 
 <script>
 
-$(document).ready(function() {
-	$('.live_now').slick({
-		infinite: true,
-		slidesToShow: 3,
-		slidesToScroll: 3,
-		autoplay: true,
-		autoplaySpeed: 6000,
-		speed: 700,
-		arrows: false
-	});
-});
+// $(document).ready(function() {
+// 	$('.live_now').slick({
+// 		infinite: true,
+// 		slidesToShow: 3,
+// 		slidesToScroll: 3,
+// 		autoplay: true,
+// 		autoplaySpeed: 6000,
+// 		speed: 700,
+// 		arrows: false
+// 	});
+// });
 
 </script>
 

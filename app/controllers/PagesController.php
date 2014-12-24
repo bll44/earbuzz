@@ -23,4 +23,14 @@ class PagesController extends BaseController {
 		return View::make('home');
 	}
 
+	/**
+	 * Show styleguide resource page
+	 *
+	 * @return Response
+	 */
+	public function styleguide()
+	{
+		return View::make('pages.styleguide', array('bodyClass' => 'vStyle'));
+	}
+
 }

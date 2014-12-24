@@ -19,7 +19,7 @@
 			@foreach ($artists as $artist)
 			@if($artist->genre_id === $genre->id)
 			<h3>{{ $genre['name'] }}</h3>
-			<a href="http://localhost:8080/profile/{{ $artist->name }}">{{ $artist->name }}</a>
+			<a href="http://localhost/profile/{{ $artist->name }}">{{ $artist->name }}</a>
 			@if(Auth::check())
 			@if($favorited = in_array($artist->id, $favorites))
 			{{ Form::open(['method' => 'DELETE', 'route' => ['favorites.destroy', $artist->id]]) }}
