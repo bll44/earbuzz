@@ -50,7 +50,7 @@ $(function() {
     $('#ms').magicSuggest({
     	allowFreeEntries: false,
     	required: true,
-        data: "http://localhost:8080/api/search/",
+        data: "/api/search/",
         @if(is_null($user_exists))
         @else
         value: [{{ $user_exists->id }}],
@@ -94,9 +94,9 @@ $(function() {
 //   remote: 'http://localhost:8080/api/search/%QUERY'
 
 // });
- 
+
 // bestPictures.initialize();
- 
+
 // $('.typeahead').typeahead(null, {
 //   name: 'username',
 //   displayKey: 'value',
