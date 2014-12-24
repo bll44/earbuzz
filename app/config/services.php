@@ -16,7 +16,7 @@ return array(
 		'secret' => '',
 	),
 	'mandrill' => array(
-		'secret' => '',
+		'secret' => 'GSZrzMPalN5oOfPlRNqkIA',
 	),
 	'stripe' => array(
 		'model'  => 'User',
