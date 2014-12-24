@@ -23,7 +23,7 @@
 						<a href="">Shows</a>
 					</li>
 					<li>
-						<a href="">Discover</a>
+						{{ link_to('browse', 'Discover', ['class' => 'page']) }}
 					</li>
 				</ul>
 			</li>

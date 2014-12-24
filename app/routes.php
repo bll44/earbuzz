@@ -12,7 +12,13 @@ Route::group(['before' => 'auth'], function()
 
 Route::get('testing', function()
 {
+    $music_bucket = Config::get('constants.MUSIC_STORAGE_BUCKET_DEV');
+    $album_location = "{$music_bucket}/31/Album One";
 
+    foreach(new DirectoryIterator($album_location) as $file)
+    {
+        echo $file->getRealPath() . '<br>';
+    }
 });
 
 Route::get('upcoming_shows', 'ConcertController@index');
@@ -188,8 +194,8 @@ Route::get('concert/{concert}/cancel', ['as' => 'concert.cancel', 'uses' => 'Con
 Route::get('concert/details/get', 'ConcertController@getConcertDetails');
 
 Route::get('store/{artist}/music', ['as' => 'store.artist.music', 'uses' => 'StoreController@showArtistMusic']);
-Route::get('store/{track}/purchase', ['as' => 'store.track.purchase', 'uses' => 'StoreController@purchaseTrack']);
-
+Route::get('store/purchase/track/{track}', ['as' => 'store.track.purchase', 'uses' => 'StoreController@purchaseTrack']);
+Route::get('store/purchase/album/{album}', ['as' => 'store.album.purchase', 'uses' => 'StoreController@purchaseAlbum']);
 # Dashboard
 // Route::get('/home', ['as' => 'home', 'uses' => 'PagesController@home']);
 

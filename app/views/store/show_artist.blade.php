@@ -5,9 +5,10 @@
 <h2>{{ $artist->name }}</h2>
 <div class="music-listing-container">
 
-@foreach($music->albums as $album => $tracks)
+@foreach($music->albums as $album => $data)
 <div class="album">
 	<h3>{{ $album }}</h3>
+	<p>{{ link_to_route('store.album.purchase', 'Buy Entire Album', [$data['album']->id]) }}</p>
 	<table class="table table-striped">
 		<thead>
 			<th>No.</th>
@@ -20,7 +21,7 @@
 		</thead>
 		<tbody>
 		<?php $i = 1 ?>
-		@foreach($tracks as $track)
+		@foreach($data['tracks'] as $track)
 			<tr>
 				<td>{{ $i }}</td>
 				<td>{{ $track->name }}</td>
