@@ -6,4 +6,9 @@ class Genre extends Eloquent {
 
 	public $timestamps = false;
 
+	public function artists()
+	{
+		return $this->belongsToMany('Artist');
+	}
+
 }

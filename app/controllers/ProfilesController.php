@@ -35,34 +35,9 @@ class ProfilesController extends BaseController {
 			return Redirect::home();
 		}
 
-		if($user->type === 'artist') $artist = $user->artist;
-
-		$music = new StdClass;
-		if(File::exists($artist_music_bucket = Config::get('constants.MUSIC_STORAGE_BUCKET') . '/' . 4))
+		if($user->type === 'artist')
 		{
-			$album_dirs = File::directories($artist_music_bucket);
-			$delimiters = array('/', '\\');
-			$music = new StdClass;
-			foreach($album_dirs as $ad)
-			{
-				$prepared = str_replace($delimiters, $delimiters[0], $ad);
-				$chopped = explode($delimiters[0], $prepared);
-				$music->albums = array($chopped[count($chopped) - 1] => ['tracks' => []]);
-			}
-			foreach($music->albums as $key => &$val)
-			{
-				$tracks = File::files($artist_music_bucket . '/' . $key);
-				foreach($tracks as $t)
-				{
-					$parts = explode('/', $t);
-					$trackname = $parts[count($parts) - 1];
-					$p = strrpos($trackname, '.');
-					$trackname = substr($trackname, 0, $p);
-					$track = new Track;
-					$track->name = $trackname;
-					$val['tracks'][] = $track;
-				}
-			}
+			$artist = $user->artist;
 		}
 
 		$artist = $user->artist;

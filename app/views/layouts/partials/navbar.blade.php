@@ -27,10 +27,11 @@
 				@if($count > 0)
 				<li>{{ link_to('/messages', $count.' unread msgs', ['class' => 'page']) }}</li>
 				@endif
-				<li>{{ link_to('artists', 'Artists', ['class' => 'page']) }}</li>
-				<li>{{ link_to('browse', 'Browse', ['class' => 'page']) }}</li>
+				<li>{{ link_to('browse', 'Browse Artists', ['class' => 'page']) }}</li>
 				<!-- <li><a class="page" href="/browse">Browse</a></li> -->
 				@endif
+
+				<!-- user must be logged in for the dropdown to appear -->
 				@if(Auth::check())
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }} <b class="caret"></b></a>
@@ -60,6 +61,8 @@
 					</ul>
 				</li>
 				@endif
+				<!-- end user dropdown section -->
+
 			</ul>
 		</div>
 	</div>
