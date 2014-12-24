@@ -10,6 +10,11 @@ Route::group(['before' => 'auth'], function()
     Route::post('recent_streams/name_album', ['as' => 'recent_streams.name_album', 'uses' => 'MediaController@nameAlbum']);
 });
 
+Route::get('testing', function()
+{
+
+});
+
 Route::get('upcoming_shows', 'ConcertController@index');
 
 # Billing - Stripe
@@ -181,6 +186,9 @@ Route::post('artist/{profile}/update', ['as' => 'profile.update_artist', 'uses' 
 Route::resource('concert', 'ConcertController');
 Route::get('concert/{concert}/cancel', ['as' => 'concert.cancel', 'uses' => 'ConcertController@cancel']);
 Route::get('concert/details/get', 'ConcertController@getConcertDetails');
+
+Route::get('store/{artist}/music', ['as' => 'store.artist.music', 'uses' => 'StoreController@showArtistMusic']);
+Route::get('store/{track}/purchase', ['as' => 'store.track.purchase', 'uses' => 'StoreController@purchaseTrack']);
 
 # Dashboard
 // Route::get('/home', ['as' => 'home', 'uses' => 'PagesController@home']);

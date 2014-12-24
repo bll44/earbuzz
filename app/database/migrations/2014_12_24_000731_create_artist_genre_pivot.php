@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTracksTable extends Migration {
+class CreateArtistGenrePivot extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,11 @@ class CreateTracksTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tracks', function(Blueprint $table)
+		Schema::create('artist_genre', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name');
-			$table->integer('duration');
-			$table->string('genre')->nullable();
-			$table->integer('album_id');
-			$table->timestamps();
+			$table->integer('artist_id');
+			$table->integer('genre_id');
 		});
 	}
 
@@ -30,7 +27,7 @@ class CreateTracksTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tracks');
+		Schema::drop('artist_genre');
 	}
 
 }

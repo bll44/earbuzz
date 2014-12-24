@@ -46,6 +46,7 @@ if (!empty($_POST)
 <div class="content">
 	<div class="container">
 		<!-- Video and Chat -->
+		<!-- /.row -->
 		<div class="row">
 			<div class="col-sm-9 col-md-9">
 				<h3>Video</h3>
@@ -186,44 +187,12 @@ $(function() {
 		<!-- /.row -->
 	</div>
 </div>
-
-@if(isset($music->albums))
 <div class="row">
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		<h3>Music</h3>
-		<div class="album-track-container">
-			@foreach($music->albums as $key => $value)
-			<div class="individual-album-container">
-				<h4>{{ $key }}</h4>
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Track no.</th>
-							<th>Name</th>
-							<th>Released</th>
-							<th>Actions Placeholder</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php $i = 1 ?>
-						@foreach($value['tracks'] as $track)
-						<tr>
-							<td>{{ $i }}</td>
-							<td>{{ $track->name }}</td>
-							<td>{{ $track->year }}</td>
-							<td>(PLACEHOLDER)</td>
-						</tr>
-						<?php $i++ ?>
-						@endforeach
-					</tbody>
-				</table><!-- /.table -->
-			</div><!-- /.individual-album-container -->
-			@endforeach
-		</div><!-- /.album-track-container -->
-		<hr>
-	</div><!-- /.column -->
+	<div class="buy-music-btn-container">
+	{{ link_to_route('store.artist.music', "See Music by {$artist->name}", [$artist->id], ['class' => 'btn btn-danger']) }}
+	</div>
+	<!-- /.buy music button -->
 </div><!-- /.row -->
-@endif
 
 <!-- Favorite -->
 

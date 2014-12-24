@@ -14,4 +14,9 @@ class Album extends Eloquent {
 		return $this->belongsTo('Artist');
 	}
 
+	public static function download($id)
+	{
+
+	}
+
 }
