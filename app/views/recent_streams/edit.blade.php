@@ -108,6 +108,10 @@
 	</div><!-- /.modal-dialog -->
 </div><!-- /.track-name-modal -->
 
+@stop
+
+@section('scripts')
+
 <script>
 
 // create jwplayer

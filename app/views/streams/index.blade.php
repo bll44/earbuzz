@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
-
 @section('content')
-
 
 <h2>streams.index</h2>
 <h1>Streams Live Now</h1>

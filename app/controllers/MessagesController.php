@@ -114,7 +114,7 @@ class MessagesController extends BaseController
             $thread->addParticipants($usernameId['recipients']);
         }
 
-        return Redirect::to('');
+        return Redirect::to('messages/');
     }
 
     /**

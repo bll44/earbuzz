@@ -93,62 +93,6 @@ if (!empty($_POST)
             <div id="waiting">
                 Waiting to establish connection ...
             </div>
-            <!-- change this according to your deploy url -->
-            <script>
-
-
-$(function() {
-    var PUSHER = {
-        KEY: '999a6964f87015288a65'
-    };
-
-    var messageForm = $('#newmessage'),
-        messageFormDisplay = $('#messageform'),
-        message = $('#message'),
-        user = $('#user'),
-        messageTemplate = _.template(
-            '<p><span class="user"><%= user %></span>: <span><%= content %></span></p>'),
-        chatContent = $('#chatroom'),
-        // pusher channels
-        pusher = new Pusher(PUSHER.KEY),
-        socketId = 0,
-        chatChannel = pusher.subscribe(CHANNEL);
-
-    socketId = pusher.bind('pusher:connection_established',
-        function(ev) {
-            socketId = ev.socket_id;
-            $('#waiting').hide();
-            messageFormDisplay.show();
-
-            // perform all bindings here
-            chatChannel.bind('message-created', function(message) {
-                console.log(message);
-                chatContent.append(messageTemplate({
-                    user: message.user,
-                    content: message.content
-                }));
-            });
-
-            messageForm.submit(function(e) {
-                e.preventDefault();
-                var content = message.val();
-                if (content.length > 0) {
-                    $.post(messageForm.attr('action'), {
-                        user: user.val(),
-                        content: content,
-                        channel: CHANNEL
-                    });
-                }
-                message.val('').focus();
-                return false;
-            });
-        }
-    );
-});
-
-
-
-            </script>
 			</div>
 		</div>
 		<!-- Profile Info -->
@@ -215,10 +159,71 @@ $(function() {
 	@endif
 @endif
 
+@stop
+
+@section('scripts')
+
+<script>
+
+$(function() {
+    var PUSHER = {
+        KEY: '999a6964f87015288a65'
+    };
+
+    var messageForm = $('#newmessage'),
+        messageFormDisplay = $('#messageform'),
+        message = $('#message'),
+        user = $('#user'),
+        messageTemplate = _.template(
+            '<p><span class="user"><%= user %></span>: <span><%= content %></span></p>'),
+        chatContent = $('#chatroom'),
+        // pusher channels
+        pusher = new Pusher(PUSHER.KEY),
+        socketId = 0,
+        chatChannel = pusher.subscribe(CHANNEL);
+
+    socketId = pusher.bind('pusher:connection_established',
+        function(ev) {
+            socketId = ev.socket_id;
+            $('#waiting').hide();
+            messageFormDisplay.show();
+
+            // perform all bindings here
+            chatChannel.bind('message-created', function(message) {
+                console.log(message);
+                chatContent.append(messageTemplate({
+                    user: message.user,
+                    content: message.content
+                }));
+            });
+
+            messageForm.submit(function(e) {
+                e.preventDefault();
+                var content = message.val();
+                if (content.length > 0) {
+                    $.post(messageForm.attr('action'), {
+                        user: user.val(),
+                        content: content,
+                        channel: CHANNEL
+                    });
+                }
+                message.val('').focus();
+                return false;
+            });
+        }
+    );
+});
+</script>
+
 <!-- VIDEO -->
 <script type="text/javascript">
-if (navigator.userAgent.match(/android/i) != null){
-} else {
+
+if (navigator.userAgent.match(/android/i) != null)
+{
+	
+}
+else
+{
 	jwplayer("video").setup({
 		autostart: 'false',
 

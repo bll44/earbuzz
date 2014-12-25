@@ -1,6 +1,7 @@
 @extends('layouts/master')
 
 @section('content')
+
 <h1>
 	profile.dashboard
 	<small>
@@ -59,6 +60,10 @@
 		</div>
 	</div>
 </div>
+
+@stop
+
+@section('scripts')
 
 <!-- VIDEO -->
 <script type="text/javascript">

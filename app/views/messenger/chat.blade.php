@@ -8,8 +8,8 @@
 
 <div class="content">
 
-	@if (Auth::guest())
-	@else
+@if (Auth::guest())
+@else
 
 <?php
 
@@ -38,15 +38,10 @@ if (!empty($_POST)
 }
 ?>
 
-
-
 <!doctype html>
 <html>
     <head>
         <title>Test Chatroom</title>
-        <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.1.7/underscore-min.js"></script>
-        <script src="http://js.pusherapp.com/1.8/pusher.min.js"></script>
         <style type="text/css">
             #messageform {
                 display: none;
@@ -77,16 +72,25 @@ if (!empty($_POST)
             <div id="waiting">
                 Waiting to establish connection ...
             </div>
-            <!-- change this according to your deploy url -->
-            <script>
+        </div>
+    </body>
+</html>
+	<p></p>
+	@endif
+</div>
 
+@stop
 
-$(function() {
-    var PUSHER = {
-        KEY: '999a6964f87015288a65'
-    };
+content('scripts')
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.1.7/underscore-min.js"></script>
+<script src="http://js.pusherapp.com/1.8/pusher.min.js"></script>
+<script>
+    $(function() {
+        var PUSHER = {
+            KEY: '999a6964f87015288a65'
+        };
 
-    var messageForm = $('#newmessage'),
+        var messageForm = $('#newmessage'),
         messageFormDisplay = $('#messageform'),
         message = $('#message'),
         user = $('#user'),
@@ -98,11 +102,11 @@ $(function() {
         socketId = 0,
         chatChannel = pusher.subscribe(CHANNEL);
 
-    socketId = pusher.bind('pusher:connection_established',
-        function(ev) {
-            socketId = ev.socket_id;
-            $('#waiting').hide();
-            messageFormDisplay.show();
+        socketId = pusher.bind('pusher:connection_established',
+            function(ev) {
+                socketId = ev.socket_id;
+                $('#waiting').hide();
+                messageFormDisplay.show();
 
             // perform all bindings here
             chatChannel.bind('message-created', function(message) {
@@ -127,23 +131,10 @@ $(function() {
                 return false;
             });
         }
-    );
+        );
 });
 
 
 
-            </script>
-        </div>
-    </body>
-</html>
-
-
-
-
-
-
-	<p></p>
-	@endif
-</div>
-
+</script>
 @stop

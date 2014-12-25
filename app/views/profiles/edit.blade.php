@@ -42,7 +42,9 @@
 
 {{ Form::close() }}
 
+@stop
 
+@section('scripts')
 
 <script>
 
