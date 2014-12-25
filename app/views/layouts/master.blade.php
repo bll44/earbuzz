@@ -10,10 +10,12 @@
 			@include('layouts/partials/navigation')
 		</header>
 
-		@if (Session::has('flash_message'))
-		<div class="alert alert-danger" role="alert">
-			<p>{{ Session::get('flash_message')}}</p>
-		</div>
+		@if (Session::has('success'))
+		<div class="alert-box success">{{ Session::get('success')}}</div>
+		@endif
+
+		@if (Session::has('error'))
+		<div class="alert-box alert">{{ Session::get('error')}}</div>
 		@endif
 
 		<main class="row">@yield('content')</main>
@@ -43,6 +45,7 @@
 
 	<!-- Add Custom Scripts -->
 	{{ HTML::script('js/custom.js') }}
+	@yield('scripts')
 
 	<script>
 		$(document).foundation(); // init foudnation

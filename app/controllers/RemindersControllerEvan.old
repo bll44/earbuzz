@@ -1,6 +1,6 @@
 <?php
 
-class RemindersController extends BaseController {
+class RemindersController extends Controller {
 
 	/**
 	 * Display the password reminder view.
@@ -27,7 +27,7 @@ class RemindersController extends BaseController {
 
 			case Password::REMINDER_SENT:
 				return Redirect::back()
-					->with('success', Lang::get($response));
+					->with('status', Lang::get($response));
 		}
 	}
 
@@ -39,9 +39,10 @@ class RemindersController extends BaseController {
 	 */
 	public function getReset($token = null)
 	{
-		if (is_null($token)) App::abort(404);
+		if (is_null($token)) return Redirect::home();
 
-		return View::make('password.reset')->with('token', $token);
+		return View::make('password.reset')
+			->with('token', $token);
 	}
 
 	/**
@@ -57,22 +58,32 @@ class RemindersController extends BaseController {
 
 		$response = Password::reset($credentials, function($user, $password)
 		{
-			$user->password = $password;
-			$user->save();
+
 		});
 
-		switch ($response)
-		{
-			case Password::INVALID_PASSWORD:
-			case Password::INVALID_TOKEN:
-			case Password::INVALID_USER:
-				return Redirect::back()
-					->with('flash_message', Lang::get($response));
+		// dd($response);
 
-			case Password::PASSWORD_RESET:
-				return Redirect::to('/')
-					->with('flash_message', 'You successfully changed your password');
+		if ($response === 'reminders.reset')
+		{
+			$user_finder = DB::table('users')
+			->select('id', 'email')
+			->where('email', '=', $credentials['email'])
+			->get();
+
+			foreach ($user_finder as $columns)
+				{
+					$user_id = $columns->id;
+				}
+
+			Auth::loginUsingId($user_id);
+
+
+
+			return Redirect::to('/');
 		}
+
+		return Redirect::back()
+			->with('error', Lang::get($response));
 	}
 
 }

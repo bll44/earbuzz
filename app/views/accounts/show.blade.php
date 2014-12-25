@@ -154,6 +154,10 @@ $results = DB::table('streaming_keys')
 </div>
 <!-- /.row -->
 
+@stop
+
+content('scripts')
+
 <script>
 
 $('button.show_stream_key').click(function() {

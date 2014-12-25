@@ -20,7 +20,7 @@ return array(
 	),
 	'stripe' => array(
 		'model'  => 'User',
-		'secret' => '',
+		'secret' => 'sk_test_uljEMPjWuWYRKjWpYs5ba5d8',
 	),
 	'pusher' => [
 		'public' => '999a6964f87015288a65',

@@ -14,9 +14,4 @@
         </div>
     {{ Form::close() }}
 
-    @if (Session::has('error'))
-        <p style="color: red;">{{ Session::get('error') }}</p>
-    @elseif (Session::has('status'))
-        <p>{{ Session::get('status') }}</p>
-    @endif
 @stop

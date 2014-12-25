@@ -191,11 +191,11 @@ Route::get('store/{artist}/music', ['as' => 'store.artist.music', 'uses' => 'Sto
 Route::get('store/{track}/purchase', ['as' => 'store.track.purchase', 'uses' => 'StoreController@purchaseTrack']);
 
 # Password Reminder
-// Route::controller('password', 'RemindersController');
-Route::get('password/remind', ['as' => 'password.remind', 'uses' => 'RemindersController@getRemind']);
-Route::post('password/remind', 'RemindersController@postRemind');
-Route::get('password/reset/{token}', 'RemindersController@getReset');
-Route::post('password/reset/{token}', 'RemindersController@postReset');
+Route::controller('password', 'RemindersController');
+// Route::get('password/remind', ['as' => 'password.remind', 'uses' => 'RemindersController@getRemind']);
+// Route::post('password/remind', 'RemindersController@postRemind');
+// Route::get('password/reset/{token}', 'RemindersController@getReset');
+// Route::post('password/reset/{token}', 'RemindersController@postReset');
 
 
 # Dashboard
