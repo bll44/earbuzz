@@ -19,6 +19,7 @@ class RemindersController extends BaseController {
 	 */
 	public function postRemind()
 	{
+
 		switch ($response = Password::remind(Input::only('email')))
 		{
 			case Password::INVALID_USER:
@@ -26,6 +27,7 @@ class RemindersController extends BaseController {
 					->with('error', Lang::get($response));
 
 			case Password::REMINDER_SENT:
+
 				return Redirect::back()
 					->with('success', Lang::get($response));
 		}
