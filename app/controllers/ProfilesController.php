@@ -26,6 +26,9 @@ class ProfilesController extends BaseController {
 	 */
 	public function show($username)
 	{
+		// this is only temporary to stop it from erroring if no user is logged in when trying to view a profile
+		if(Auth::guest()) return Redirect::home();
+
 		try
 		{
 			$user = User::with('profile')->whereUsername($username)->firstOrFail();
@@ -41,7 +44,13 @@ class ProfilesController extends BaseController {
 		}
 
 		$artist = $user->artist;
-		$favorites = DB::table('favorites')->whereUserId(Auth::user()->id)->lists('artist_id');
+		$favorites = array();
+		if(Auth::check())
+		{
+			$favorites = DB::table('favorites')->whereUserId(Auth::user()->id)->lists('artist_id');
+		}
+
+
 
 		// return View::make('profiles.show', ['user' => $user, 'music' => $music]);
 		return View::make('profiles.show', compact('user', 'music', 'artist', 'favorites'));

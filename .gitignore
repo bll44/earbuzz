@@ -23,4 +23,7 @@ composer.lock
 /css/
 **/css/
 
+## Wowza ignore
+/app/storage/streams
+
 Thumbs.db

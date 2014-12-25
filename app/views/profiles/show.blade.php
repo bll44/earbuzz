@@ -1,7 +1,9 @@
-	@if (Auth::guest())
-	@else
+@if (Auth::guest())
+@else
 
 <?php
+
+// THIS ALL NEEDS MOVED TO A CONTROLLER!
 
 $CONFIG = array(
     'KEY' => '999a6964f87015288a65',
@@ -26,6 +28,7 @@ if (!empty($_POST)
     echo "Success";
     exit();
 }
+
 ?>
 @endif
 

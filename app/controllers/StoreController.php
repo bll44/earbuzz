@@ -56,10 +56,10 @@ class StoreController extends \BaseController {
 		$music->albums = new StdClass;
 		foreach($albums as $album)
 		{
-			$music->albums->{$album->name} = array();
+			$music->albums->{$album->name} = array('album' => $album, 'tracks' => []);
 			foreach($album->tracks as $track)
 			{
-				$music->albums->{$album->name}[] = $track;
+				$music->albums->{$album->name}['tracks'][] = $track;
 			}
 		}
 

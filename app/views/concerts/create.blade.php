@@ -243,7 +243,7 @@ function select_option_by_value(select_options, value)
 	$(select_options).each(function() {
 		if($(this).val() == value)
 		{
-			$(this).attr('selected', 'selected');
+			$(this).attr('selected', true);
 		}
 	});
 }
