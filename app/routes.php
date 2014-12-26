@@ -1,5 +1,5 @@
 <?php
-App::bind('Earbuzz\Billing\BillingInterface', 'Earbuzz\Billing\StripeBilling');
+App::bind('Earbuzz\Billing\BillingInterface', 'eEarbuzz\Billing\StripeBilling');
 
 Route::group(['before' => 'auth'], function()
 {
@@ -30,6 +30,7 @@ Route::get('cancel', ['as' => 'cancel.subcription', 'uses' => 'BillingController
 Route::get('resume', ['as' => 'resume', 'uses' => 'BillingController@resume']);
 Route::post('resume', ['as' => 'resume.buy', 'uses' => 'BillingController@resume_buy']);
 Route::post('stripe/webhook', 'Laravel\Cashier\WebhookController@handleWebhook');
+Route::get('stripe/is_customer', ['as' => 'stripe.is_customer', 'uses' => 'BillingController@checkCustomerStatus']);
 
 # Stripe Route Filter for Premium Only Access Pages
 Route::filter('subscribed', function()
