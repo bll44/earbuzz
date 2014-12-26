@@ -43,7 +43,7 @@
 
 	<!-- Add Custom Scripts -->
 	{{ HTML::script('js/custom.js') }}
-
+	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 	<script>
 		$(document).foundation(); // init foudnation
 	</script>

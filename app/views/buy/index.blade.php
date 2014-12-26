@@ -43,7 +43,7 @@
 
 {{ Form::close() }}
 
-<script src="https://js.stripe.com/v2/"></script>
+
 <script src="/js/billing.js"></script>
 
 @stop
