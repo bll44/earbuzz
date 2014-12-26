@@ -2,6 +2,7 @@
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<meta name="description" content="EarBuzz"/>
+	<meta name="test_publishable_key" content="{{ Config::get('stripe.test_publishable_key') }}">
 	<meta property="og:url" content="http://localhost/"/>
 	<meta property="og:title" content="EarBuzz"/>
 	<meta property="og:type" content="website"/>

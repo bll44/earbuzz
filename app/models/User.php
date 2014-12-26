@@ -16,6 +16,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface, Billa
 	 */
 	protected $table = 'users';
 
+	public $timestamps = false;
+
 	use BillableTrait;
 	use Messagable;
 

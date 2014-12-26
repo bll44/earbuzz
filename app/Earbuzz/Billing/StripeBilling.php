@@ -14,7 +14,7 @@ class StripeBilling implements BillingInterface {
 
     public function __construct()
     {
-        Stripe::setApiKey(Config::get('stripe.test_secret_key'));
+        Stripe::setApiKey(Config::get('services.stripe.secret'));
     }
     public function charge(array $data)
     {
