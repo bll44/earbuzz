@@ -22,14 +22,15 @@ class StripeBilling implements BillingInterface {
         {
             $customer = Stripe_Customer::create([
                 'card' => $data['token'],
-                'description' => $data['email']
+                'email' => $data['email'],
+                'description' => $data['description']
             ]);
-            Stripe_Charge::create([
-                'customer' => $customer->id,
-                'amount' => 1000, // $10
-                'currency' => 'usd'
+            return Stripe_Charge::create([
+                'amount' => $data['amount'] * 100, // amount * 100 to get the proper amount in cents
+                'currency' => 'usd',
+                'customer' => $customer->id
             ]);
-            return $customer->id;
+            // return $customer->id;
         }
         catch (Stripe_InvalidRequestError $e)
         {
@@ -38,6 +39,7 @@ class StripeBilling implements BillingInterface {
         }
         catch(Stripe_CardError $e)
         {
+            // Card was declined
             throw new Exception($e->getMessage());
         }
     }
