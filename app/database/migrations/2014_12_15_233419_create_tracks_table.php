@@ -18,6 +18,7 @@ class CreateTracksTable extends Migration {
 			$table->string('name');
 			$table->integer('duration');
 			$table->string('genre')->nullable();
+			$table->decimal('price', 11, 2)->default(0.00);
 			$table->integer('album_id');
 			$table->timestamps();
 		});

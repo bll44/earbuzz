@@ -45,7 +45,9 @@
 
 	<!-- Add Custom Scripts -->
 	{{ HTML::script('js/custom.js') }}
+	<script src="https://js.stripe.com/v2/"></script>
 	@yield('scripts')
+
 
 	<script>
 		$(document).foundation(); // init foudnation

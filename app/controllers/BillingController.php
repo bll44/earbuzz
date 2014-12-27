@@ -42,4 +42,16 @@ class BillingController extends BaseController {
 
 	}
 
+	public function checkCustomerStatus()
+	{
+		if(null === Auth::user()->stripe_id)
+		{
+			return json_encode(['status' => false]);
+		}
+		else
+		{
+			return json_encode(['status' => true]);
+		}
+	}
+
 }

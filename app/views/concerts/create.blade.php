@@ -28,7 +28,7 @@
 
 		<div class="col-lg-3">
 			{{ Form::label('month', 'Month') }}
-			{{ Form::selectMonth('month', $current_month, ['class' => 'form-control']) }}
+			{{ Form::selectMonth('month', $current_month) }}
 			<!-- /.month select -->
 		</div><!-- /.month column -->
 
@@ -47,16 +47,12 @@
 
 		<div class="col-lg-2">
 			<label for="year">Year</label>
-			<select name="year" class="form-control">
-				@foreach($years as $year)
-				<option value="{{ $year }}">{{ $year }}</option>
-				@endforeach
-			</select><!-- /.year select -->
+			{{ Form::selectYear('year', date('Y'), date('Y') + 10) }}
 		</div><!-- /.year column -->
 
 		<div class="col-lg-2">
 			<label for="time">Time</label>
-			{{ Form::text('time', null, ['class' => 'form-control', 'placeholder' => 'hh:mm']) }}
+			{{ Form::text('time', null, ['placeholder' => 'hh:mm']) }}
 		</div><!-- /.year column -->
 		<div class="col-lg-2">
 			<label for="ampm">AM / PM</label>
