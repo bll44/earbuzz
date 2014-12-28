@@ -194,6 +194,7 @@ Route::get('store/{artist}/music', ['as' => 'store.artist.music', 'uses' => 'Sto
 Route::get('store/purchase/track/{track}', ['as' => 'store.track.purchase', 'uses' => 'StoreController@purchaseTrack']);
 Route::get('store/purchase/album/{album}', ['as' => 'store.album.purchase', 'uses' => 'StoreController@purchaseAlbum']);
 Route::post('store/charge/music', ['as' => 'store.music.charge', 'uses' => 'StoreController@chargeMusic']);
+Route::get('store/purchase/complete', ['as' => 'purchase.complete_and_download', 'uses' => 'StoreController@completeAndDownloadPurchase']);
 
 # Password Reminder
 Route::controller('password', 'RemindersController');
