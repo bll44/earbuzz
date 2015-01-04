@@ -32,16 +32,18 @@ class Track extends Eloquent {
 		$filelocation = Config::get('constants.MUSIC_STORAGE_BUCKET_DEV') . '/' . $artist->id . '/' . $track->album->name;
 		$file = $filelocation . '/' . $track->name . '.mp3';
 
-		header('Content-Description: File Transfer');
-		header('Content-Type: application/octet-stream');
-		header("Content-Disposition: attachment; filename=\"{$track->name}.mp3\"");
-		header('Expires: 0');
-		header('Content-Lenght: ' . filesize($file));
+		return Response::download($file);
 
-		if(readfile($file))
-			return true;
-		else
-			return false;
+		// header('Content-Description: File Transfer');
+		// header('Content-Type: application/octet-stream');
+		// header("Content-Disposition: attachment; filename=\"{$track->name}.mp3\"");
+		// header('Expires: 0');
+		// header('Content-Lenght: ' . filesize($file));
+
+		// if(readfile($file))
+		// 	return true;
+		// else
+		// 	return false;
 	}
 
 }

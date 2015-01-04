@@ -54,11 +54,24 @@ if (!empty($_POST)
 		<div class="row">
 			<div class="col-sm-9 col-md-9">
 				<h3>Video</h3>
+				@if($countdown)
+					<div class="countdown-wrapper">
+					<div id="countdown">
+					</div>
+					<!-- /#countdown -->
+					</div>
+					<!-- /.countdown-wrapper -->
+				@else
+				<div class="video-wrapper">
 				<div id='video'>
 					<a href="http://straightcash.co:1935/live/switcher/playlist.m3u8">Android Test Link 1</a>
 					<br>
 					<a href="rtsp://straightcash.co:1935/live/switcher">Android Test Link 2</a>
 				</div>
+				<!-- /#video -->
+				</div>
+				<!-- /.video-wrapper -->
+				@endif
 			</div>
 			<div class="col-sm-3 col-md-3">
 				<h3>Chat Room</h3>
@@ -216,12 +229,13 @@ $(function() {
 });
 </script>
 
+{{ HTML::script('js/countdown.min.js') }}
 <!-- VIDEO -->
 <script type="text/javascript">
 
 if (navigator.userAgent.match(/android/i) != null)
 {
-	
+
 }
 else
 {
@@ -241,5 +255,17 @@ else
 	});
 }
 </script>
+
+@if($countdown)
+<script>
+var start_time = "{{ $next_concert->start_time }}";
+var countdownTimer = countdown(
+	new Date(start_time),
+	function(ts) {
+		document.getElementById('countdown').innerHTML = ts.toHTML("strong");
+	}
+);
+</script>
+@endif
 
 @stop

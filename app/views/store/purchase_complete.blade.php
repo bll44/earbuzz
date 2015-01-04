@@ -26,15 +26,24 @@ $(document).ready(function() {
 	console.log(package_type);
 	if(package_type === 'track')
 	{
-		$.get("{{ URL::route('store.track.purchase', [$package['item']->id]) }}", function(data) {
-			console.log(data);
-		});
+		// $.ajax({
+		// 	url: "{{ URL::to('download/track') }}",
+		// 	type: 'GET',
+		// }).done(function(data) {
+		// 	console.log(data);
+		// });
+		window.location.replace("{{ URL::to('download/track') }}");
 	}
 	else if(package_type === 'album')
 	{
-		$.get("{{ URL::route('store.album.purchase', [$package['item']->id]) }}", function(data) {
-			console.log(data);
-		});
+		// $.ajax({
+		// 	url: "{{ URL::to('download/album') }}",
+		// 	type: 'GET',
+		// }).done(function(data) {
+		// 	console.log(data);
+		// });
+
+		window.location.replace("{{ URL::to('download/album') }}");
 	}
 });
 

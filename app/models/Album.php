@@ -44,13 +44,15 @@ class Album extends Eloquent {
 		$album = Album::with('Artist')->where('id', $id)->first();
 		$archive = static::createArchive($album);
 
-		header('Content-Description: File Transfer');
-		header('Content-Type: application/octet-stream');
-		header("Content-Disposition: attachment; filename=\"{$album->name}.zip\"");
-		header('Expires: 0');
-		header('Content-Lenght: ' . filesize($archive));
+		// header('Content-Description: File Transfer');
+		// header('Content-Type: application/octet-stream');
+		// header("Content-Disposition: attachment; filename=\"{$album->name}.zip\"");
+		// header('Expires: 0');
+		// header('Content-Lenght: ' . filesize($archive));
 
-		readfile($archive);
+		// readfile($archive);
+
+		return Response::download($archive);
 	}
 
 }
