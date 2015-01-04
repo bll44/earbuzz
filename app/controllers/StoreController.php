@@ -68,12 +68,12 @@ class StoreController extends \BaseController {
 
 	public function purchaseTrack($id)
 	{
-		return Track::download($id);
+		Track::download($id);
 	}
 
 	public function purchaseAlbum($id)
 	{
-		return Album::download($id);
+		Album::download($id);
 	}
 
 	public function chargeMusic()
@@ -82,21 +82,26 @@ class StoreController extends \BaseController {
 		$billing = App::make('Earbuzz\Billing\BillingInterface');
 
 		$package_type = Input::get('package-type');
+		$package_id = Input::get('package-id');
 		if($package_type === 'track')
 		{
-			$track_id = Input::get('package-id');
+			$track_id = $package_id;
 			$track = Track::find($track_id);
+			$item = $track;
 			$album = $track->album;
 			$artist = $album->artist;
 			$amount = $track->price;
+			$type = 'track';
 			$charge_description = "Purchase Details: Track: '{$track->name}' / Album - '{$album->name}' / Artist - '{$artist->name}'";
 		}
 		elseif($package_type === 'album')
 		{
-			$album_id = Input::get('package-id');
+			$album_id = $package_id;
 			$album = Album::find($album_id);
+			$item = $album;
 			$artist = $album->artist;
 			$amount = $album->price;
+			$type = 'album';
 			$charge_description = "Purchase Details: Album - '{$album->name}' / Artist - '{$artist->name}'";
 		}
 		$email = Input::get('email');
@@ -106,7 +111,15 @@ class StoreController extends \BaseController {
 			'amount' => $amount,
 			'token' => Input::get('stripe-token')
 		]);
-		return $charge;
+
+		if($charge->paid)
+			return Redirect::route('purchase.complete_and_download')->with(['package' => ['type' => $type, 'item' => $item]]);
+	}
+
+	public function completeAndDownloadPurchase()
+	{
+		$package = Session::get('package');
+		return View::make('store.purchase_complete', compact('package'));
 	}
 
 	/**
