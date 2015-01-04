@@ -8,7 +8,7 @@
 @foreach($music->albums as $album => $data)
 <div class="album">
 	<h3>{{ $data['album']->name }}</h3>
-	<p>{{ link_to_route('store.album.purchase', 'Buy Album', [$data['album']->id], ['data-album-id' => $data['album']->id, 'class' => 'album-purchase-link']) }}</p>
+	<p>{{ link_to('#', 'Buy Album $' . $data['album']->price, ['data-album-id' => $data['album']->id, 'class' => 'album-purchase-link']) }}</p>
 	<table class="table table-striped">
 		<thead>
 			<th>No.</th>

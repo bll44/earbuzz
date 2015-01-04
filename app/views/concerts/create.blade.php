@@ -109,7 +109,7 @@
 
 <tr data-concert_id="{{ $concert->id }}">
 	<td>{{ Artist::find($concert->artist_id)->name }}</td>
-	<td>{{ $concert->start_time }}</td>
+	<td>{{ $concert->start_time_f() }}</td>
 	<!-- <td>{{ $concert->end_time }}</td> -->
 	<td>
 		<a href="#" data-toggle="modal" data-target="#edit-concert-modal" class="btn btn-default btn-block edit-concert-trigger" title="Edit Concert Details">

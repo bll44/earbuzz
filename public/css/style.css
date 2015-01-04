@@ -4,6 +4,9 @@
 /* 29px */
 /* 28px */
 /* 24px */
+.hidden {
+  display: none;
+}
 .inline-block {
   display: inline-block;
   zoom: 1;
@@ -659,7 +662,7 @@ section * {
 }
 /* header */
 /**
- * Header 18 stylesheet  
+ * Header 18 stylesheet
  * */
 .header-18 {
   height: 100%;

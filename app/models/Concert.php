@@ -12,17 +12,17 @@ class Concert extends Eloquent {
 	    return $end->format('Y-m-d H:i:s');
 	}
 
-	public function getStartTimeAttribute($value)
+	public function start_time_f()
 	{
 		$date = new DateTime();
-		$date->setTimestamp(strtotime($value));
+		$date->setTimestamp(strtotime($this->start_time));
 		return $date->format('M jS, Y h:ia');
 	}
 
-	public function getEndTimeAttribute($value)
+	public function end_time_f()
 	{
 		$date = new DateTime();
-		$date->setTimestamp(strtotime($value));
+		$date->setTimestamp(strtotime($this->end_time));
 		return $date->format('M jS, Y h:ia');
 	}
 

@@ -49,11 +49,17 @@ class ProfilesController extends BaseController {
 		{
 			$favorites = DB::table('favorites')->whereUserId(Auth::user()->id)->lists('artist_id');
 		}
+		// check for currently ongoing concerts by this artist
+		$current = DB::select("SELECT * FROM concerts WHERE artist_id = '{$artist->id}' AND start_time < CURRENT_TIMESTAMP AND end_time > CURRENT_TIMESTAMP ORDER BY start_time ASC");
+		count($current) > 0 ? $countdown = false : $countdown = true;
 
-
+		// get all upcoming concerts
+		$upcoming = DB::select("SELECT * FROM concerts WHERE artist_id = '{$artist->id}' AND start_time > CURRENT_TIMESTAMP ORDER BY start_time ASC");
+		$next_concert = DB::select("SELECT * FROM concerts WHERE artist_id = '{$artist->id}' AND start_time > CURRENT_TIMESTAMP ORDER BY start_time ASC LIMIT 1");
+		$next_concert = $next_concert[0];
 
 		// return View::make('profiles.show', ['user' => $user, 'music' => $music]);
-		return View::make('profiles.show', compact('user', 'music', 'artist', 'favorites'));
+		return View::make('profiles.show', compact('user', 'music', 'artist', 'favorites', 'countdown', 'upcoming', 'next_concert'));
 	}
 
 	// Display specific users favorites

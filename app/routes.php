@@ -12,8 +12,19 @@ Route::group(['before' => 'auth'], function()
 
 Route::get('testing', function()
 {
-    $album = Album::find(1);
-    return $album->price * 100 . ' cents';
+    // check if in the middle of a concert
+    $artist_id = 31;
+    $result = DB::table('concerts')->where('start_time', '<', 'CURRENT_TIMESTAMP')->orderBy('start_time')->get();
+    return $result;
+    // $result = DB::select("SELECT * FROM concerts WHERE artist_id = '{$artist_id}' AND start_time < CURRENT_TIMESTAMP AND end_time > CURRENT_TIMESTAMP ORDER BY start_time ASC");
+    // return $result;
+    // return $result;
+    // return $upcoming;
+    // return $upcoming;
+    // 2015-01-04 15:10:40
+    // $upcoming = Concert::where('artist_id', 31)->where('start_time', '<', 'CURRENT_TIMESTAMP')->andWhere('end_time', '>=', 'CURRENT_TIMESTAMP')->orderBy('start_time')->get()->count();
+    // echo $upcoming;
+
 });
 
 Route::get('upcoming_shows', 'ConcertController@index');
@@ -191,10 +202,12 @@ Route::get('concert/details/get', 'ConcertController@getConcertDetails');
 
 Route::get('store/{artist}/music', ['as' => 'store.artist.music', 'uses' => 'StoreController@showArtistMusic']);
 
-Route::get('store/purchase/track/{track}', ['as' => 'store.track.purchase', 'uses' => 'StoreController@purchaseTrack']);
-Route::get('store/purchase/album/{album}', ['as' => 'store.album.purchase', 'uses' => 'StoreController@purchaseAlbum']);
+// Route::get('store/purchase/track/{track}', ['as' => 'store.track.purchase', 'uses' => 'StoreController@purchaseTrack']);
+// Route::get('store/purchase/album/{album}', ['as' => 'store.album.purchase', 'uses' => 'StoreController@purchaseAlbum']);
 Route::post('store/charge/music', ['as' => 'store.music.charge', 'uses' => 'StoreController@chargeMusic']);
 Route::get('store/purchase/complete', ['as' => 'purchase.complete_and_download', 'uses' => 'StoreController@completeAndDownloadPurchase']);
+Route::get('download/track', ['as' => 'download.track', 'uses' => 'StoreController@downloadTrack']);
+Route::get('download/album', ['as' => 'download.album', 'uses' => 'StoreController@downloadAlbum']);
 
 # Password Reminder
 Route::controller('password', 'RemindersController');

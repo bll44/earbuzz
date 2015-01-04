@@ -66,14 +66,18 @@ class StoreController extends \BaseController {
 		return View::make('store.show_artist', compact('music', 'artist'));
 	}
 
-	public function purchaseTrack($id)
+	public function downloadTrack()
 	{
-		Track::download($id);
+		$id = Session::get('purchase_download_id');
+		Session::forget('purchase_download_id');
+		return Track::download($id);
 	}
 
-	public function purchaseAlbum($id)
+	public function downloadAlbum()
 	{
-		Album::download($id);
+		$id = Session::get('purchase_download_id');
+		Session::forget('purchase_download_id');
+		return Album::download($id);
 	}
 
 	public function chargeMusic()
@@ -111,6 +115,8 @@ class StoreController extends \BaseController {
 			'amount' => $amount,
 			'token' => Input::get('stripe-token')
 		]);
+
+		Session::put('purchase_download_id', $package_id);
 
 		if($charge->paid)
 			return Redirect::route('purchase.complete_and_download')->with(['package' => ['type' => $type, 'item' => $item]]);
