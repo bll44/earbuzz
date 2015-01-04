@@ -161,4 +161,9 @@ class ConcertController extends \BaseController {
 		return json_encode($concert);
 	}
 
+	public function postNotification()
+	{
+
+	}
+
 }

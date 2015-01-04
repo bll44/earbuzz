@@ -10,7 +10,7 @@
 
 <div class="container">
 	<div class="omb_login">
-		<h3 class="omb_authTitle">Login or <a href="/register">Sign up</a></h3>
+		<h3 class="omb_authTitle">Login</h3>
 		<div class="row omb_row-sm-offset-3 omb_socialButtons">
 			<div class="col-xs-4 col-sm-2">
 				<a href="{{ $fb_login }}" class="btn btn-lg btn-block omb_btn-facebook">
@@ -55,15 +55,16 @@
 					</div>
 					<span class="help-block">{{ $errors->first('password', '<span class="alert alert-error">:message</span>') }}</span>
 
-					{{ Form::submit('Login', ['class' => 'btn btn-lg btn-primary btn-block']) }}
+					{{ Form::submit('Login', ['class' => 'button', 'aria-label' => 'submit form', 'role' => 'button']) }}
 				</form>
 			</div>
 		</div>
 		<div class="row omb_row-sm-offset-3">
 			<div class="col-xs-12 col-sm-3">
-				<label class="checkbox">
-					<input type="checkbox" value="remember-me">Remember Me
-				</label>
+				<div class="switch">
+					<input id="exampleCheckboxSwitch" type="checkbox" value="remember-me">
+					<label for="exampleCheckboxSwitch">Remember Me</label>
+				</div>
 			</div>
 			<div class="col-xs-12 col-sm-3">
 				<p class="omb_forgotPwd">

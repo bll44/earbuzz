@@ -148,9 +148,19 @@ App::singleton('Pusher', function($app) {
     });
 
 # Chat
-Route::get('chat', ['as' => 'get.chat', 'uses' => 'MessagesController@chat']);
-Route::post('chat', ['as' => 'post.chat', 'uses' => 'MessagesController@chat']);
-// Route::post('chat', 'MessagesController@chat');
+Route::get('chat', ['as' => 'get.chat', 'uses' => 'MessagesController@getChat']);
+
+Route::any('chat/post', function()
+{
+    App::make('Pusher')->trigger(
+        'demo',
+        'PostWasPublished',
+        ['title' => 'My Great New Post']
+    );
+
+    // Do Whataver
+    return 'Done';
+});
 
 # Search
 Route::get('api/search', 'SearchController@listUsernames');
@@ -188,6 +198,7 @@ Route::post('artist/{profile}/update', ['as' => 'profile.update_artist', 'uses' 
 Route::resource('concert', 'ConcertController');
 Route::get('concert/{concert}/cancel', ['as' => 'concert.cancel', 'uses' => 'ConcertController@cancel']);
 Route::get('concert/details/get', 'ConcertController@getConcertDetails');
+// Route::get('post/concert/notification', 'ConcertController@postNotification');
 
 Route::get('store/{artist}/music', ['as' => 'store.artist.music', 'uses' => 'StoreController@showArtistMusic']);
 

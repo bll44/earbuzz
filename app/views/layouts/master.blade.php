@@ -39,15 +39,16 @@
 
 	<!-- Add jQuery Plugins -->
 	{{ HTML::script('js/vendor/underscore.js') }}
+	{{ HTML::script('js/vendor/jquery.gritter.min.js') }}
 	{{ HTML::script('js/vendor/jquery.hammer.js') }}
 	{{ HTML::script('js/vendor/jquery.coverflow.js') }}
 	{{ HTML::script('js/vendor/jquery.magicsuggest.min.js') }}
+	{{ HTML::script('js/vendor/handlebars.js') }}
 
 	<!-- Add Custom Scripts -->
 	{{ HTML::script('js/custom.js') }}
 	<script src="https://js.stripe.com/v2/"></script>
 	@yield('scripts')
-
 
 	<script>
 		$(document).foundation(); // init foudnation

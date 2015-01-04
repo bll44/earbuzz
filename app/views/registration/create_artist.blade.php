@@ -75,7 +75,7 @@
 					</div>
 					<span class="help-block">{{ $errors->first('password', '<span class="alert alert-error">:message</span>') }}</span>
 
-					{{ Form::submit('Sign Up', ['class' => 'btn btn-lg btn-primary btn-block']) }}
+					{{ Form::submit('Sign Up', ['class' => 'button', 'aria-label' => 'submit form', 'role' => 'button']) }}
 
 				{{ Form::close() }}
 			</div>

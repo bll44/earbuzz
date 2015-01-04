@@ -26,6 +26,7 @@ if (!empty($_POST)
         'content' => $_POST['content']
     ));
     echo "Success";
+
     exit();
 }
 
