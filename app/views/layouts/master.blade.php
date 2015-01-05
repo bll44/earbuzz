@@ -10,6 +10,8 @@
 			@include('layouts/partials/navigation')
 		</header>
 
+		@include('messenger.flash')
+
 		@if (Session::has('success'))
 		<div class="alert-box success">{{ Session::get('success')}}</div>
 		@endif
