@@ -162,17 +162,21 @@ App::singleton('Pusher', function($app) {
 Route::get('chat', ['as' => 'get.chat', 'uses' => 'MessagesController@chat']);
 Route::post('chat', ['as' => 'post.chat', 'uses' => 'MessagesController@chat']);
 
-Route::any('chat/post', function()
+Route::any('chatter', function()
 {
+    $input = Input::all();
+
     App::make('Pusher')->trigger(
-        'demo',
+        $input['channel'],
         'PostWasPublished',
-        ['title' => 'My Great New Post']
-    );
+        ['title' => $input['message']]
+        );
 
     // Do Whataver
     return 'Done';
 });
+
+Route::get('tester', 'MessagesController@tester');
 
 # Search
 Route::get('api/search', 'SearchController@listUsernames');

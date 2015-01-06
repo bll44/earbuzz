@@ -158,13 +158,21 @@ class MessagesController extends BaseController
 
 	public function chat()
 	{
+		// return Response::json(Input::get('message', 'channel'));
+		// $input = Input::all();
+
 		// App::make('Pusher')->trigger(
-		// 'demo',
+		// $input['channel'],
 		// 'PostWasPublished',
-		// ['title' => 'My Great New Post']
+		// ['title' => $input['message']]
 		// );
-		// Do Whataver
+		// return 'success';
 		return View::make('messenger.chat');
+	}
+
+	public function tester()
+	{
+		return View::make('pages.testing');
 	}
 
 }
