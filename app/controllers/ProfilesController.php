@@ -38,9 +38,11 @@ class ProfilesController extends BaseController {
 			return Redirect::home();
 		}
 
+		$is_artist_profile = false;
 		if($user->type === 'artist')
 		{
 			$artist = $user->artist;
+			$is_artist_profile = true;
 		}
 
 		$artist = $user->artist;
@@ -55,11 +57,18 @@ class ProfilesController extends BaseController {
 
 		// get all upcoming concerts
 		$upcoming = DB::select("SELECT * FROM concerts WHERE artist_id = '{$artist->id}' AND start_time > CURRENT_TIMESTAMP ORDER BY start_time ASC");
-		$next_concert = DB::select("SELECT * FROM concerts WHERE artist_id = '{$artist->id}' AND start_time > CURRENT_TIMESTAMP ORDER BY start_time ASC LIMIT 1");
-		$next_concert = $next_concert[0];
-
+		if($user->type === 'artist')
+		{
+			$next_concert = DB::select("SELECT * FROM concerts WHERE artist_id = '{$artist->id}' AND start_time > CURRENT_TIMESTAMP ORDER BY start_time ASC LIMIT 1");
+			$next_concert = $next_concert[0];
+		}
+		else
+		{
+			$next_concert = null;
+		}
+		
 		// return View::make('profiles.show', ['user' => $user, 'music' => $music]);
-		return View::make('profiles.show', compact('user', 'music', 'artist', 'favorites', 'countdown', 'upcoming', 'next_concert'));
+		return View::make('profiles.show', compact('user', 'music', 'artist', 'favorites', 'countdown', 'upcoming', 'next_concert', 'is_artist_profile'));
 	}
 
 	// Display specific users favorites
