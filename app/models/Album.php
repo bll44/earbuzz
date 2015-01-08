@@ -16,7 +16,7 @@ class Album extends Eloquent {
 
 	protected static function createArchive($album)
 	{
-		$music_bucket = Config::get('constants.MUSIC_STORAGE_BUCKET_DEV');
+		$music_bucket = Config::get('constants.MUSIC_STORAGE_BUCKET');
 		$album_location = "{$music_bucket}/{$album->artist->id}/{$album->name}";
 
 		$zip = new ZipArchive;
