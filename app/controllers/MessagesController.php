@@ -156,7 +156,7 @@ class MessagesController extends BaseController
 		return Redirect::to('messages/' . $id);
 	}
 
-	public function getChat()
+	public function chat()
 	{
 		// App::make('Pusher')->trigger(
 		// 'demo',

@@ -159,7 +159,8 @@ App::singleton('Pusher', function($app) {
     });
 
 # Chat
-Route::get('chat', ['as' => 'get.chat', 'uses' => 'MessagesController@getChat']);
+Route::get('chat', ['as' => 'get.chat', 'uses' => 'MessagesController@chat']);
+Route::post('chat', ['as' => 'post.chat', 'uses' => 'MessagesController@chat']);
 
 Route::any('chat/post', function()
 {
