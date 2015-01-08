@@ -40,8 +40,8 @@
 
 <div class="row">
 	<div class="clip-btn-container">
-		<button class="track-clipping-btn btn btn-default">Create New Track</button>
-		<button class="finish-process-tracks btn btn-primary">Finish and Process Tracks</button>
+		<button class="track-clipping-btn">Create New Track</button>
+		<button class="finish-process-tracks">Finish and Process Tracks</button>
 	</div><!-- /.clip-btn-container -->
 </div><!-- /.row -->
 
