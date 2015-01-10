@@ -33,17 +33,6 @@ class Track extends Eloquent {
 		$file = $filelocation . '/' . $track->name . '.mp3';
 
 		return Response::download($file);
-
-		// header('Content-Description: File Transfer');
-		// header('Content-Type: application/octet-stream');
-		// header("Content-Disposition: attachment; filename=\"{$track->name}.mp3\"");
-		// header('Expires: 0');
-		// header('Content-Lenght: ' . filesize($file));
-
-		// if(readfile($file))
-		// 	return true;
-		// else
-		// 	return false;
 	}
 
 }

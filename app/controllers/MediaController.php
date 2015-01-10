@@ -85,8 +85,12 @@ class MediaController extends \BaseController {
 		set_time_limit(0);
 		ignore_user_abort(1);
 
+		// define ffmpeg & ffprobe binaries
+		$ffmpeg_binary = '/ffmpeg/bin/ffmpeg.exe';
+		$ffprobe_binary = '/ffmpeg/bin/ffprobe.exe';
+
 		$filename = Input::get('file_name');
-		$tracks = (object) Input::get('track_listing');
+		$tracks = Input::get('track_listing');
 		$album_name = Input::get('album_name');
 		$streaming_key = Auth::user()->streamingKey->key;
 		$artist_id = Auth::user()->artist->id;
@@ -95,14 +99,11 @@ class MediaController extends \BaseController {
 		$source_dir = Config::get('constants.COMPLETED_STREAMS_BUCKET') . '/' . $streaming_key;
 
 		// create individual artist directory
-		if( ! File::isDirectory($destination_dir = storage_path() . '/audio_edits/' . $streaming_key))
+		if( ! File::isDirectory($destination_dir = Config::get('constants.TRANSCODER_FIRST_PASS') . '/' . $artist_id))
 		{
 			File::makeDirectory($destination_dir);
 			File::makeDirectory($destination_dir . '/clips');
 		}
-		// assign path to binaries to variables for easy access in commands
-		$ffmpeg_binary = '/ffmpeg/bin/ffmpeg.exe';
-		$ffprobe_binary = '/ffmpeg/bin/ffprobe.exe';
 
 		// .mp4 to .mp3 conversion ffmpeg command string
 		$cmd = "{$ffmpeg_binary} -i \"{$source_dir}/{$filename}\" -ab 320k \"{$destination_dir}/{$streaming_key}.mp3\" 2>&1";
@@ -117,6 +118,8 @@ class MediaController extends \BaseController {
 				$track = new Track;
 				$track->name = $t->name;
 				$track->album_id = $album->id;
+				$track->duration = round($t->duration, 0, PHP_ROUND_HALF_UP);
+				$track->price = 0.99;
 				$cmd = "{$ffmpeg_binary} -i \"{$destination_dir}/{$streaming_key}.mp3\" -ab 320k -ss {$t->start_time} -t {$t->duration} \"{$track_destination_directory}/{$t->name}.mp3\" 2>&1";
 				$output = shell_exec($cmd);
 				$track->save();
@@ -140,6 +143,7 @@ class MediaController extends \BaseController {
 		$album->name = $album_name;
 		$album->year = $date->format('Y');
 		$album->genre = $album_genre;
+		$album->price = 9.99;
 		$album->artist_id = $artist_id;
 
 		if( ! File::isDirectory($artist_dir = Config::get('constants.MUSIC_STORAGE_BUCKET') . '/' . $artist_id))
