@@ -4,7 +4,11 @@
 	<ul class="title-area">
 		<li class="name">
 			<h1>
-				{{ link_to('/', 'EarBuzz', ['id' => 'logo']) }}
+				<a href="/" id="logo">
+					<img src="/img/earbuzz-logo.png" alt="EARBUZZ" />
+					<span>EarBuzz</span>
+				</a>
+				<!-- {{ link_to('/', 'EarBuzz', ['id' => 'logo']) }} -->
 			</h1>
 		</li>
 	</ul>
@@ -46,7 +50,7 @@
 						<li>{{ link_to_profile('Profile') }}</li>
 						@if(Auth::check() && Auth::user()->type === 'artist')
 
-						<li>{{ link_to_route('concert.create', 'My Concerts', ['class' => 'page']) }}</li>
+						<li>{{ link_to_route('concert.create', 'My Concerts') }}</li>
 						<li>{{ link_to('recent_streams', 'Recent Streams', ['class' => 'page']) }}</li>
 
 						@endif
@@ -54,13 +58,6 @@
 						<li>{{ link_to_route('account.show', 'Account', ['id' => Auth::user()->id], ['class' => 'page']) }}</li>
 						<li>{{ link_to_route('messages', 'Inbox', ['id' => Auth::user()->id], ['class' => 'page']) }}</li>
 						<li>{{ link_to('logout', 'Sign Out', ['class' => 'page']) }}</li>
-
-
-						<!-- <li><a href="">Artist Dashboard</a></li> -->
-						<!-- <li><a href="">Activity</a></li> -->
-						<!-- <li><a href="">Purchased Music</a></li> -->
-						<!-- wrap in an conditional -->
-						<li><a href="" class="active">Go Pro!</a></li>
 					</ul>
 				</li>
 

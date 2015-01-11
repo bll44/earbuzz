@@ -20,7 +20,7 @@
 		<div class="alert-box alert">{{ Session::get('error')}}</div>
 		@endif
 
-		<main class="row">@yield('content')</main>
+		<main class="main row">@yield('content')</main>
 	</div>
 
 	<footer>

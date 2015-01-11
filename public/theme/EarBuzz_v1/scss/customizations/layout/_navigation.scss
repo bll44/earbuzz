@@ -37,21 +37,60 @@ header {
     }
 
     #logo {
+        position: relative;
         display: block;
+        padding: 0;
         width: 100px;
         height: 100px;
-        text-indent: 100%;
-        overflow: hidden;
-        word-wrap: nowrap;
         background: $orange;
+        overflow: hidden;
         -webkit-transition: all .3s ease;
-        -moz-transition: all .3s ease;
-        transition: all .3s ease;
+        -moz-transition:    all .3s ease;
+        transition:         all .3s ease;
+
+        -webkit-box-shadow: 0px 4px 32px -8px rgba(0,0,0,0.75);
+        -moz-box-shadow:    0px 4px 32px -8px rgba(0,0,0,0.75);
+        box-shadow:         0px 4px 32px -8px rgba(0,0,0,0.75);
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            opacity: 1;
+
+            -webkit-transition: all .3s ease;
+            -moz-transition:    all .3s ease;
+            transition:         all .3s ease;
+        }
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            white-space: nowrap;
+            text-align: center;
+            opacity: 0;
+
+            -webkit-transition: left, opacity .3s ease;
+            -moz-transition:    left, opacity .3s ease;
+            transition:         left, opacity .3s ease;
+        }
 
     // when header is anchored
         .fixed & {
             text-indent: 0;
             height: 45px;
+
+            img {
+                opacity: 0;
+            }
+
+            span {
+                width: 100%;
+                top: 0;
+                left: 0;
+                opacity: 1;
+            }
         }
     }
 }
