@@ -156,16 +156,7 @@ App::singleton('Pusher', function($app) {
 Route::get('chat', ['as' => 'get.chat', 'uses' => 'MessagesController@chat']);
 Route::post('chat', ['as' => 'post.chat', 'uses' => 'MessagesController@chat']);
 
-Route::any('tester', function()
-{
-	App::make('Pusher')->trigger(
-		'demo',
-		'PostWasPublished',
-		['title' => 'Concert Notification']
-	);
-	// Do Whataver
-	return 'Done';
-});
+Route::post('concert/notify', ['as' => 'concert.notify', 'uses' => 'ConcertController@notify']);
 
 # Search
 Route::get('api/search', 'SearchController@listUsernames');

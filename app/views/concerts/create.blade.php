@@ -12,6 +12,7 @@
 	<th>Starts</th>
 	<!-- <th>Ends</th> -->
 	<th>Actions</th>
+	<th>Notify!!!</th>
 </thead>
 <tbody>
 @foreach($concerts as $concert)
@@ -29,6 +30,9 @@
 		<a href="{{ URL::route('concert.cancel', [$concert->id]) }}" title="Cancel Show" class="button tiny alert btn-block">
 			Cancel
 		</a>
+	</td>
+	<td>
+	<button type="button" class="tiny alert button notify-button">Notity</button>
 	</td>
 </tr>
 
@@ -185,6 +189,20 @@ $('.edit-concert-trigger').click(function() {
 	});
 });
 
+</script>
+
+<script>
+	$('.notify-button').click(function(){
+		var concert_id = $(this).closest('tr').data('concert_id');
+		console.log(concert_id);
+		$.ajax({
+			url: "{{ URL::route('concert.notify') }}",
+			type: "POST",
+			data: {concert: concert_id}
+		}).done(function(data){
+			console.log(data);
+		});
+	});
 </script>
 
 @stop

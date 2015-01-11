@@ -166,6 +166,7 @@ class ConcertController extends \BaseController {
 
 	}
 
+
 	public function addGuest()
 	{
 		$user = Auth::user();
@@ -174,6 +175,19 @@ class ConcertController extends \BaseController {
 		$concert->touch();
 
 		return json_encode(['success' => true]);
+	}
+
+	public function notify()
+	{
+		$concert = Concert::find(Input::get('concert'));
+
+		App::make('Pusher')->trigger(
+			'demo',
+			'PostWasPublished',
+			['title' => 'Concert Notification']
+		);
+		// Do Whataver
+		return 'Done';
 	}
 
 }
