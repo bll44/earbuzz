@@ -12,19 +12,7 @@ Route::group(['before' => 'auth'], function()
 
 Route::get('testing', function()
 {
-    // check if in the middle of a concert
-    $artist_id = 31;
-    $result = DB::table('concerts')->where('start_time', '<', 'CURRENT_TIMESTAMP')->orderBy('start_time')->get();
-    return $result;
-    // $result = DB::select("SELECT * FROM concerts WHERE artist_id = '{$artist_id}' AND start_time < CURRENT_TIMESTAMP AND end_time > CURRENT_TIMESTAMP ORDER BY start_time ASC");
-    // return $result;
-    // return $result;
-    // return $upcoming;
-    // return $upcoming;
-    // 2015-01-04 15:10:40
-    // $upcoming = Concert::where('artist_id', 31)->where('start_time', '<', 'CURRENT_TIMESTAMP')->andWhere('end_time', '>=', 'CURRENT_TIMESTAMP')->orderBy('start_time')->get()->count();
-    // echo $upcoming;
-
+    return 'test';
 });
 
 Route::get('upcoming_shows', 'ConcertController@index');

@@ -53,6 +53,9 @@ if (!empty($_POST)
 		<!-- /.row -->
 		<div class="row">
 			<div class="col-sm-9 col-md-9">
+				@if($is_artist_profile)
+				{{ link_to_route('live.show', 'View Live Stream', [$artist->id]) }}
+				@endif
 				<h3>Video</h3>
 				@if($countdown)
 					<div class="countdown-wrapper">
@@ -96,7 +99,7 @@ if (!empty($_POST)
             </div>
             <div id="messageform">
                 <!-- change this according to your deploy url -->
-                {{Form::open(array('route' => 'post.chat', 'id'=>'newmessage'))}}
+                {{Form::open(array('route' => 'get.chat', 'id'=>'newmessage'))}}
                 <!-- <form action="/testchat/index.php" method="POST" id="newmessage"> -->
                     <input type="text" id="message" name="message" />
                     <input type="hidden" id="user" name="user" value="<?= $nick ?>" />
@@ -256,7 +259,7 @@ else
 }
 </script>
 
-@if($countdown)
+@if(null !== $next_concert && $countdown)
 <script>
 var start_time = "{{ $next_concert->start_time }}";
 var countdownTimer = countdown(

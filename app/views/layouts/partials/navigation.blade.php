@@ -27,7 +27,8 @@
 					</li>
 				</ul>
 			</li>
-			<li><a href="#">Features</a></li>
+			<li>{{ link_to('live', 'Live Now') }}</li>
+			<!-- <li><a href="#">Features</a></li> -->
 
 			@if (Auth::guest())
 

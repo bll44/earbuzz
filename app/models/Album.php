@@ -16,7 +16,7 @@ class Album extends Eloquent {
 
 	protected static function createArchive($album)
 	{
-		$music_bucket = Config::get('constants.MUSIC_STORAGE_BUCKET_DEV');
+		$music_bucket = Config::get('constants.MUSIC_STORAGE_BUCKET');
 		$album_location = "{$music_bucket}/{$album->artist->id}/{$album->name}";
 
 		$zip = new ZipArchive;
@@ -43,14 +43,6 @@ class Album extends Eloquent {
 	{
 		$album = Album::with('Artist')->where('id', $id)->first();
 		$archive = static::createArchive($album);
-
-		// header('Content-Description: File Transfer');
-		// header('Content-Type: application/octet-stream');
-		// header("Content-Disposition: attachment; filename=\"{$album->name}.zip\"");
-		// header('Expires: 0');
-		// header('Content-Lenght: ' . filesize($archive));
-
-		// readfile($archive);
 
 		return Response::download($archive);
 	}

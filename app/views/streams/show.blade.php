@@ -20,7 +20,7 @@ if (navigator.userAgent.match(/android/i) != null){
 		autostart: 'false',
 
 		// Real URL
-		sources: [{ file: "rtmp://10.0.0.15:1935/live/" + streamKey }],
+		sources: [{ file: "rtmp://straightcash.co:1935/live/" + streamKey }],
 		// { file: "http://straightcash.co:1935/live/switcher/playlist.m3u8" }],
 
 		// Test URL

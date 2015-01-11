@@ -29,21 +29,10 @@ class Track extends Eloquent {
 		$track = Track::with('Album')->where('id', $id)->first();
 		$artist = $track->album->artist;
 
-		$filelocation = Config::get('constants.MUSIC_STORAGE_BUCKET_DEV') . '/' . $artist->id . '/' . $track->album->name;
+		$filelocation = Config::get('constants.MUSIC_STORAGE_BUCKET') . '/' . $artist->id . '/' . $track->album->name;
 		$file = $filelocation . '/' . $track->name . '.mp3';
 
 		return Response::download($file);
-
-		// header('Content-Description: File Transfer');
-		// header('Content-Type: application/octet-stream');
-		// header("Content-Disposition: attachment; filename=\"{$track->name}.mp3\"");
-		// header('Expires: 0');
-		// header('Content-Lenght: ' . filesize($file));
-
-		// if(readfile($file))
-		// 	return true;
-		// else
-		// 	return false;
 	}
 
 }
