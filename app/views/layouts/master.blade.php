@@ -29,12 +29,7 @@
 
 	<!-- ::INCLUDE Move to partial -->
 	@include('/partials/modal')
-	<!-- @include('/partials/backToTop') -->
 	<!-- ::END INCLUDE -->
-
-	<!-- Add core jQuery -->
-	{{ HTML::script('js/vendor/jquery.js') }}
-	{{ HTML::script('js/vendor/jquery.ui.js') }}
 
 	<!-- Add Foudnation -->
 	{{ HTML::script('js/foundation.min.js') }}

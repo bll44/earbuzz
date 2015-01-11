@@ -1,22 +1,3 @@
-<?php
-
-$email_check = Auth::user()->email;
-
-$id = Auth::user()->getId();
-
-$results = DB::table('streaming_keys')
-->where('user_id', "=", $id)
-->get();
-?>
-
-@foreach ($results as $result)
-    <?php
-    $new_result = $result->key;
-    ?>
-@endforeach
-
-
-
 @extends('layouts.master')
 
 @section('content')
@@ -40,10 +21,7 @@ $results = DB::table('streaming_keys')
 				<h4>Account information&nbsp;&nbsp;<small><a href="#"><i class="fa fa-edit"></i>Edit</a></small></h4>
 				<ul class="list-group">
 					<li class="list-group-item"><b>Username:</b> {{ Auth::user()->username }}</li>
-					@if(is_null($email_check))
-					@else
 					<li class="list-group-item"><b>Email:</b> {{ Auth::user()->email }}</li>
-					@endif
 					<li class="list-group-item"><b>Password:</b> &#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;</li>
 				</ul>
 			</div>
@@ -56,23 +34,20 @@ $results = DB::table('streaming_keys')
 			<div class="panel-heading">
 				<h3 class="panel-title">Streaming Key</h3>
 			</div>
+			<!-- if user is an artist -->
+			@if(Auth::user()->type === 'artist')
 			<div class="panel-body">
-				<!-- if the user has a streaming key -->
 				@if(null !== Auth::user()->streamingKey)
 				<p class="text-danger">Do not share this key with anyone! If you believe your key has been compromised please reset it below.</p>
-				<button type="button" class="btn btn-primary show_stream_key">Show Streaming Key</button>
-				<div class="input-group">
-					{{ Form::text('streaming_key', $new_result,
-								 ['class' => 'form-control input-sm streaming_key hidden',
+				<button type="button" class="show_stream_key">Show Streaming Key</button>
+				<div class="hide" id="input-key-container">
+					{{ Form::text('streaming_key', Auth::user()->streamingKey->key,
+								 ['class' => 'streaming_key',
 								  'placeholder' => 'Streaming Key']) }}
-					<span class="input-group-btn">
-						<button type="button" class="btn btn-primary btn-default btn-sm streaming_key hidden" id="regenerate_stream_key">
-							Reset Key
-						</button>
-
-					</span>
+					<button type="button" class="streaming_key" id="regenerate_stream_key">
+						Reset Key
+					</button>
 				</div>
-				<!-- /.input-group -->
 				<!-- if the user does NOT have a streaming key -->
 				@else
 				<p class="text-danger">You do not have a streaming key yet.</p>
@@ -80,33 +55,13 @@ $results = DB::table('streaming_keys')
 				@endif
 			</div>
 			<!-- /.panel-body -->
+		@endif
 		</div>
 		<!-- /.panel -->
 	</div>
 	<!-- /.column -->
 </div>
 <!-- /.row -->
-
-@if (Auth::user()->type == 'fan')
-@elseif (Auth::user()->type == 'artist')
-<div class="row">
-	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">My Music</h3>
-			</div>
-			<!-- /.panel-heading -->
-			<div class="panel-body">
-				<p>
-					You have {{ count($artist->tracks) }} songs. {{ link_to('files/music/manager/'.Auth::user()->id, 'Manage Your Music Here') }}
-				</p>
-			</div>
-			<!-- /.panel-body -->
-		</div>
-		<!-- /.panel -->
-	</div>
-	<!-- /.column -->
-@endif
 
 <!-- Subscription Examples -->
 
@@ -156,15 +111,14 @@ $results = DB::table('streaming_keys')
 
 @stop
 
-content('scripts')
-
+@section('scripts')
 <script>
 
 $('button.show_stream_key').click(function() {
 	// hide the button
 	$(this).hide();
 	// show the key
-	$('.streaming_key').removeClass('hidden');
+	$('#input-key-container').removeClass('hide');
 });
 
 $('#regenerate_stream_key').click(function() {
@@ -187,5 +141,4 @@ $('#generate-stream-key').click(function() {
 });
 
 </script>
-
 @stop
