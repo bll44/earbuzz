@@ -155,7 +155,7 @@ Route::any('tester', function()
 	App::make('Pusher')->trigger(
 		'demo',
 		'PostWasPublished',
-		['title' => 'My Great New Post']
+		['title' => 'Concert Notification']
 	);
 	// Do Whataver
 	return 'Done';
