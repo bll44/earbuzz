@@ -21,23 +21,22 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="{{{ asset('theme/Earbuzz_v1/css/master.css') }}}">
 
+	<!-- <link rel="stylesheet" href="{{{ asset('css/vendor/jquery.gritter.css') }}}"> -->
 
-	<!-- {{ HTML::style('css/custom.css') }} -->
+	<!-- Private Messaging -->
 	{{ HTML::style('css/vendor/magicsuggest-min.css') }}
-	<!-- <link rel="stylesheet" href="{{{ asset('css/custom.css') }}}"> -->
 
 	<!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
-	<!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
-	<script src="/js/vendor/modernizr.js"></script>
-<!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
-	<!-- {{ HTML::script('js/custom.js') }} -->
-	<!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
+	<!-- Modernizr -->
+	{{ HTML::script('js/vendor/modernizr.js') }}
+	<!-- Add core jQuery -->
+	{{ HTML::script('js/vendor/jquery.js') }}
+	{{ HTML::script('js/vendor/jquery.ui.js') }}
 
-	<!-- <link rel="stylesheet" href="{{{ asset('js/custom.js') }}}"> -->
 	<!-- JW Player -->
 	<script src="http://jwpsrv.com/library/fcvmRgS4EeSXrCIAC0MJiQ.js"></script>
 

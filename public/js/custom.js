@@ -1,3 +1,4 @@
+var EARBUZZ = EARBUZZ || {};
 // back to top scroll
 $(document).ready(function(){
 	$(window).scroll(function () {
@@ -16,7 +17,31 @@ $(document).ready(function(){
 		return false;
 	});
 
-	$('#back-to-top').tooltip();
+	// $('#back-to-top').tooltip();
+
+
+	(function($){
+	    var $coverflow = $('#coverflow'),
+	        activeSlideIndex = $('#coverflow div').index($('[data-active="true"]'));
+
+	    $coverflow.coverflow({
+	        active: activeSlideIndex,
+	        duration: 175,
+	        scale: 1,
+	        perspectiveY: 45,
+	        angle: 25,
+	        easing: 'easeInOutSine',
+			trigger : {
+				itemfocus : false,
+				itemclick : true,
+				mousewheel : false,
+				swipe : true
+			}
+	    });
+
+		$coverflow.coverflow().trigger('mousweheel');
+
+	})(jQuery);
 
 });
 

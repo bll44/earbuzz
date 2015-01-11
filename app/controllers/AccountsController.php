@@ -43,9 +43,8 @@ class AccountsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$artist = Artist::find(1);
-		$session_data = Session::all();
-		return View::make('accounts.show', ['artist' => $artist, 'session' => $session_data]);
+		$artist = User::find($id);
+		return View::make('accounts.show', ['artist' => $artist]);
 	}
 
 

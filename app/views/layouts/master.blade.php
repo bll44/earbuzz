@@ -6,7 +6,7 @@
 <body class="{{$bodyClass or 'vHome'}} no-js">
 
 	<div class="container row">
-		<header class="contain-to-grid sticky">
+		<header class="sticky">
 			@include('layouts/partials/navigation')
 		</header>
 
@@ -20,7 +20,7 @@
 		<div class="alert-box alert">{{ Session::get('error')}}</div>
 		@endif
 
-		<main class="row">@yield('content')</main>
+		<main class="main row">@yield('content')</main>
 	</div>
 
 	<footer>
@@ -29,12 +29,7 @@
 
 	<!-- ::INCLUDE Move to partial -->
 	@include('/partials/modal')
-	@include('/partials/backToTop')
 	<!-- ::END INCLUDE -->
-
-	<!-- Add core jQuery -->
-	{{ HTML::script('js/vendor/jquery.js') }}
-	{{ HTML::script('js/vendor/jquery.ui.js') }}
 
 	<!-- Add Foudnation -->
 	{{ HTML::script('js/foundation.min.js') }}
