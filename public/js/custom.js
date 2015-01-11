@@ -50,7 +50,8 @@ $(document).ready(function(){
 
 	// Open a connection, and subscribe to the demo channel.
 	var pusher = new Pusher('999a6964f87015288a65');
-	var channel = pusher.subscribe('demo');
+	var channel1 = pusher.subscribe('demo');
+	var channel2 = pusher.subscribe('demo1');
 
 	// Namespacing
 	window.App = {};
@@ -77,6 +78,7 @@ $(document).ready(function(){
 	};
 
 	// Register bindings
-	channel.bind('PostWasPublished', App.Listeners.Post.whenPostWasPublished);
+	channel1.bind('PostWasPublished', App.Listeners.Post.whenPostWasPublished);
+	channel2.bind('PostWasPublished', App.Listeners.Post.whenPostWasPublished);
 
 })();

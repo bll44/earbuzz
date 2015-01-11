@@ -166,4 +166,22 @@ class ConcertController extends \BaseController {
 
 	}
 
+	public function testing()
+	{
+		return View::make('pages.testing');
+	}
+
+	public function notify()
+	{
+		$concert = Concert::find(Input::get('concert'));
+
+		App::make('Pusher')->trigger(
+		'demo',
+		'PostWasPublished',
+		['title' => 'Concert Notification']
+	);
+	// Do Whataver
+	return 'Done';
+	}
+
 }
