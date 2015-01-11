@@ -1,11 +1,12 @@
 .vHome {
-    // background: $orange;
+    color: $grayWhite;
+    // background: $orange
 }
 
 #eb-featured {
     margin-bottom: 20px;
-    padding-top: 20px;
-    min-height: 500px;
+    padding-top: 50px;
+    min-height: 520px;
 
     .ui-coverflow {
         .promo {
@@ -16,11 +17,28 @@
             position: relative;
             width: 920px;
             height: 460px;
-            opacity: 0.5;
+
+            img {
+                opacity: 0.5;
+            }
+
+            &:after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: white;
+                z-index: -1;
+                content: '';
+            }
 
             &.ui-state-active {
-                opacity: 1;
                 @include box-shadow(0,0,10px,2px,rgba(0,0,0,0.2),false);
+
+                img {
+                    opacity: 1;
+                }
             }
 
             .info {
@@ -28,7 +46,7 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                padding: 5px 10px;
+                padding: 10px 25px;
                 height: 80px;
                 background: rgba(255, 255, 255, 0.5);
                 overflow: hidden;
@@ -51,11 +69,10 @@
 
 #upcoming {
     height: 800px;
-    background: white;
+    outline: 1px white dotted;
 }
 
 #trending {
     height: 600px;
-    background: silver;
+    outline: 1px silver dotted;
 }
-

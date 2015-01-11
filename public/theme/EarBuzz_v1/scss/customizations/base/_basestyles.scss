@@ -4,7 +4,8 @@ body {
     background-color: $grayDarker;
 }
 .container {
-    padding-top: 25px;
+    max-width: none;
+
     .row {
         margin: 0;
     }
