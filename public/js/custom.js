@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 	// Open a connection, and subscribe to the demo channel.
 	var pusher = new Pusher('999a6964f87015288a65');
-	var channel = pusher.subscribe('demo');
+	var channel = pusher.subscribe('31');
 
 	// Namespacing
 	window.App = {};
@@ -46,12 +46,12 @@ $(document).ready(function(){
 
 	// Listeners
 	App.Listeners.Post = {
-		whenPostWasPublished: function(data) {
+		whenArtistPusblishPostToFollowers: function(data) {
 			(new App.Notifier).notify(data.title);
 		}
 	};
 
 	// Register bindings
-	channel.bind('PostWasPublished', App.Listeners.Post.whenPostWasPublished);
+	channel.bind('PostWasPublished', App.Listeners.Post.whenArtistPusblishPostToFollowers);
 
 })();

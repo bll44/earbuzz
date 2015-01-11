@@ -99,7 +99,7 @@ if (!empty($_POST)
             </div>
             <div id="messageform">
                 <!-- change this according to your deploy url -->
-                {{Form::open(array('route' => 'post.chat', 'id'=>'newmessage'))}}
+                {{Form::open(array('route' => 'get.chat', 'id'=>'newmessage'))}}
                 <!-- <form action="/testchat/index.php" method="POST" id="newmessage"> -->
                     <input type="text" id="message" name="message" />
                     <input type="hidden" id="user" name="user" value="<?= $nick ?>" />

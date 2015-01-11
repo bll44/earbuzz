@@ -12,27 +12,46 @@
 	margin-top: 10px;
 }
 </style>
+<!--
+<div data-alert class="alert-box alert hide">
+  <p class="message_content"></p>
+  <a href="#" class="close">&times;</a>
+</div> -->
+<!-- /.alert alert -->
 
-<div class="alert alert-danger alert-dismissable hidden" role="alert">
+<!-- <div class="alert alert-danger alert-dismissable hidden" role="alert">
 	<button type="button" class="close" data-dismiss="alert">
 		<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 	</button>
 	<p class="message_content"></p>
-</div><!-- /.alert-danger -->
-<div class="alert alert-success alert-dismissable hidden" role="alert">
+</div> -->
+<!-- /.alert-danger -->
+
+<!-- <div data-alert class="alert-box success hide">
+  <p class="message_content"></p>
+  <a href="#" class="close">&times;</a>
+</div> -->
+<!-- /.alert success -->
+
+<!-- <div class="alert alert-success alert-dismissable hidden" role="alert">
 	<button type="button" class="close" data-dismiss="alert">
 		<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 	</button>
 	<p class="message_content"></p>
-</div><!-- /.alert-success -->
+</div> -->
+<!-- /.alert-success -->
 
 <div class="row">
-	<div id="video" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-	</div><!-- /#video -->
-</div><!-- /.row -->
+	<!-- <div id="video" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> **bootstrap**-->
+	<div id="video" class="large-12 medium-12 small-12 columns">
+	</div>
+	<!-- /#video -->
+</div>
+<!-- /.row -->
 
 <div class="row">
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clipping-instructions">
+	<!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clipping-instructions"> **bootstrap**-->
+	<div class="large-12 medium-12 small-12 columns clipping-instructions">
 		<strong>Instructions:</strong>
 		<p class="clip-instruction-text">Start by clicking the "Create New Track" button to begin clipping the video down to tracks so you can starting selling the concert and make some money!</p>
 	</div><!-- /.clipping-instructions -->
@@ -45,74 +64,67 @@
 	</div><!-- /.clip-btn-container -->
 </div><!-- /.row -->
 
-<div class="row">
+<!-- <div class="row">
 	<div class="alert alert-warning processing-alert alert-dismissible hidden" role="alert">
 	<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 	<p><strong>Hold on!</strong> This action may take some time to complete. Please check back later to see if it is done. This process could take anywhere from 30 minutes to 2 hours. We will send you an email when it is done as well so you don't have to wait around. Thank you!</p>
 	<p><button type="button" class="btn btn-warning continue-processing">Continue</button></p>
-	</div><!-- /.alert -->
-</div><!-- /.row -->
+	</div> -->
+	<!-- /.alert -->
+<!-- </div> -->
+<!-- /.row -->
 
-<div class="track-container table-responsive">
-<h3 id="album-title">Tracks</h3>
-<table class="table table-hover stream-tracks">
-	<thead>
-		<th>#</th>
-		<th>Name</th>
-		<th>Time</th>
-		<th>Actions</th>
-	</thead><!-- / table header rows -->
-	<tbody>
-	</tbody><!-- / table body rows -->
-</table><!-- /.table -->
-</div><!-- /.track-container -->
+<div class="track-container">
+	<h3 id="album-title">Tracks<span id="on-album-name"></span></h3>
+	<table class="large-12 medium-12 small-12 columns stream-tracks">
+		<thead>
+			<th>#</th>
+			<th>Name</th>
+			<th>Time</th>
+			<th>Actions</th>
+		</thead>
+		<!-- / table header rows -->
+		<tbody>
+			<!-- table data rows go here -->
+		</tbody>
+		<!-- / table body rows -->
+	</table>
+	<!-- /.table -->
+</div>
+<!-- /.track-container -->
 
-<div class="modal" id="album-name-modal">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-				<h4 class="modal-title">Create a name for your new Album</h4>
-			</div>
-			<div class="modal-body">
-				<div class="form-group">
-					<input type="text" class="form-control" id="album-name-input" placeholder="Create a name for your new album">
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" id="album-genre-input" placeholder="Specify a genre for this album">
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-primary" id="save-album-name-btn">Save Album</button>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.album-name-modal -->
+<div class="reveal-modal" id="album-name-modal" data-reveal>
+	<h2>Create a name for your new Album</h2>
+	<div>
+		<input type="text" id="album-name-input" placeholder="Create a name for your new album">
+	</div>
+	<div>
+		<input type="text" id="album-genre-input" placeholder="Specify a genre for this album">
+	</div>
+	<button type="button" id="save-album-name-btn">Save Album</button>
+	<a class="close-reveal-modal">&#215;</a>
+</div>
+<!-- /#album-name-modal -->
 
-<div class="modal" id="track-name-modal">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-				<h4 class="modal-title">Create a name for this Track here.</h4>
-			</div>
-			<div class="modal-body">
-				<input type="text" class="form-control" id="track-name-input">
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-primary" id="save-track-name-btn">Save Track</button>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.track-name-modal -->
+<div class="reveal-modal" id="track-name-modal" data-reveal>
+	<h2>Enter a name for this Track here.</h2>
+	<input type="text" placeholder="Track Name" id="track-name-input">
+	<button type="button" id="save-track-name-btn">Save Track</button>
+	<a class="close-reveal-modal">&#215;</a>
+</div>
+<!-- /#track-name-modal -->
+
+<button type="button" id="zurb-test-modal">Test</button>
 
 @stop
 
 @section('scripts')
 
 <script>
+
+$('#zurb-test-modal').click(function() {
+	$('#album-name-modal').foundation('reveal', 'open');
+});
 
 // create jwplayer
 var filename = $('meta[name="filename"]').attr('content');
@@ -140,8 +152,9 @@ var track;
 track_clipping_btn.click(function() {
 	if(create_new_first_click)
 	{
-		$('#album-name-modal').modal();
-		$('#album-name-input').focus();
+		$('#album-name-modal').foundation('reveal', 'open');
+		// $('#album-name-modal').modal();
+		// $('#album-name-input').focus();
 		return; // return to end the click event function for the first use
 	}
 	if(btn_state === 'create')
@@ -166,8 +179,9 @@ track_clipping_btn.click(function() {
 		track.end_time = jwplayer('video').getPosition();
 		track.duration = track.end_time - track.start_time;
 		$('#track-name-input').val('');
-		$('#track-name-modal').modal();
-		$('#track-name-input').focus();
+		// $('#track-name-modal').modal();
+		$('#track-name-modal').foundation('reveal', 'open');
+		// $('#track-name-input').focus();
 	}
 });
 $('#save-album-name-btn').click(function() {
@@ -181,15 +195,17 @@ $('#save-album-name-btn').click(function() {
 		if(data.status === 'success')
 		{
 			create_new_first_click = false;
-			$('.alert-success .message_content').text(data.message);
-			$('.alert-success').removeClass('hidden');
+			// $('.alert-success .message_content').text(data.message); **bootstrap**
+			// $('.alert-success').removeClass('hidden'); **bootstrap**
 		}
 		else if(data.status === 'error')
 		{
-			$('.alert-danger .message_content').text(data.message);
-			$('.alert-danger').removeClass('hidden');
+			// $('.alert-danger .message_content').text(data.message); **bootstrap**
+			// $('.alert-danger').removeClass('hidden'); **bootstrap**
 		}
-		$('#album-name-modal').modal('hide');
+		$('span#on-album-name').text(' on ' + album);
+		$('#album-name-modal').foundation('reveal', 'close');
+		// $('#album-name-modal').modal('hide'); **bootstrap**
 	});
 });
 save_name_btn.click(function() {
@@ -198,19 +214,20 @@ save_name_btn.click(function() {
 	var minutes = Math.floor(rounded_duration / 60);
 	var seconds = (rounded_duration % 60);
 	track.duration_f = minutes + ':' + seconds;
-	$('#track-name-modal').modal('hide');
+	$('#track-name-modal').foundation('reveal', 'close');
+	// $('#track-name-modal').modal('hide'); **bootstrap**
 	track_number++;
 	track_clipping_btn.text('Create New Track');
 	$('.stream-tracks tbody').append("<tr class='track_" + track.number + "'><td>"+track.number+"</td><td>"+track.name+"</td><td>" + track.duration_f + "</td><td>Remove | Properties</td></tr>");
 	tracks.push(track);
 });
 
-$('.finish-process-tracks').click(function() {
-	$('.processing-alert').removeClass('hidden');
-});
+// $('.finish-process-tracks').click(function() {
+// 	$('.processing-alert').removeClass('hidden');
+// });
 
-$('.continue-processing').click(function() {
-	$('.processing-alert').alert('close');
+$('.finish-process-tracks').click(function() {
+	// $('.processing-alert').alert('close'); **bootstrap**
 	$('.finish-process-tracks').html('Working&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-spinner fa-spin"></i>');
 	$.ajax({
 		url: "<?php echo URL::route('recent_streams.process') ?>",
@@ -220,7 +237,8 @@ $('.continue-processing').click(function() {
 	}).done(function(data) {
 		if(data.status === 'success')
 		{
-			$('.finish-process-tracks').removeClass('btn-primary').addClass('btn-success').html('Finished&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check"></i>');
+			$('.finish-process-tracks').html('Finished&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check"></i>');
+			// $('.finish-process-tracks').removeClass('btn-primary').addClass('btn-success').html('Finished&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check"></i>'); **bootstrap**
 		}
 	});
 });

@@ -48,6 +48,19 @@ class StoreController extends \BaseController {
 
 	public function showArtistMusic($id)
 	{
+		// $artist = Artist::find($id);
+		// $albums = $artist->albums;
+		// foreach($albums as $album)
+		// {
+		// 	echo $album->name . '<br />';
+		// 	$tracks = $album->tracks;
+		// 	foreach($tracks as $track)
+		// 	{
+		// 		echo $track->name . '<br />';
+		// 	}
+		// }
+		// return;
+
 		$artist = Artist::find($id);
 
 		$albums = $artist->albums;
