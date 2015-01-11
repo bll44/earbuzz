@@ -9,8 +9,17 @@ class PagesController extends BaseController {
 	 */
 	public function index()
 	{
-		$concerts = Concert::with('Artist')->orderBy('start_time', 'ASC')->take(5)->get();
-		return View::make('pages.index', compact('concerts'));
+		$concerts = Concert::with('Artist')->orderBy('start_time', 'ASC')->paginate(4);
+		$mcids = array();
+		if(Auth::check())
+		{
+			$my_concerts = Auth::user()->concerts;
+			foreach($my_concerts as $mc)
+			{
+				$mcids[] = $mc->id;
+			}
+		}
+		return View::make('pages.index', compact('concerts', 'mcids'));
 	}
 
 	/**

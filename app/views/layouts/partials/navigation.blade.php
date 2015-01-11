@@ -4,8 +4,8 @@
 	<ul class="title-area">
 		<li class="name">
 			<h1>
-				<a href="/" id="logo">
-					<img src="/img/earbuzz-logo.png" alt="EARBUZZ" />
+				<a href="{{ URL::to('/') }}" id="logo">
+					{{ HTML::image('img/earbuzz-logo.png', 'Earbuzz Logo') }}
 					<span>EarBuzz</span>
 				</a>
 				<!-- {{ link_to('/', 'EarBuzz', ['id' => 'logo']) }} -->
@@ -60,7 +60,6 @@
 						<li>{{ link_to('logout', 'Sign Out', ['class' => 'page']) }}</li>
 					</ul>
 				</li>
-
 			@endif
 		</ul>
 

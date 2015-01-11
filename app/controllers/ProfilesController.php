@@ -60,14 +60,10 @@ class ProfilesController extends BaseController {
 		if($user->type === 'artist')
 		{
 			$next_concert = DB::select("SELECT * FROM concerts WHERE artist_id = '{$artist->id}' AND start_time > CURRENT_TIMESTAMP ORDER BY start_time ASC LIMIT 1");
-			$next_concert = $next_concert[0];
+			if(count($next_concert) > 0) $next_concert = $next_concert[0];
 		}
-		else
-		{
-			$next_concert = null;
-		}
-		
-		// return View::make('profiles.show', ['user' => $user, 'music' => $music]);
+		count($next_concert) > 0 ?: $next_concert = null;
+
 		return View::make('profiles.show', compact('user', 'music', 'artist', 'favorites', 'countdown', 'upcoming', 'next_concert', 'is_artist_profile'));
 	}
 
@@ -108,7 +104,6 @@ class ProfilesController extends BaseController {
 
 	public function update($username)
 	{
-		return Input::all();
 
 		$user = User::whereUsername($username)->firstOrFail();
 

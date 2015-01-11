@@ -44,4 +44,9 @@ class Concert extends Eloquent {
 		return $date->format('l n/j/Y');
 	}
 
+	public function guests()
+	{
+		return $this->belongsToMany('User');
+	}
+
 }

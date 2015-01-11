@@ -86,5 +86,13 @@ class ArtistsController extends \BaseController {
 		//
 	}
 
+	public function changeStatus()
+	{
+		$user = Auth::user();
+		$status = Input::get('online_status');
+		$user->status = $status;
+		$user->save();
+	}
+
 
 }

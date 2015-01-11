@@ -8,6 +8,14 @@
 @foreach($artists as $artist)
 <div class="panel">
 <h2>{{ $artist->name }}</h2>
+
+	<!-- online status of artist -->
+	@if($artist->user->status)
+	<p>Artist is online</p>
+	@else
+	<p>Artist is offline</p>
+	@endif
+
 <p>{{ link_to_route('profile.show', 'view artist profile', [$artist->user->username]) }}</p>
 <button type="button" class="follow-artist-btn">Follow Artist</button>
 @if(null !== $artist->genre)

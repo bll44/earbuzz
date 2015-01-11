@@ -1,6 +1,11 @@
 <?php
 App::bind('Earbuzz\Billing\BillingInterface', 'eEarbuzz\Billing\StripeBilling');
 
+Route::get('testing', function()
+{
+	return User::find(2)->concerts;
+});
+
 Route::group(['before' => 'auth'], function()
 {
 	Route::get('recent_streams', ['as' => 'recent_streams.show', 'uses' => 'MediaController@showRecentStreams']);
@@ -8,11 +13,12 @@ Route::group(['before' => 'auth'], function()
 	Route::post('recent_streams/process', ['as' => 'recent_streams.process', 'uses' => 'MediaController@processAndClipVideo']);
 	Route::get('recent_streams/get_job_progress', ['as' => 'recent_streams.get_job_progress', 'uses' => 'MediaController@getJobProgress']);
 	Route::post('recent_streams/name_album', ['as' => 'recent_streams.name_album', 'uses' => 'MediaController@nameAlbum']);
-});
 
-Route::get('testing', function()
-{
-	return 'test';
+	// artist status change route
+	Route::post('artist/status/change', ['as' => 'status.change', 'uses' => 'ArtistsController@changeStatus']);
+
+	// add user to guest list for concert
+	Route::post('concert/attend', ['as' => 'concert.attend', 'uses' => 'ConcertController@addGuest']);
 });
 
 Route::get('upcoming_shows', 'ConcertController@index');

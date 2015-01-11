@@ -10,6 +10,16 @@
 	<meta property="og:description" content="EarBuzz | turning the world on its ear - again"/>
 	<!-- <meta property="fb:app_id" content="#"/> -->
 
+	@if(Auth::check())
+	<!-- pusher subscription channels -->
+	@if(null !== (Auth::user()->concerts))
+	@foreach(Auth::user()->concerts as $c)
+	<meta name="channel" content="{{ $c->id }}"/>
+	@endforeach
+	@endif
+	<!-- /.pusher channels -->
+	@endif
+
 	<title>@yield('meta-title', 'EarBuzz')</title>
 
 	<link rel="icon" type="image/png" href="{{{ asset('favicon.png') }}}"/>

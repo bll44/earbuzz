@@ -45,6 +45,7 @@
 
 	<!-- Add Custom Scripts -->
 	{{ HTML::script('js/custom.js') }}
+	{{ HTML::script('js/pusher_subscribe.js') }}
 	<script src="https://js.stripe.com/v2/"></script>
 	@yield('scripts')
 

@@ -50,6 +50,7 @@
 	<div class="row">
 		<div id="upcoming" class="large-8 columns">
 			Upcoming
+			@include('concerts/_partials/concert_listing')
 		</div>
 		<div id="trending" class="large-4 columns">
 			Trending

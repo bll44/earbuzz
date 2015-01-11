@@ -37,6 +37,19 @@ if (!empty($_POST)
 
 @section('content')
 <h1>
+	{{ $user->displayname }}
+	@if(Auth::user()->id === $user->id)
+	<div class="switch">
+		@if(Auth::user()->status)
+		<input id="status-switch" type="checkbox" checked>
+		@else
+		<input id="status-switch" type="checkbox">
+		@endif
+		<label for="status-switch">Status</label>
+	</div>
+	@endif
+</h1>
+<h1>
 	profile.show
 	<small>
 		@if (Auth::check())
@@ -60,6 +73,9 @@ if (!empty($_POST)
 				@if($countdown)
 					<div class="countdown-wrapper">
 					<div id="countdown">
+					@if($next_concert === null)
+					<h4>No upcoming concerts</h4>
+					@endif
 					</div>
 					<!-- /#countdown -->
 					</div>
@@ -151,12 +167,14 @@ if (!empty($_POST)
 		<!-- /.row -->
 	</div>
 </div>
+@if($is_artist_profile)
 <div class="row">
 	<div class="buy-music-btn-container">
 	{{ link_to_route('store.artist.music', "See Music by {$artist->name}", [$artist->id], ['class' => 'btn btn-danger']) }}
 	</div>
 	<!-- /.buy music button -->
 </div><!-- /.row -->
+@endif
 
 <!-- Favorite -->
 
@@ -234,14 +252,8 @@ $(function() {
 
 {{ HTML::script('js/countdown.min.js') }}
 <!-- VIDEO -->
-<script type="text/javascript">
-
-if (navigator.userAgent.match(/android/i) != null)
-{
-
-}
-else
-{
+@if( ! $countdown)
+<script>
 	jwplayer("video").setup({
 		autostart: 'false',
 
@@ -256,7 +268,21 @@ else
 		width: "100%",
 		primary: "flash"
 	});
-}
+</script>
+@endif
+<script type="text/javascript">
+$('#status-switch').change(function() {
+	var status;
+	$(this).is(':checked') ? status = 1 : status = 0;
+
+	$.ajax({
+		url: "{{ URL::route('status.change') }}",
+		type: 'POST',
+		data: { online_status: status }
+	}).done(function(data) {
+		console.log(data);
+	});
+});
 </script>
 
 @if(null !== $next_concert && $countdown)

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArtistGenrePivot extends Migration {
+class CreateUserConcertTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,12 @@ class CreateArtistGenrePivot extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('artist_genre', function(Blueprint $table)
+		Schema::create('concert_user', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('artist_id');
-			$table->integer('genre_id');
+			$table->integer('user_id');
+			$table->integer('concert_id');
+			$table->timestamps();
 		});
 	}
 
@@ -27,7 +28,7 @@ class CreateArtistGenrePivot extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('artist_genre');
+		Schema::drop('user_concert');
 	}
 
 }

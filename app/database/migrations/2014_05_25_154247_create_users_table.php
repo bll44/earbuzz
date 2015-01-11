@@ -18,10 +18,8 @@ class CreateUsersTable extends Migration {
 			$table->string('email')->unique()->nullable();
 			$table->string('password', 60);
 			$table->string('displayname', 255);
-			$table->enum('notify', ['y', 'n'])->default('y');
+			$table->tinyInteger('status')->default(0);
 			$table->string('type', 255)->nullable();
-			// $table->integer('type_id', 11);
-			// $table->string('billing_id')->nullable();
 			$table->string('provider')->nullable();
 			$table->string('provider_uid')->unique()->nullable();
 			$table->string('profile_url')->nullable();

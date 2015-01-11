@@ -152,4 +152,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface, Billa
 		throw new ModelNotFoundException;
 	}
 
+	public function concerts()
+	{
+		return $this->belongsToMany('Concert');
+	}
+
 }
