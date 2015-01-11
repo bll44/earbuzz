@@ -170,9 +170,4 @@ class MessagesController extends BaseController
 		return View::make('messenger.chat');
 	}
 
-	public function tester()
-	{
-		return View::make('pages.testing');
-	}
-
 }

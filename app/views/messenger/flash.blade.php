@@ -1,6 +1,4 @@
 <script id="flash-template" type="text/x-handlebars-template">
-	<div data-alert class="alert-box">
-		@{{ message }}
-	</div>
+	<div class="alert alert-info flash" style="display: none">@{{ message }}</div>
 </script>
 

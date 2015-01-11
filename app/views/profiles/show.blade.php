@@ -207,7 +207,7 @@ $(function() {
 
             // perform all bindings here
             chatChannel.bind('message-created', function(message) {
-                console.log(message);
+                // console.log(message);
                 chatContent.append(messageTemplate({
                     user: message.user,
                     content: message.content

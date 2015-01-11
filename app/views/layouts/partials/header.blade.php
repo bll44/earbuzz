@@ -20,7 +20,6 @@
 	<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/> -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="{{{ asset('theme/Earbuzz_v1/css/master.css') }}}">
-	<link rel="stylesheet" href="{{{ asset('css/vendor/jquery.gritter.css') }}}">
 
 
 	<!-- {{ HTML::style('css/custom.css') }} -->

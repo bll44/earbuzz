@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 	// Open a connection, and subscribe to the demo channel.
 	var pusher = new Pusher('999a6964f87015288a65');
-	var channel = pusher.subscribe('31');
+	var channel = pusher.subscribe('demo');
 
 	// Namespacing
 	window.App = {};
@@ -37,21 +37,21 @@ $(document).ready(function(){
 			var template = Handlebars.compile($('#flash-template').html());
 
 			$(template({ message: message}))
-			.appendTo('body')
-			.fadeIn(300)
-			.delay(5000)
-			.fadeOut(300, function() { $(this).remove(); });
+				.appendTo('body')
+				.fadeIn(300)
+				.delay(5000)
+				.fadeOut(300, function() { $(this).remove(); });
 		}
 	};
 
 	// Listeners
 	App.Listeners.Post = {
-		whenArtistPusblishPostToFollowers: function(data) {
+		whenPostWasPublished: function(data) {
 			(new App.Notifier).notify(data.title);
 		}
 	};
 
 	// Register bindings
-	channel.bind('PostWasPublished', App.Listeners.Post.whenArtistPusblishPostToFollowers);
+	channel.bind('PostWasPublished', App.Listeners.Post.whenPostWasPublished);
 
 })();

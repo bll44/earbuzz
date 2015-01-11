@@ -3,16 +3,16 @@ App::bind('Earbuzz\Billing\BillingInterface', 'eEarbuzz\Billing\StripeBilling');
 
 Route::group(['before' => 'auth'], function()
 {
-    Route::get('recent_streams', ['as' => 'recent_streams.show', 'uses' => 'MediaController@showRecentStreams']);
-    Route::get('recent_streams/edit/{file_name}', ['as' => 'recent_streams.edit', 'uses' => 'MediaController@edit']);
-    Route::post('recent_streams/process', ['as' => 'recent_streams.process', 'uses' => 'MediaController@processAndClipVideo']);
-    Route::get('recent_streams/get_job_progress', ['as' => 'recent_streams.get_job_progress', 'uses' => 'MediaController@getJobProgress']);
-    Route::post('recent_streams/name_album', ['as' => 'recent_streams.name_album', 'uses' => 'MediaController@nameAlbum']);
+	Route::get('recent_streams', ['as' => 'recent_streams.show', 'uses' => 'MediaController@showRecentStreams']);
+	Route::get('recent_streams/edit/{file_name}', ['as' => 'recent_streams.edit', 'uses' => 'MediaController@edit']);
+	Route::post('recent_streams/process', ['as' => 'recent_streams.process', 'uses' => 'MediaController@processAndClipVideo']);
+	Route::get('recent_streams/get_job_progress', ['as' => 'recent_streams.get_job_progress', 'uses' => 'MediaController@getJobProgress']);
+	Route::post('recent_streams/name_album', ['as' => 'recent_streams.name_album', 'uses' => 'MediaController@nameAlbum']);
 });
 
 Route::get('testing', function()
 {
-    return 'test';
+	return 'test';
 });
 
 Route::get('upcoming_shows', 'ConcertController@index');
@@ -29,10 +29,10 @@ Route::get('stripe/is_customer', ['as' => 'stripe.is_customer', 'uses' => 'Billi
 # Stripe Route Filter for Premium Only Access Pages
 Route::filter('subscribed', function()
 {
-    if (Auth::user() && ! Auth::user()->subscribed())
-    {
-        return Redirect::to('billing');
-    }
+	if (Auth::user() && ! Auth::user()->subscribed())
+	{
+		return Redirect::to('billing');
+	}
 });
 
 # Unused Stripe
@@ -41,21 +41,21 @@ Route::filter('subscribed', function()
 Route::post('stripetest', function()
 {
 	try
-    {
-        // $customerId = $billing->charge([
-            // 'email' => Input::get('email'),
-            // 'token' => Input::get('stripe-token')
-        // ]);
-        // dd($customerId);
-        // $user = Auth::id();
-        // $user->billing_id = $customerId;
-        // $user->save();
-    }
-    catch(Exception $e)
-    {
-        return Redirect::refresh()->withFlashMessage($e->getMessage());
-    }
-    return 'Charge was successful';
+	{
+		// $customerId = $billing->charge([
+			// 'email' => Input::get('email'),
+			// 'token' => Input::get('stripe-token')
+		// ]);
+		// dd($customerId);
+		// $user = Auth::id();
+		// $user->billing_id = $customerId;
+		// $user->save();
+	}
+	catch(Exception $e)
+	{
+		return Redirect::refresh()->withFlashMessage($e->getMessage());
+	}
+	return 'Charge was successful';
 
 	// return $billing->charge([
 		// 'email' => Input::get('email'),
@@ -129,42 +129,37 @@ Route::get('/register/fan/google', ['as' => 'registration.registerWithGoogleFan'
 
 # Messages
 Route::group(['prefix' => 'messages'], function () {
-    Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
-    Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
-    Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
-    Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
-    Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
+	Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
+	Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
+	Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
+	Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
+	Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
 });
 
 # Pusher
 App::singleton('Pusher', function($app) {
-    $keys = $app['config']->get('services.pusher');
-    return new Pusher(
-        $keys['public'],
-        $keys['secret'],
-        $keys['app_id']
-        );
-    });
+	$keys = $app['config']->get('services.pusher');
+	return new Pusher(
+		$keys['public'],
+		$keys['secret'],
+		$keys['app_id']
+		);
+	});
 
 # Chat
 Route::get('chat', ['as' => 'get.chat', 'uses' => 'MessagesController@chat']);
 Route::post('chat', ['as' => 'post.chat', 'uses' => 'MessagesController@chat']);
 
-Route::any('chatter', function()
+Route::any('tester', function()
 {
-    $input = Input::all();
-
-    App::make('Pusher')->trigger(
-        $input['channel'],
-        'PostWasPublished',
-        ['title' => $input['message']]
-        );
-
-    // Do Whataver
-    return 'Done';
+	App::make('Pusher')->trigger(
+		'demo',
+		'PostWasPublished',
+		['title' => 'My Great New Post']
+	);
+	// Do Whataver
+	return 'Done';
 });
-
-Route::get('tester', 'MessagesController@tester');
 
 # Search
 Route::get('api/search', 'SearchController@listUsernames');

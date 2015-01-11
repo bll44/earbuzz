@@ -46,6 +46,7 @@
 	{{ HTML::script('js/vendor/jquery.coverflow.js') }}
 	{{ HTML::script('js/vendor/jquery.magicsuggest.min.js') }}
 	{{ HTML::script('js/vendor/handlebars.js') }}
+	{{ HTML::script('http://js.pusher.com/2.2/pusher.min.js') }}
 
 	<!-- Add Custom Scripts -->
 	{{ HTML::script('js/custom.js') }}
