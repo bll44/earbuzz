@@ -6,7 +6,7 @@
 <body class="{{$bodyClass or 'vHome'}} no-js">
 
 	<div class="container row">
-		<header class="contain-to-grid sticky">
+		<header class="sticky">
 			@include('layouts/partials/navigation')
 		</header>
 
@@ -29,7 +29,7 @@
 
 	<!-- ::INCLUDE Move to partial -->
 	@include('/partials/modal')
-	@include('/partials/backToTop')
+	<!-- @include('/partials/backToTop') -->
 	<!-- ::END INCLUDE -->
 
 	<!-- Add core jQuery -->

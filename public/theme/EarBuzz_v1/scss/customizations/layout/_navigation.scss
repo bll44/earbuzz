@@ -23,8 +23,9 @@ header {
 
 .eb-primaryNav {
     background: transparent!important;
+    z-index: 9999;
 
-    section {
+    .top-bar-section {
         > ul > li:not(.has-form) {
             background: transparent;
 
@@ -35,8 +36,27 @@ header {
         }
     }
 
-    // @include debug;
+    #logo {
+        display: block;
+        width: 100px;
+        height: 100px;
+        text-indent: 100%;
+        overflow: hidden;
+        word-wrap: nowrap;
+        background: $orange;
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        transition: all .3s ease;
+
+    // when header is anchored
+        .fixed & {
+            text-indent: 0;
+            height: 45px;
+        }
+    }
 }
+
+
 
 .eb-sub-nav {
     margin: 0;

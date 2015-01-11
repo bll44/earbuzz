@@ -1,10 +1,10 @@
 <nav class="eb-primaryNav top-bar" data-topbar role="navigation">
+
 	<!-- Logo -->
 	<ul class="title-area">
 		<li class="name">
 			<h1>
-				<!-- <a href="/">EarBuzz</a> -->
-				{{ link_to('/', 'EarBuzz', ['class' => 'page']) }}
+				{{ link_to('/', 'EarBuzz', ['id' => 'logo']) }}
 			</h1>
 		</li>
 	</ul>

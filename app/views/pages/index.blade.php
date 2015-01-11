@@ -2,84 +2,61 @@
 
 @section('content')
 
-<style>
-
-#live-now-container {
-	margin-top: 10px;
-}
-
-img.live_now_placeholder {
-	width: 275px;
-	height: 275px;
-}
-
-.carousel-header {
-	display: inline;
-	padding: 10px;
-}
-
-.clearfix {
-	clear: both;
-}
-
-</style>
-
-<div class="content">
-	<h1>pages.index</h1>
-
-	<!-- concerts/_partials/upcoming.blade.php -->
-	@include('concerts/_partials/upcoming')
-	<!-- /upcoming concerts partial -->
-
-</div>
-
-
-<?php
-// $lastfm_api_key = 'ae94454236db108880591ee2b51a524b';
-// $lastfm_api_secret = '8e195882ce2cc3864c2549217dc86e4d';
-// $lastfm = new \Dandelionmood\LastFm\LastFm( $lastfm_api_key, $lastfm_api_secret );
-// $mac = $lastfm->artist_getInfo(array('artist' => 'Mac DeMarco'));
-?>
-
-@if(Auth::check())
-	@if(Auth::user()->artist !== null && Session::pull('complete_artist_info'))
-	<div class="alert alert-warning">
-		<h4>Complete your Artist profile</h4>
-		<p><strong>Wait!</strong> Complete profile information text. Complete profile information text.</p>
-		<p>
-			{{ link_to_route('profile.edit_artist', 'Complete profile', [Auth::user()->id], ['class' => 'btn btn-info']) }}
-			<button type="button" class="btn btn-default" data-dismiss="alert">I'll do this later</button>
-		</p>
-	</div><!-- /.alert -->
-	@endif
-@endif
-
 <div class="content">
 
-	@if (Auth::guest())
-	<p>
-		Welcome to the homepage.
-	</p>
-
-	@else
-	<p>There really isn't much here yet. Why don't you check out your {{ link_to_profile() }}?</p>
+	@if(Auth::check())
+		@if(Auth::user()->artist !== null && Session::pull('complete_artist_info'))
+		<div class="alert alert-warning">
+			<h4>Complete your Artist profile</h4>
+			<p><strong>Wait!</strong> Complete profile information text. Complete profile information text.</p>
+			<p>
+				{{ link_to_route('profile.edit_artist', 'Complete profile', [Auth::user()->id], ['class' => 'btn btn-info']) }}
+				<button type="button" class="btn btn-default" data-dismiss="alert">I'll do this later</button>
+			</p>
+		</div><!-- /.alert -->
+		@endif
 	@endif
+
+
+	<div id="eb-featured" class="row">
+		<div id="coverflow" class="large-12 columns">
+			<div>
+				<img src="http://placehold.it/920x460&text=0" />
+			</div>
+
+			<div data-active="true">
+				<img src="http://placehold.it/920x460&text=1" />
+				<div class="info">
+					<h3 class="name">Artist Name</h3>
+					<h4 class="genre">Genre: [genre]</h4>
+				</div>
+			</div>
+
+			<div>
+				<img src="http://placehold.it/920x460&text=2" />
+			</div>
+
+			<div>
+				<img src="http://placehold.it/920x460&text=3" />
+			</div>
+
+			<div>
+				<img src="http://placehold.it/920x460&text=4" />
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div id="upcoming" class="large-8 columns">
+			Upcoming
+		</div>
+		<div id="trending" class="large-4 columns">
+			Trending
+		</div>
+	</div>
+
+
 </div>
-
-<script>
-
-// $(document).ready(function() {
-// 	$('.live_now').slick({
-// 		infinite: true,
-// 		slidesToShow: 3,
-// 		slidesToScroll: 3,
-// 		autoplay: true,
-// 		autoplaySpeed: 6000,
-// 		speed: 700,
-// 		arrows: false
-// 	});
-// });
-
-</script>
 
 @stop

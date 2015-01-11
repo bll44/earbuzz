@@ -33,6 +33,11 @@ Legacy styles - will be overwrited by new styles
 @import "vendor/jquery.coverflow";
 
 /*===========================================================================
-   IMPORT EARBUZZ
+   IMPORT Customizations
 ===========================================================================*/
-@import "earbuzz/earbuzz";
+@import "customizations/styles";
+
+/*===========================================================================
+   IMPORT CUSTOM OVERRIDES
+===========================================================================*/
+@import "custom";
