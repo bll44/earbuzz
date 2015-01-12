@@ -49,11 +49,11 @@
 
 	<div class="row panel">
 		<div id="upcoming" class="large-8 columns">
-			Upcoming
+			<h2>Upcoming</h2>
 			@include('concerts/_partials/concert_listing')
 		</div>
 		<div id="trending" class="large-4 columns">
-			Trending
+			<h2>Trending</h2>
 		</div>
 	</div>
 

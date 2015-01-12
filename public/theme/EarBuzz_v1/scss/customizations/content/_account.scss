@@ -66,3 +66,39 @@
         @include box-sizing;
     }
 }
+
+// artist show
+#show-artists {
+    font-size: 0;
+
+    .artist-container {
+        display: inline-block;
+        margin-bottom: 30px;
+        padding: 0 15px;
+        width: 25%;
+        font-size: 12px;
+        @include box-sizing;
+        vertical-align: top;
+
+        .inner {
+            padding: 5px 15px;
+            background: $grayWhite;
+            border: 4px transparent solid;
+
+            -webkit-box-shadow: 0px 4px 32px -8px rgba(0,0,0,0.75);
+            -moz-box-shadow:    0px 4px 32px -8px rgba(0,0,0,0.75);
+            box-shadow:         0px 4px 32px -8px rgba(0,0,0,0.75);
+        }
+
+        &:hover,
+        &:focus {
+            .inner {
+                border-color: $grayLight;
+                border-style: dashed;
+            }
+        }
+
+        &:nth-child(4n + 1) {padding-left: 0};
+        &:nth-child(4n + 4) {padding-right: 0};
+    }
+}

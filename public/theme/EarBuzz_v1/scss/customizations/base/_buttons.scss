@@ -1,7 +1,7 @@
 button,
 .button {
     color: $grayLight;
-    background-color: darken($app-accent, 10%);
+    background-color: darken($app-accent, 5%);
 
     &:hover,
     &:focus {

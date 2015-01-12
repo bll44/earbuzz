@@ -80,11 +80,23 @@
 }
 
 #upcoming {
-    height: 800px;
-    outline: 1px white dotted;
+    // height: 800px;
+    border-top: 4px $app-accent solid;
+    h2 {
+        margin: 15px 0;
+        padding: 0;
+        text-transform: uppercase;
+        color: $app-accent;
+        font-weigth: bold;
+    }
 }
 
 #trending {
-    height: 600px;
-    outline: 1px silver dotted;
+    border-top: 4px $gray solid;
+    h2 {
+        margin: 15px 0;
+        padding: 0;
+        text-transform: uppercase;
+        color: $gray;
+    }
 }

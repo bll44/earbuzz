@@ -1,9 +1,10 @@
 @extends('layouts/master')
 <!-- VAR -->
-{{ $style = isset($_GET["style"]) && !empty($_GET["style"]) ? $_GET['style'] : "all"; }}
 
 <!-- Content -->
 @section('content')
+{{ $style = isset($_GET["style"]) && !empty($_GET["style"]) ? $_GET['style'] : "all"; }}
+<div class="panel">
 	<style>
 	    h1 { clear: both; }
 	</style>
@@ -812,5 +813,5 @@
 		</div>
 	@endif
 
-
+</div>
 @stop

@@ -6,28 +6,6 @@ body {
     font-family: $app-primary-font;
 }
 
-div,
-dl,
-dt,
-dd,
-ul,
-ol,
-li,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-pre,
-form,
-p,
-blockquote,
-th,
-td {
-    font-family: $app-primary-font;
-}
-
 .container {
     max-width: none;
 
@@ -60,6 +38,7 @@ main,
     }
 }
 
+//table overrides
 table {
     td {
         button,
@@ -69,6 +48,7 @@ table {
     }
 }
 
+//modals
 .reveal-modal {
     border: 0;
     margin-top: -50px;
@@ -76,4 +56,21 @@ table {
 
 .reveal-modal-bg {
     background: rgba(0,0,0,0.8);
+}
+
+//labels
+.label {
+    i {
+        display: inline-block;
+        margin-right: 5px;
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        background: darken($gray, 5%);
+    }
+    &.success {
+        i {
+            background: lighten(#43ac6a, 5%);
+        }
+    }
 }
