@@ -3,6 +3,29 @@ body {
     padding: 0;
     background-color: $app-color;
     background: url(http://api.thumbr.it/whitenoise-361x370.png?background=666666ff&noise=808080&density=77&opacity=33);
+    font-family: $app-primary-font;
+}
+
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+p,
+blockquote,
+th,
+td {
+    font-family: $app-primary-font;
 }
 
 .container {
@@ -21,7 +44,7 @@ main,
 }
 
 .panel {
-    background: rgba(#f2f2f2, 0.8);
+    background: rgba($grayLight, 1);
     border: 0;
 
     -webkit-box-shadow: 0px 4px 32px -8px rgba(0,0,0,0.75);
@@ -30,6 +53,10 @@ main,
 
     @include respond-to(768) {
         padding: 1.25rem 120px;
+    }
+
+    & .panel {
+        padding: 1.125rem;
     }
 }
 
