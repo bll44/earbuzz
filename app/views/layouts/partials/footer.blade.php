@@ -1,14 +1,20 @@
 <div id="footer" class="row">
 	<div class="large-3 columns">
+		<h3>Earbuzz</h3>
+
 		<ul>
-			<li><a href="">About Us</a></li>
-			<li><a href="">Contact Us</a></li>
-			<li><a href="">Partners</a></li>
+			<li><a href="#">Artists</a></li>
+			<li><a href="#">Shows</a></li>
+			<li><a href="#">Live Now</a></li>
 		</ul>
 	</div>
 
 	<div class="legal large-3 columns">
+		<h3>About</h3>
 		<ul>
+			<li><a href="">About Us</a></li>
+			<li><a href="">Contact Us</a></li>
+			<li><a href="">Partners</a></li>
 			<li><a href="#">Legal</a></li>
 			<li><a href="#">Privacy Policy</a></li>
 			<li><a href="#">Cookies</a></li>
@@ -16,6 +22,7 @@
 	</div>
 
 	<div class="social large-3 columns">
+		<h3>Connect</h3>
 		<ul>
 			<li><a href="https://www.facebook.com/pages/earBuzzcom-100-to-Artists-since-1999/8172433245">Facebook</a></li>
 			<li><a href="https://twitter.com/EARBUZZNEWS">Twitter</a></li>

@@ -5,7 +5,8 @@
 		<li class="name">
 			<h1>
 				<a href="{{ URL::to('/') }}" id="logo">
-					{{ HTML::image('img/earbuzz-logo.png', 'Earbuzz Logo') }}
+				{{ HTML::image('/img/earbuzz-logo-trans.png', 'EARBUZZ') }}
+					<!-- <img src="/img/earbuzz-logo.png" alt="EARBUZZ" /> -->
 					<span>EarBuzz</span>
 				</a>
 				<!-- {{ link_to('/', 'EarBuzz', ['id' => 'logo']) }} -->
@@ -18,16 +19,13 @@
 		<!-- Right Nav Section -->
 		<ul class="right">
 			<li class="has-dropdown">
-				<a href="#">Browse</a>
+				<a href="#">Discover</a>
 				<ul class="dropdown">
 					<li>
-						<a href="">Featured</a>
+						{{ link_to('shows', 'Shows', ['class' => 'page']) }}
 					</li>
 					<li>
-						<a href="">Shows</a>
-					</li>
-					<li>
-						{{ link_to('browse', 'Discover', ['class' => 'page']) }}
+						{{ link_to('browse', 'Artist', ['class' => 'page']) }}
 					</li>
 				</ul>
 			</li>
@@ -44,7 +42,7 @@
 
 				<div id="loginModal" class="reveal-modal small" data-reveal></div>
 			@else
-				<li class="has-dropdown">
+				<li class="has-dropdown user">
 					{{ link_to_profile( Auth::user() -> username ) }}
 					<ul class="dropdown">
 						<li>{{ link_to_profile('Profile') }}</li>
@@ -63,9 +61,9 @@
 			@endif
 		</ul>
 
-		<ul class="left">
+		<!-- <ul class="left">
 			<li class="active"><a href="/styleguide?style=all" class="button">STYLEGUIDE</a></li>
-		</ul>
+		</ul> -->
 
 	</section>
 
