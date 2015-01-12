@@ -20,7 +20,7 @@ class CreateConcertsTable extends Migration {
 			$table->dateTime('end_time');
 			$table->mediumText('description')->nullable();
 			$table->integer('artist_id');
-			$table->integer('guestlist_id');
+			// $table->integer('guestlist_id');
 			$table->timestamps();
 		});
 	}
