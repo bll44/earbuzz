@@ -21,9 +21,9 @@
 			<li class="has-dropdown">
 				<a href="#">Discover</a>
 				<ul class="dropdown">
-					<li>
+					{{--<li>
 						{{ link_to('shows', 'Shows', ['class' => 'page']) }}
-					</li>
+					</li>--}}
 					<li>
 						{{ link_to('browse', 'Artist', ['class' => 'page']) }}
 					</li>
