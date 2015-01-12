@@ -18,7 +18,7 @@
 				<h3 class="panel-title">{{ Auth::user()->username }}</h3>
 			</div>
 			<div class="panel-body">
-				<h4>Account information&nbsp;&nbsp;<small><a href="#"><i class="fa fa-edit"></i>Edit</a></small></h4>
+				<h4>Account information&nbsp;&nbsp;<small><a href="#" id="account-edit-link"><i class="fa fa-edit"></i>Edit</a></small></h4>
 				<ul class="list-group">
 					<li class="list-group-item"><b>Username:</b> {{ Auth::user()->username }}</li>
 					<li class="list-group-item"><b>Email:</b> {{ Auth::user()->email }}</li>
@@ -113,6 +113,11 @@
 
 @section('scripts')
 <script>
+
+$('#account-edit-link').click(function(event) {
+
+	event.preventDefault();
+});
 
 $('button.show_stream_key').click(function() {
 	// hide the button
