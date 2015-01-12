@@ -173,6 +173,11 @@ save_name_btn.click(function() {
 	var rounded_duration = Math.ceil(track.duration);
 	var minutes = Math.floor(rounded_duration / 60);
 	var seconds = (rounded_duration % 60);
+	if(seconds < 10)
+	{
+		seconds = seconds.toString();
+		seconds = '0' + seconds;
+	}
 	track.duration_f = minutes + ':' + seconds;
 	console.log(track.duration_f);
 	$('#track-name-modal').foundation('reveal', 'close');
