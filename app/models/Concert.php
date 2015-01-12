@@ -46,7 +46,7 @@ class Concert extends Eloquent {
 
 	public function guests()
 	{
-		return $this->belongsToMany('User');
+		return $this->belongsToMany('User')->withTimestamps();
 	}
 
 }

@@ -50,7 +50,7 @@ $(function() {
     $('#ms').magicSuggest({
     	allowFreeEntries: false,
     	required: true,
-        data: "/api/search/",
+        data: "{{ URL::to('api/search') }}",
         @if(is_null($user_exists))
         @else
         value: [{{ $user_exists->id }}],

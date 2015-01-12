@@ -26,8 +26,30 @@ class ProfilesController extends BaseController {
 	 */
 	public function show($username)
 	{
-		// this is only temporary to stop it from erroring if no user is logged in when trying to view a profile
-		if(Auth::guest()) return Redirect::home();
+		if ( ! Auth::guest())
+		{
+			// THIS ALL NEEDS MOVED TO A CONTROLLER!
+
+			$config = array(
+				'KEY' => '999a6964f87015288a65',
+				'SECRET' => 'ee1d6acc6f9f8dfdf94c',
+				'APPID' => '80855'
+			);
+
+			$pusher = new Pusher($config['KEY'], $config['SECRET'], $config['APPID']);
+
+			if( ! empty($_POST)
+				&& array_key_exists('channel', $_POST)
+				&& array_key_exists('user', $_POST)
+				&& array_key_exists('content', $_POST)
+			)
+			{
+				$pusher->trigger($_POST['channel'], 'message-created', array(
+					'user' => $_POST['user'],
+					'content' => $_POST['content']
+				));
+			}
+		}
 
 		try
 		{
@@ -47,6 +69,7 @@ class ProfilesController extends BaseController {
 
 		$artist = $user->artist;
 		$favorites = array();
+		$next_concert = null;
 		if(Auth::check())
 		{
 			$favorites = DB::table('favorites')->whereUserId(Auth::user()->id)->lists('artist_id');
@@ -64,7 +87,18 @@ class ProfilesController extends BaseController {
 		}
 		count($next_concert) > 0 ?: $next_concert = null;
 
-		return View::make('profiles.show', compact('user', 'music', 'artist', 'favorites', 'countdown', 'upcoming', 'next_concert', 'is_artist_profile'));
+		return View::make('profiles.show',
+			compact(
+				'user',
+				'music',
+				'artist',
+				'favorites',
+				'countdown',
+				'upcoming',
+				'next_concert',
+				'is_artist_profile'
+			)
+		);
 	}
 
 	// Display specific users favorites

@@ -154,7 +154,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface, Billa
 
 	public function concerts()
 	{
-		return $this->belongsToMany('Concert');
+		return $this->belongsToMany('Concert')->withTimestamps();
 	}
 
 }

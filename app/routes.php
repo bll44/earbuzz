@@ -1,7 +1,7 @@
 <?php
 App::bind('Earbuzz\Billing\BillingInterface', 'eEarbuzz\Billing\StripeBilling');
 
-Route::get('testing', function()
+Route::get('brad_test', function()
 {
 	return User::find(2)->concerts;
 });
