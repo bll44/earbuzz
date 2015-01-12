@@ -204,6 +204,7 @@ $('.finish-process-tracks').click(function() {
 		if(data.status === 'success')
 		{
 			$('.finish-process-tracks').html('Finished&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check"></i>');
+			$('button.finish-process-tracks').attr('disabled', true);
 			// $('.finish-process-tracks').removeClass('btn-primary').addClass('btn-success').html('Finished&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check"></i>'); **bootstrap**
 		}
 	});
