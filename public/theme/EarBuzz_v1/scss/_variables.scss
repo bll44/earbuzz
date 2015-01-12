@@ -9,6 +9,8 @@ $teal:              #39cccc;
 
 $red:               #ff4136;
 
+$aqua:              #7Fdbff;
+
 //gray scale
 $grayWhite:         #fff;
 $grayLight:         #ebebeb;
@@ -30,6 +32,6 @@ $primary-font:      'Open Sans', sans-serif;
    APP SETTINGS
 ===========================================================================*/
 $app-padding: null;
-$app-accent: $orange;
+$app-accent: darken($teal, 20%);
 $app-color:  $grayDarker;
 $app-primary-font: $primary-font;
