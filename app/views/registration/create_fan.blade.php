@@ -2,47 +2,46 @@
 
 @section('content')
 
-<h1>registration.create_fan</h1>
+<!-- <h1>registration.create_fan</h1> -->
 
 <?php $fb_login = route('registration.registerWithFacebookFan'); ?>
 <?php $twitter_login = route('registration.registerWithTwitterFan'); ?>
 <?php $google_login = route('registration.registerWithGoogleFan'); ?>
 
 <div class="container">
-	<div class="omb_login">
-		<h3 class="omb_authTitle"><a href="/login">Login</a> or Sign up</h3>
-		<div class="row omb_row-sm-offset-3 omb_socialButtons">
-			<div class="col-xs-4 col-sm-2">
-				<a href="{{ $fb_login }}" class="btn btn-lg btn-block omb_btn-facebook">
+	<div>
+
+		<h1>Sign up!</h1>
+
+		<div class="row social">
+			<div class="large-4 columns">
+				<a href="{{ $fb_login }}" class="button facebook">
 					<i class="fa fa-facebook visible-xs"></i>
-					<span class="hidden-xs">Facebook</span>
+					<span>Facebook</span>
 				</a>
 			</div>
-			<div class="col-xs-4 col-sm-2">
-				<a href="{{ $twitter_login }}" class="btn btn-lg btn-block omb_btn-twitter">
+			<div class="large-4 columns">
+				<a href="{{ $twitter_login }}" class="button twitter">
 					<i class="fa fa-twitter visible-xs"></i>
 					<span class="hidden-xs">Twitter</span>
 				</a>
 			</div>
-			<div class="col-xs-4 col-sm-2">
-				<a href="{{ $google_login }}" class="btn btn-lg btn-block omb_btn-google">
+			<div class="large-4 columns">
+				<a href="{{ $google_login }}" class="button google">
 					<i class="fa fa-google-plus visible-xs"></i>
 					<span class="hidden-xs">Google+</span>
 				</a>
 			</div>
 		</div>
 
-		<div class="row omb_row-sm-offset-3 omb_loginOr">
-			<div class="col-xs-12 col-sm-6">
-				<hr class="omb_hrOr">
-				<span class="omb_spanOr">or</span>
-			</div>
-		</div>
+		<hr>
+		<span class="span-or">OR</span>
 
 		<div class="row omb_row-sm-offset-3">
 			<div class="col-xs-12 col-sm-6">
 				{{ Form::open(['route' => 'registration.store_fan', 'class' => 'omb_loginForm', 'role' => 'form']) }}
 				<!-- <form class="omb_loginForm" action="" autocomplete="off" method="POST"> -->
+
 					<!-- the user's Display Name for use throughout the website -->
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>

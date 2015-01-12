@@ -1,5 +1,47 @@
 button,
 .button {
     color: $grayLight;
-    background-color: $grayDarkest;
+    background-color: darken($app-accent, 10%);
+
+    &:hover,
+    &:focus {
+        background: lighten($app-accent, 5%);
+        cursor: pointer !important;
+    }
+
+    &.alt {
+        color: $app-accent;
+        text-transform: uppercase;
+        font-weight: bold;
+        background: $grayWhite;
+
+        &:hover,
+        &:focus {
+            color: $grayWhite;
+            background: lighten($app-accent, 5%);
+        }
+    }
+
+    //social
+    &.facebook {
+        background: $facebook-color;
+        &:hover,
+        &:focus {
+            background: lighten($facebook-color, 5%);
+        }
+    }
+    &.twitter {
+        background: $twitter-color;
+        &:hover,
+        &:focus {
+            background: lighten($twitter-color, 5%);
+        }
+    }
+    &.google {
+        background: $google-color;
+        &:hover,
+        &:focus {
+            background: lighten($google-color, 5%);
+        }
+    }
 }

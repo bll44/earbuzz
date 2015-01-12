@@ -1,0 +1,68 @@
+#loginModal {
+    width: 50%;
+}
+#loginModal,
+#step2Modal {
+    background: $app-accent;
+
+    h1 {
+        color: $grayWhite;
+        text-align: center;
+    }
+    p {
+        color: $grayLight;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    hr {
+        border-color: rgba(lighten($app-accent, 20%), 0.8);
+    }
+
+    .span-or {
+        display: block;
+        margin: -31px auto 0;
+        width: 80px;
+        text-align: center;
+        background: $app-accent;
+    }
+
+    .close-reveal-modal,
+    dialog .close-reveal-modal{
+        color: darken($app-accent, 20%);
+    }
+
+    .social {
+        .columns {
+            padding: 2px;
+        }
+        .button {
+            margin: 0;
+            padding: 15px 2px;
+            width: 100%;
+        }
+    }
+
+    .submit-form {
+        float: right;
+    }
+
+    .rememberMe {
+        float: left;
+
+        .copy {
+            font-size: 10px;
+        }
+    }
+
+    .forgotPwd a {
+        color: $gray;
+    }
+
+}
+.sign-up {
+    .button {
+        width: 49%;
+        @include box-sizing;
+    }
+}

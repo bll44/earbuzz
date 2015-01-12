@@ -29,7 +29,6 @@
 					</li>
 				</ul>
 			</li>
-			<li>{{ link_to('live', 'Live Now') }}</li>
 			<!-- <li><a href="#">Features</a></li> -->
 
 			@if (Auth::guest())
@@ -41,7 +40,9 @@
 
 
 				<div id="loginModal" class="reveal-modal small" data-reveal></div>
+				<div id="step2Modal" class="reveal-modal small" data-reveal></div>
 			@else
+				<li>{{ link_to('live', 'Live Now') }}</li>
 				<li class="has-dropdown user">
 					{{ link_to_profile( Auth::user() -> username ) }}
 					<ul class="dropdown">
