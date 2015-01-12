@@ -3,7 +3,12 @@
 
 	@include('layouts/partials/header')
 
-<body class="{{$bodyClass or 'vHome'}} no-js">
+
+@if(Request::path() === '/')
+<body class="vHome no-js">
+@else 
+<body class="{{$bodyClass or 'vContent'}} no-js">
+@endif
 
 <!-- TEMPORARY -->
 <div id="temp-notification-spot"></div>

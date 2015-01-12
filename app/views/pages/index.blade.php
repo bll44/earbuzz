@@ -47,7 +47,7 @@
 	</div>
 
 
-	<div class="row">
+	<div class="row panel">
 		<div id="upcoming" class="large-8 columns">
 			Upcoming
 			@include('concerts/_partials/concert_listing')

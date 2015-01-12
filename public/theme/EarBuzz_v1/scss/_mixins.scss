@@ -29,3 +29,51 @@
     -moz-box-sizing: $prop;
      box-sizing: $prop;
 }
+
+
+// ==========================================================================
+// @mixin respond-to
+// ==========================================================================
+
+$media-query-support: true !default;
+
+@mixin respond-to($media: 320, $mq-support: $media-query-support) {
+    @if $mq-support == true {
+        // output content wrapped in media queries
+        @media (min-width: #{$media / 16}em) { @content; }
+    }
+    @elseif $mq-support == false {
+        // just output the content
+        @if $media <= 1024 {
+            @content;
+        }
+    }
+}
+
+
+// ==========================================================================
+// @mixin triangle
+// ==========================================================================
+@mixin triangle ($direction: right, $color: #0050bf, $size: 3px) {
+  border-style: solid;
+  @if $direction == right {
+    border-color: transparent transparent transparent $color;
+    _border-color: #ffffff #ffffff #ffffff $color;
+    border-width: $size 0 $size $size;
+  }
+  @else if $direction == left {
+    border-color: transparent $color transparent transparent;
+    _border-color: #ffffff $color #ffffff #ffffff;
+    border-width: $size $size $size 0;
+  }
+  @else if $direction == up {
+    border-color: transparent transparent $color transparent;
+    _border-color: #ffffff #ffffff $color #ffffff;
+    border-width: 0 $size $size $size;
+  }
+  @else if $direction == down {
+    border-color: $color transparent transparent transparent;
+    _border-color: $color #ffffff #ffffff #ffffff;
+    border-width: $size $size 0 $size;
+  }
+}

@@ -1,39 +1,55 @@
 header {
-    // margin-bottom: 25px;
 
     &.contain-to-grid {
         background: none;
     }
 
     &.fixed { //sticky styles
-        background: $grayDarker;
-        background: rgba(48, 52, 56, 0.9); //translucent
+        background: $app-color;
+        background: rgba($app-color, 1);
 
+        -webkit-box-shadow: 0px 0px 8px 3px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow:    0px 0px 8px 3px rgba(0, 0, 0, 0.3);
+        box-shadow:         0px 0px 8px 3px rgba(0, 0, 0, 0.3);
 
-        body:not(.vHome) & { //box shadow applied to all pages except home
-            // background: $orange;
-            // background: rgba(255, 190, 71, 0.9); //translucent
-
-            -moz-box-shadow: 0px 0px 8px 3px rgba(0, 0, 0, 0.3);
-            -webkit-box-shadow: 0px 0px 8px 3px rgba(0, 0, 0, 0.3);
-            box-shadow: 0px 0px 8px 3px rgba(0, 0, 0, 0.3);
+        body:not(.vHome) & { //not home styles
+            //
         }
     }
 }
 
 .eb-primaryNav {
-    background: transparent!important;
+    background: transparent !important;
     z-index: 9999;
 
     .top-bar-section {
         > ul > li:not(.has-form) {
             background: transparent;
+            &:hover,
+            &:focus {
+                background: darken($app-color, 10%);
+            }
+
+            .dropdown {
+                a {
+                    background: darken($app-color, 10%) !important;
+                    &:hover,
+                    &:focus {
+                        color: $app-accent !important;
+                        background: darken($app-color, 20%) !important;
+                    }
+                }
+            }
 
             > a:not(.button) {
                 text-transform: uppercase;
                 background: transparent;
             }
+
         }
+    }
+    .user > a {
+        font-weight: bold;
     }
 
     #logo {
@@ -42,15 +58,8 @@ header {
         padding: 0;
         width: 100px;
         height: 100px;
-        background: $orange;
         overflow: hidden;
-        -webkit-transition: all .3s ease;
-        -moz-transition:    all .3s ease;
-        transition:         all .3s ease;
-
-        -webkit-box-shadow: 0px 4px 32px -8px rgba(0,0,0,0.75);
-        -moz-box-shadow:    0px 4px 32px -8px rgba(0,0,0,0.75);
-        box-shadow:         0px 4px 32px -8px rgba(0,0,0,0.75);
+        cursor: pointer;
 
         img {
             display: block;
@@ -69,17 +78,26 @@ header {
             left: 100%;
             white-space: nowrap;
             text-align: center;
+            font-transform: uppercase;
+            font-size: 24px;
             opacity: 0;
 
             -webkit-transition: left, opacity .3s ease;
             -moz-transition:    left, opacity .3s ease;
             transition:         left, opacity .3s ease;
+
         }
 
     // when header is anchored
         .fixed & {
             text-indent: 0;
+            width: 120px;
             height: 45px;
+            background: darken($app-color, 10%);
+
+            -webkit-box-shadow: 0px 4px 32px -8px rgba(0,0,0,0.75);
+            -moz-box-shadow:    0px 4px 32px -8px rgba(0,0,0,0.75);
+            box-shadow:         0px 4px 32px -8px rgba(0,0,0,0.75);
 
             img {
                 opacity: 0;

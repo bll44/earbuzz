@@ -1,11 +1,19 @@
 .vHome {
     color: $grayWhite;
-    // background: $orange
+    background: $orange !important;
+
+    //   background: url(http://bigbottomsoundrental.com/wp-content/uploads/2014/08/people-concert-wallpaper-1080p-backgrounds-concert-people-background-25952.jpg) no-repeat center center fixed;
+    //   -webkit-background-size: cover;
+    //   -moz-background-size: cover;
+    //   -o-background-size: cover;
+    //   background-size: cover;
+
+    // background: url(http://api.thumbr.it/whitenoise-361x370.png?background=666666ff&noise=808080&density=77&opacity=33);
 }
 
 #eb-featured {
     margin-bottom: 20px;
-    padding-top: 50px;
+    padding-top: 5px;
     min-height: 520px;
 
     .ui-coverflow {
@@ -17,6 +25,10 @@
             position: relative;
             width: 920px;
             height: 460px;
+
+            webkit-transition: all .1s ease;
+            -moz-transition:    all .1s ease;
+            transition:         all .1s ease;
 
             img {
                 opacity: 0.5;
