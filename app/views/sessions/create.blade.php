@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>sessions.create</h1>
+<!-- <h1>sessions.create</h1> -->
 
 <?php $fb_login = route('registration.loginWithFacebook'); ?>
 <?php $twitter_login = route('registration.loginWithTwitter'); ?>
@@ -10,34 +10,31 @@
 
 <div class="container">
 	<div class="omb_login">
-		<h3 class="omb_authTitle">Login</h3>
-		<div class="row omb_row-sm-offset-3 omb_socialButtons">
-			<div class="col-xs-4 col-sm-2">
-				<a href="{{ $fb_login }}" class="btn btn-lg btn-block omb_btn-facebook">
+		<h1>Sign In</h1>
+
+		<div class="row social">
+			<div class="large-4 columns">
+				<a href="{{ $fb_login }}" class="button facebook">
 					<i class="fa fa-facebook visible-xs"></i>
-					<span class="hidden-xs">Facebook</span>
+					<span>Facebook</span>
 				</a>
 			</div>
-			<div class="col-xs-4 col-sm-2">
-				<a href="{{ $twitter_login }}" class="btn btn-lg btn-block omb_btn-twitter">
+			<div class="large-4 columns">
+				<a href="{{ $twitter_login }}" class="button twitter">
 					<i class="fa fa-twitter visible-xs"></i>
 					<span class="hidden-xs">Twitter</span>
 				</a>
 			</div>
-			<div class="col-xs-4 col-sm-2">
-				<a href="{{ $google_login }}" class="btn btn-lg btn-block omb_btn-google">
+			<div class="large-4 columns">
+				<a href="{{ $google_login }}" class="button google">
 					<i class="fa fa-google-plus visible-xs"></i>
 					<span class="hidden-xs">Google+</span>
 				</a>
 			</div>
 		</div>
 
-		<div class="row omb_row-sm-offset-3 omb_loginOr">
-			<div class="col-xs-12 col-sm-6">
-				<hr class="omb_hrOr">
-				<span class="omb_spanOr">or</span>
-			</div>
-		</div>
+		<hr>
+		<span class="span-or">OR</span>
 
 		<div class="row omb_row-sm-offset-3">
 			<div class="col-xs-12 col-sm-6">
@@ -55,19 +52,20 @@
 					</div>
 					<span class="help-block">{{ $errors->first('password', '<span class="alert alert-error">:message</span>') }}</span>
 
-					{{ Form::submit('Login', ['class' => 'button', 'aria-label' => 'submit form', 'role' => 'button']) }}
+					{{ Form::submit('Login', ['class' => 'button submit-form', 'aria-label' => 'submit form', 'role' => 'button']) }}
+					<div class="rememberMe">
+						<div class="switch">
+							<input id="exampleCheckboxSwitch" type="checkbox" value="remember-me">
+							<label for="exampleCheckboxSwitch">Remember Me</label>
+						</div>
+						<p class="copy">Remember Me</p>
+					</div>
 				</form>
 			</div>
 		</div>
-		<div class="row omb_row-sm-offset-3">
-			<div class="col-xs-12 col-sm-3">
-				<div class="switch">
-					<input id="exampleCheckboxSwitch" type="checkbox" value="remember-me">
-					<label for="exampleCheckboxSwitch">Remember Me</label>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-3">
-				<p class="omb_forgotPwd">
+		<div class="row">
+			<div>
+				<p class="forgotPwd">
 					{{ link_to('/password/remind', 'Forgot password?', null, ['class' => 'page']) }}
 				</p>
 			</div>
