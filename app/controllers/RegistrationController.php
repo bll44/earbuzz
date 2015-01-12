@@ -264,6 +264,10 @@ public function registerWithFacebookArtist() {
 		$result = json_decode( $fb->request( '/me' ), true );
 		$answer = 0;
 		$unique_checker = DB::select('select * from users where provider_uid = '. $result['id'] );
+		if(count($unique_checker) > 0)
+		{
+			return Redirect::home();
+		}
 		foreach ($unique_checker as $finder)
 		{
 			$answer = $finder->provider_uid;
@@ -276,12 +280,14 @@ public function registerWithFacebookArtist() {
 		}
 		$user = new User;
 		$user->username = $result['name'];
+		$user->displayname = $result['name'];
 		// need valid facebook app in order to get registration email from facebook
 		// $user->email = $result['email'];
 		$user->provider = 'facebook';
 		$user->provider_uid = $result['id'];
 		$user->type = 'artist';
 		$user->email = null;
+		$user->password = null;
 		$user->save();
 		Auth::login($user);
 		$user_id = $user->id;
@@ -319,6 +325,10 @@ public function registerWithTwitterArtist() {
 		$result = json_decode( $tw->request( 'account/verify_credentials.json' ), true );
 		$answer = 0;
 		$unique_checker = DB::select('select * from users where provider_uid = '. $result['id'] );
+		if(count($unique_checker) > 0)
+		{
+			return Redirect::home();
+		}
 		foreach ($unique_checker as $finder)
 		{
 			$answer = $finder->provider_uid;
@@ -436,6 +446,10 @@ public function registerWithFacebookFan() {
 		$result = json_decode( $fb->request( '/me' ), true );
 		$answer = 0;
 		$unique_checker = DB::select('select * from users where provider_uid = '. $result['id'] );
+		if(count($unique_checker) > 0)
+		{
+			return Redirect::home();
+		}
 		foreach ($unique_checker as $finder)
 		{
 			$answer = $finder->provider_uid;
@@ -448,11 +462,13 @@ public function registerWithFacebookFan() {
 		}
 		$user = new User;
 		$user->username = $result['name'];
+		$user->displayname = $result['name'];
 		// need valid facebook app in order to get registration email from facebook
 		$user->provider = 'facebook';
 		$user->provider_uid = $result['id'];
 		$user->type = 'fan';
 		$user->email = null;
+		$user->password = null;
 		$user->save();
 		Auth::login($user);
 		$user_id = $user->id;
@@ -485,6 +501,10 @@ public function registerWithTwitterFan() {
 		$result = json_decode( $tw->request( 'account/verify_credentials.json' ), true );
 		$answer = 0;
 		$unique_checker = DB::select('select * from users where provider_uid = '. $result['id'] );
+		if(count($unique_checker) > 0)
+		{
+			return Redirect::home();
+		}
 		foreach ($unique_checker as $finder)
 		{
 			$answer = $finder->provider_uid;
@@ -496,6 +516,7 @@ public function registerWithTwitterFan() {
 		}
 		$user = new User;
 		$user->username = $result['screen_name'];
+
 		$user->provider = 'twitter';
 		$user->provider_uid = $result['id'];
 		$user->type = 'fan';
