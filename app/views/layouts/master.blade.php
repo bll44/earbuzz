@@ -5,6 +5,10 @@
 
 <body class="{{$bodyClass or 'vHome'}} no-js">
 
+<!-- TEMPORARY -->
+<div id="temp-notification-spot"></div>
+<!-- /TEMPORARY -->
+
 	<div class="container row">
 		<header class="sticky">
 			@include('layouts/partials/navigation')

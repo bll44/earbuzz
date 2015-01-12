@@ -172,7 +172,6 @@ class ConcertController extends \BaseController {
 		$user = Auth::user();
 		$concert = Concert::find(Input::get('concert'));
 		$concert->guests()->attach($user->id);
-		$concert->touch();
 
 		return json_encode(['success' => true]);
 	}
