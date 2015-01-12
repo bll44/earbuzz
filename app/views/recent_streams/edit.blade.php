@@ -12,34 +12,6 @@
 	margin-top: 10px;
 }
 </style>
-<!--
-<div data-alert class="alert-box alert hide">
-  <p class="message_content"></p>
-  <a href="#" class="close">&times;</a>
-</div> -->
-<!-- /.alert alert -->
-
-<!-- <div class="alert alert-danger alert-dismissable hidden" role="alert">
-	<button type="button" class="close" data-dismiss="alert">
-		<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-	</button>
-	<p class="message_content"></p>
-</div> -->
-<!-- /.alert-danger -->
-
-<!-- <div data-alert class="alert-box success hide">
-  <p class="message_content"></p>
-  <a href="#" class="close">&times;</a>
-</div> -->
-<!-- /.alert success -->
-
-<!-- <div class="alert alert-success alert-dismissable hidden" role="alert">
-	<button type="button" class="close" data-dismiss="alert">
-		<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-	</button>
-	<p class="message_content"></p>
-</div> -->
-<!-- /.alert-success -->
 
 <div class="row">
 	<!-- <div id="video" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> **bootstrap**-->
@@ -63,16 +35,6 @@
 		<button class="finish-process-tracks">Finish and Process Tracks</button>
 	</div><!-- /.clip-btn-container -->
 </div><!-- /.row -->
-
-<!-- <div class="row">
-	<div class="alert alert-warning processing-alert alert-dismissible hidden" role="alert">
-	<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	<p><strong>Hold on!</strong> This action may take some time to complete. Please check back later to see if it is done. This process could take anywhere from 30 minutes to 2 hours. We will send you an email when it is done as well so you don't have to wait around. Thank you!</p>
-	<p><button type="button" class="btn btn-warning continue-processing">Continue</button></p>
-	</div> -->
-	<!-- /.alert -->
-<!-- </div> -->
-<!-- /.row -->
 
 <div class="track-container">
 	<h3 id="album-title">Tracks<span id="on-album-name"></span></h3>
@@ -113,8 +75,6 @@
 	<a class="close-reveal-modal">&#215;</a>
 </div>
 <!-- /#track-name-modal -->
-
-<button type="button" id="zurb-test-modal">Test</button>
 
 @stop
 
@@ -214,6 +174,7 @@ save_name_btn.click(function() {
 	var minutes = Math.floor(rounded_duration / 60);
 	var seconds = (rounded_duration % 60);
 	track.duration_f = minutes + ':' + seconds;
+	console.log(track.duration_f);
 	$('#track-name-modal').foundation('reveal', 'close');
 	// $('#track-name-modal').modal('hide'); **bootstrap**
 	track_number++;
