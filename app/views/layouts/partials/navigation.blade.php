@@ -44,7 +44,7 @@
 			@else
 				<li>{{ link_to('live', 'Live Now') }}</li>
 				<li class="has-dropdown user">
-					{{ link_to_profile( Auth::user() -> username ) }}
+					{{ link_to_profile( Auth::user()->username ) }}
 					<ul class="dropdown">
 						<li>{{ link_to_profile('Profile') }}</li>
 						@if(Auth::check() && Auth::user()->type === 'artist')
@@ -53,6 +53,7 @@
 						<li>{{ link_to('recent_streams', 'Recent Streams', ['class' => 'page']) }}</li>
 
 						@endif
+						{{--<li>{{ link_to_route('uploads.music.create', 'Upload', null, ['class' => 'page']) }}</li>--}}
 						<li>{{ link_to_route('account.show', 'Account', ['id' => Auth::user()->id], ['class' => 'page']) }}</li>
 						<li>{{ link_to_route('messages', 'Inbox', ['id' => Auth::user()->id], ['class' => 'page']) }}</li>
 						<li>{{ link_to('logout', 'Sign Out', ['class' => 'page']) }}</li>

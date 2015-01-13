@@ -27,7 +27,7 @@
 	<div class="col-sm-9 col-md-9">
 
 		@if($is_artist_profile)
-			{{ link_to_route('live.show', 'View Live Stream', [$artist->id]) }}
+			{{ link_to_route('live.show', 'View Live Stream', [$user->id]) }}
 		@endif
 
 		<h3>Video</h3>
@@ -58,6 +58,7 @@
 
 <!-- Chat -->
 <!-- Chat window and input -->
+@if(Auth::check())
 <div>
 	<h3>Chat Room</h3>
 
@@ -79,6 +80,7 @@
 	<!-- /#messageform -->
 </div>
 <!-- / Chat window and input -->
+@endif
 
 <div id="waiting">
 	Waiting to establish connection ...
