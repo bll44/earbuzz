@@ -3,9 +3,9 @@
 @section('content')
 <h1>
 	{{ $user->displayname }}
-	@if(Auth::user()->id === $user->id)
+	@if(Auth::check() && Auth::user()->id === $user->id)
 	<div class="switch">
-		@if(Auth::user()->status)
+		@if(Auth::check() && Auth::user()->status)
 		<input id="status-switch" type="checkbox" checked>
 		@else
 		<input id="status-switch" type="checkbox">
@@ -25,6 +25,7 @@
 <!-- Video -->
 <div class="row">
 	<div class="col-sm-9 col-md-9">
+
 		@if($is_artist_profile)
 			{{ link_to_route('live.show', 'View Live Stream', [$artist->id]) }}
 		@endif
@@ -69,7 +70,9 @@
 	{{ Form::open(array('route' => 'get.chat', 'id'=>'newmessage')) }}
 		<!-- <form action="/testchat/index.php" method="POST" id="newmessage"> -->
 		<input type="text" id="message" name="message" />
-		<input type="hidden" id="user" name="user" value="{{ Auth::user()->username }}" />
+		@if(Auth::check())
+			<input type="hidden" id="user" name="user" value="{{ Auth::user()->username }}" />
+		@endif
 		<button name="submit" id="submit" type="submit">Post</button>
 	{{ Form::close() }}
 	</div>

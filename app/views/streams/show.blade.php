@@ -4,9 +4,8 @@
 
 <h3>{{ $user->displayname }}'s Live Stream</h3>
 <div id="video">
-
 </div>
-
+<!-- /#video -->
 @stop
 
 @section('scripts')

@@ -53,7 +53,6 @@
 						<li>{{ link_to('recent_streams', 'Recent Streams', ['class' => 'page']) }}</li>
 
 						@endif
-						<li>{{ link_to_route('uploads.music.create', 'Upload', null, ['class' => 'page']) }}</li>
 						<li>{{ link_to_route('account.show', 'Account', ['id' => Auth::user()->id], ['class' => 'page']) }}</li>
 						<li>{{ link_to_route('messages', 'Inbox', ['id' => Auth::user()->id], ['class' => 'page']) }}</li>
 						<li>{{ link_to('logout', 'Sign Out', ['class' => 'page']) }}</li>

@@ -54,7 +54,10 @@ class LiveController extends \BaseController {
 	public function show($id)
 	{
 		$user = User::find($id);
-		$sk = $user->streamingKey->key;
+		if(null !== $user->streamingKey)
+			$sk = $user->streamingKey->key;
+		else
+			return Redirect::back();
 
 		return View::make('streams.show', ['user' => $user, 'streamingKey' => $sk]);
 	}
