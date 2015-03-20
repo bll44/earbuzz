@@ -1,11 +1,6 @@
 <?php
 App::bind('Earbuzz\Billing\BillingInterface', 'eEarbuzz\Billing\StripeBilling');
 
-Route::get('brad_test', function()
-{
-	return User::find(2)->concerts;
-});
-
 Route::group(['before' => 'auth'], function()
 {
 	Route::get('recent_streams', ['as' => 'recent_streams.show', 'uses' => 'MediaController@showRecentStreams']);
