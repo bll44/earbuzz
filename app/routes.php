@@ -10,11 +10,6 @@ Route::group(['before' => 'auth'], function()
     Route::post('recent_streams/name_album', ['as' => 'recent_streams.name_album', 'uses' => 'MediaController@nameAlbum']);
 });
 
-Route::get('testing', function()
-{
-    return 'test';
-});
-
 Route::get('upcoming_shows', 'ConcertController@index');
 
 # Billing - Stripe
